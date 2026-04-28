@@ -3,7 +3,11 @@
     SUCHEN — LESEN — ANALYSIEREN
     <span class="version-pill">v. {{ site.version }}</span>
   </a>
-  <nav class="primary-nav" aria-label="Hauptnavigation">
+  <button type="button" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Navigation öffnen">
+    <span class="icon" aria-hidden="true">≡</span>
+    <span class="label">Menü</span>
+  </button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Hauptnavigation">
     {% for c in nav_chapters %}
       {% if c.slug != "einleitung" %}
       <a href="{{ c.url }}">{{ c.short_title }}</a>
@@ -19,3 +23,4 @@
     </span>
   </nav>
 </header>
+<div class="drawer-scrim" data-scrim hidden></div>

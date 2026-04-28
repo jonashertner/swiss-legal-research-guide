@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suchen — Lesen — Analysieren — Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI.</title>
+<meta name="description" content="Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).">
+<meta name="author" content="Kaspar Ehrenzeller, Daniel Brugger">
+
+<link rel="canonical" href="https://jonashertner.github.io/de/">
+
+<meta property="og:title" content="Suchen — Lesen — Analysieren — Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI.">
+<meta property="og:description" content="Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" type="text/markdown" href="/de/index.md">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable index">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308612d'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23fafaf7' text-anchor='middle' font-weight='600'%3E§%3C/text%3E%3C/svg%3E">
+</head>
+<body class="index-page">
+
+<header class="site-masthead" role="banner">
+  <a class="brand" href="/de/" aria-label="Zur Startseite">
+    SUCHEN — LESEN — ANALYSIEREN
+    <span class="version-pill">v. April 2026</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Navigation öffnen">
+    <span class="icon" aria-hidden="true">≡</span>
+    <span class="label">Menü</span>
+  </button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Hauptnavigation">
+      <a href="/de/erlasse/">Erlasse</a>
+      <a href="/de/gerichtsentscheide/">Gerichtsentscheide</a>
+      <a href="/de/ki-konzepte/">KI-Konzepte</a>
+      <a href="/de/opencaselaw-connector/">Connector</a>
+    <a class="ai-link" href="/for-ai/">
+      <span class="arrow">⌥</span> For AI / devs
+    </a>
+    <span class="lang-switch" aria-label="Sprache">
+      <span class="lang active" lang="de" title="Deutsch">DE</span>
+      <span class="lang muted" lang="fr" title="Français — folgt">FR</span>
+      <span class="lang muted" lang="it" title="Italiano — folgt">IT</span>
+    </span>
+  </nav>
+</header>
+<div class="drawer-scrim" data-scrim hidden></div>
+<main class="reading">
+<button type="button" class="toc-toggle" aria-controls="chapter-toc" aria-expanded="false" aria-label="Inhaltsübersicht öffnen">
+  <span class="icon" aria-hidden="true">§</span>
+  <span class="label">Inhalt</span>
+</button>
+<aside id="chapter-toc" class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">I. Einleitung</div>
+  <ul>
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+      <li><a href="/de/erlasse/">II. Erlasse</a></li>
+      <li><a href="/de/gerichtsentscheide/">III. Gerichtsentscheide</a></li>
+      <li><a href="/de/ki-konzepte/">IV. KI-Konzepte</a></li>
+      <li><a href="/de/opencaselaw-connector/">V. Connector</a></li>
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <header class="frontispiece">
+    <div class="rule-accent"></div>
+    <p class="kicker">SUCHEN — LESEN — ANALYSIEREN</p>
+    <h1 class="display-title">Suchen — Lesen — Analysieren<br><span class="display-sub">Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI.</span></h1>
+    <p class="byline">
+<span class="author">Kaspar Ehrenzeller</span> · <span class="author">Daniel Brugger</span>    </p>
+    <p class="version">April 2026</p>
+  </header>
+
+  <p>Suchen, Lesen und Analysieren von <span class="glossary" data-definition="Mehrheit generell-abstrakter Rechtsnormen des geschriebenen Rechts, von einem Gemeinwesen verabschiedet, in Kraft gesetzt und publiziert. Existiert in den Formen Verfassung, Gesetz und Verordnung." data-full="Erlass" data-term="Erlass">Erlassen</span> und Entscheiden gehört zum zentralen Handwerkszeug von Juristinnen und Juristen. Wie man Erlasse und Entscheide sucht, wie man sie liest und wie man sie analysiert, will gelernt sein. Traditionelle juristische Handwerkstechnik und neue Möglichkeiten mit KI-Tools spielen dabei immer mehr zusammen. Der vorliegende Leitfaden versteht sich als praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Entscheiden mit und ohne KI. Er ist weder eine Prompting-Anleitung noch eine umfassende Einführung in künstliche Intelligenz im Rechtsbereich. Der Leitfaden dient vielmehr als Werkzeugkoffer für Juristinnen und Juristen, die nicht nur die vertrauten Methoden und Techniken juristischer Arbeit, sondern auch ihre KI-basierte Unterstützung beherrschen wollen.</p>
+<p><em>Suchen — Lesen — Analysieren.</em> Diese drei Schritte prägen die Arbeit mit Erlassen und Entscheiden. Der vorliegende Leitfaden legt anhand von Beispielen und Prompts dar, wie künstliche Intelligenz die einzelnen Arbeitsschritte unterstützt. Als Anschauungsfall dient ein öffentlich-rechtlicher Entscheid des Bundesgerichts (<a class="xref xref-bge" href="https://opencaselaw.ch/decisions/2C_166/2009" rel="noopener noreferrer" target="_blank">Urteil 2C_166/2009 vom 30. November 2009</a> [Hundeeuthanasie]). Die Ausführungen gelten jedoch sinngemäss für andere Rechtsgebiete und die übrigen Gerichtsinstanzen der Schweiz. Unterstützende KI-Anwendungen wie etwa ChatGPT, Gemini, Perplexity usw. gibt es mittlerweile viele. Dieser Leitfaden arbeitet mit Claude (<a class="xref xref-url" href="https://claude.ai/" rel="noopener noreferrer" target="_blank">claude.ai</a>) als Beispiel und zeigt, wie damit Erlasse und Gerichtsentscheide in der Schweiz mithilfe der kostenlosen Datenbank OpenCaseLaw (<a class="xref xref-url" href="https://opencaselaw.ch/" rel="noopener noreferrer" target="_blank">opencaselaw.ch</a>) gesucht, gelesen und analysiert werden können. Die Überlegungen in diesem Leitfaden bleiben jedoch «toolneutral», da sie sich ohne Weiteres auch auf andere Anwendungen und Datenbanken übertragen lassen. Für eine kurze Einführung zur Nutzung von KI für die juristische Arbeit sei auf das nachfolgende <a href="../ki-konzepte/">Kapitel IV</a> verwiesen. Juristisches Arbeiten mit KI wirft selbstverständlich verschiedene Rechtsfragen auf — zu Datenschutz, Berufs- und Amtsgeheimnis, allfälligen vertraglichen Geheimhaltungsklauseln, Weisungen (des Arbeitgebers) beim Umgang mit KI-Tools, Urheberrecht, spezifische KI-Regulierungen usw. Sie alle bilden jedoch nicht Gegenstand des vorliegenden Leitfadens.</p>
+
+
+  <nav class="chapter-foot" aria-label="Kapitelnavigation">
+    <span></span>
+<a class="edit" href="https://github.com/jonashertner/swiss-legal-research-guide/edit/main/content/de/00-einleitung.md" rel="noopener">Edit on GitHub ↗</a>      <a class="next" href="/de/erlasse/">II. Erlasse <span class="next-arrow">→</span></a>
+  </nav>
+</article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="colophon">
+      <h4>Suchen — Lesen — Analysieren</h4>
+      <p>
+        <strong>Erlasse und Gerichtsentscheide.</strong>
+        Juristisches Handwerk mit und ohne KI.
+      </p>
+      <p>
+        Von
+<a href="mailto:kaspar.ehrenzeller@unisg.ch">Kaspar Ehrenzeller</a> und <a href="mailto:daniel.brugger@unisg.ch">Daniel Brugger</a>,
+        Universität St. Gallen (HSG).
+      </p>
+      <p class="muted">Version April 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Lesen</h4>
+      <a href="/assets/pdf/leitfaden.pdf">PDF (Druckfassung)</a>
+      <a href="/llms-full.txt">Vollständige Version (Markdown)</a>
+<a href="https://github.com/jonashertner/swiss-legal-research-guide/commits/main" rel="noopener">Versionshistorie</a>    </div>
+    <div class="footer-col ai-col">
+      <h4>For AI / Agents</h4>
+      <a href="/llms.txt"><code>/llms.txt</code></a>
+      <a href="/llms-full.txt"><code>/llms-full.txt</code></a>
+      <a href="/sitemap.xml"><code>/sitemap.xml</code></a>
+      <a href="/for-ai/">.md mirror per section</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quelle</h4>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide" rel="noopener">GitHub repository</a>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide/issues" rel="noopener">Issues / feedback</a>
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">Inhalt: CC BY 4.0</a>
+      <a href="https://opensource.org/license/mit" rel="noopener license">Code: MIT</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

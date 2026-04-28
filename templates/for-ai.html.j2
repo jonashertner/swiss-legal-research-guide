@@ -10,7 +10,11 @@
 {% block main_attrs %} class="reading"{% endblock %}
 
 {% block main %}
-<aside class="toc" aria-label="Inhaltsübersicht">
+<button type="button" class="toc-toggle" aria-controls="chapter-toc" aria-expanded="false" aria-label="Inhaltsübersicht öffnen">
+  <span class="icon" aria-hidden="true">§</span>
+  <span class="label">Inhalt</span>
+</button>
+<aside id="chapter-toc" class="toc" aria-label="Inhaltsübersicht">
   <div class="toc-label">For AI / Agents</div>
   <ul>
   {% for h in headings %}

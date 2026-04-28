@@ -1,0 +1,44 @@
+# Suchen — Lesen — Analysieren
+
+> Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).
+
+_Authors:_ Kaspar Ehrenzeller, Daniel Brugger (HSG). _Version:_ April 2026.
+
+## Chapters
+
+- [I. Einleitung](https://jonashertner.github.io/de/): Der Leitfaden — sein Zweck, seine Methode und sein Verhältnis zu KI.
+- [II. Erlasse](https://jonashertner.github.io/de/erlasse/): Erlasse finden, ihren typischen Aufbau verstehen und sie mit Blick auf eine konkrete Rechtsfrage zielorientiert lesen — mit und ohne KI.
+  - [Suchen von Erlassen](https://jonashertner.github.io/de/erlasse/suchen-von-erlassen.md): Was sind Erlasse? Unter einem Erlass versteht man eine Mehrheit generell-abstrakter Rechtsnormen des geschriebenen Rechts, die von einem Gemeinwesen verabschiedet, in Kraft gesetzt und publiziert worden sind.
+  - [Aufbau von Erlassen](https://jonashertner.github.io/de/erlasse/aufbau-von-erlassen.md): Wie sind Erlasse aufgebaut?
+  - [Lesen und Analysieren von Erlassen](https://jonashertner.github.io/de/erlasse/lesen-und-analysieren-von-erlassen.md): Wie liest man Erlasse?
+- [III. Gerichtsentscheide](https://jonashertner.github.io/de/gerichtsentscheide/): Wie man Gerichts- und Verwaltungsentscheide findet, ihren Aufbau versteht, sie liest und analysiert — illustriert am Bundesgerichtsurteil 2C_166/2009 (Hundeeuthanasie).
+  - [Suchen von Gerichtsentscheiden](https://jonashertner.github.io/de/gerichtsentscheide/suchen-von-gerichtsentscheiden.md): Funktion von Gerichtsentscheiden.
+  - [Aufbau von Gerichtsentscheiden](https://jonashertner.github.io/de/gerichtsentscheide/aufbau-von-gerichtsentscheiden.md): Weiterführende Literatur: Forstmoser Peter / Ogorek Regina / Schindler Benjamin, Juristisches Arbeiten, eine Anleitung für Studierende, 7.
+  - [Lesen von Gerichtsentscheiden](https://jonashertner.github.io/de/gerichtsentscheide/lesen-von-gerichtsentscheiden.md): Wie liest man Gerichtsentscheide?
+  - [Analysieren von Gerichtsentscheiden](https://jonashertner.github.io/de/gerichtsentscheide/analysieren-von-gerichtsentscheiden.md): Wie analysiert man Gerichtsentscheide effizient und methodisch korrekt?
+- [IV. KI-Konzepte](https://jonashertner.github.io/de/ki-konzepte/): Halluzination, Verifikationsaufwand, Prompting und Kontext — die zentralen Konzepte für ein verantwortungsvolles juristisches Arbeiten mit KI-Tools.
+  - [Halluzinationen](https://jonashertner.github.io/de/ki-konzepte/halluzinationen.md): KI-Anwendungen wie Claude ersetzen das eigenständige Suchen, Lesen und Analysieren von Gerichtsentscheiden und Erlassen nicht, sondern ergänzen diese Tätigkeiten — ähnlich wie eine Hilfsperson.
+  - [Verification-Value Paradox](https://jonashertner.github.io/de/ki-konzepte/verification-value-paradox.md): Der Rechtswissenschaftler Joshua Yuvaraj hat den Zusammenhang zwischen Effizienzgewinn und Kontrollaufwand beim Einsatz von KI in der juristischen Arbeit auf eine einprägsame Formel gebracht: Net Value = Efficiency Gain…
+  - [Prompting](https://jonashertner.github.io/de/ki-konzepte/prompting.md): Ein Prompt ist eine Eingabeanweisung an ein KI-System.
+  - [Kontext ist König](https://jonashertner.github.io/de/ki-konzepte/kontext-ist-koenig.md): Der grösste Hebel beim Prompting liegt heute unseres Erachtens weniger in ausgefeilten Prompt-Techniken als darin, der KI den richtigen Kontext mitzugeben.
+  - [Die KI lernt mit (Erinnerungsfunktion)](https://jonashertner.github.io/de/ki-konzepte/die-ki-lernt-mit-erinnerungsfunktion.md): Moderne KI-Anwendungen verfügen über Funktionen, welche die Notwendigkeit, jedem Prompt aufwändig Kontext mitzugeben, reduzieren.
+  - [Iteratives Arbeiten — KI als Sparringspartner](https://jonashertner.github.io/de/ki-konzepte/iteratives-arbeiten-ki-als-sparringspartner.md): Ein häufiges Missverständnis im Umgang mit KI-Tools besteht im Glauben, eine einzelne Abfrage führe zu einem fertigen Ergebnis.
+- [V. Connector](https://jonashertner.github.io/de/opencaselaw-connector/): Schritt-für-Schritt-Anleitung, um OpenCaseLaw über die MCP-Schnittstelle direkt an Claude anzubinden — und damit Schweizer Erlasse und Entscheide in natürlicher Sprache zu durchsuchen.
+  - [Schritt 1: Claude öffnen](https://jonashertner.github.io/de/opencaselaw-connector/schritt-1-claude-oeffnen.md): Rufen Sie <https://claude.ai> im Browser auf und melden Sie sich mit Ihrem Konto an.
+  - [Schritt 2: Einstellungen öffnen](https://jonashertner.github.io/de/opencaselaw-connector/schritt-2-einstellungen-oeffnen.md): Klicken Sie in der linken Seitenleiste unten auf Ihr Profil und wählen Sie «Einstellungen».
+  - [Schritt 3: Custom Connector hinzufügen](https://jonashertner.github.io/de/opencaselaw-connector/schritt-3-custom-connector-hinzufuegen.md): Klicken Sie auf «Konnektoren» und dann unten auf «Benutzerdefinierten Connector hinzufügen».
+  - [Schritt 4: Verbindungsdaten eingeben](https://jonashertner.github.io/de/opencaselaw-connector/schritt-4-verbindungsdaten-eingeben.md): Es öffnet sich ein Dialogfeld mit zwei Feldern.
+  - [Schritt 5: Konnektor aktivieren](https://jonashertner.github.io/de/opencaselaw-connector/schritt-5-konnektor-aktivieren.md): Der Konnektor erscheint nun in Ihrer Konnektoren-Liste.
+  - [Schritt 6: Testen](https://jonashertner.github.io/de/opencaselaw-connector/schritt-6-testen.md): Stellen Sie eine Frage, die eine Suche in der Datenbank auslöst, beispielsweise: «Suche mir aktuelle Bundesgerichtsentscheide zum Thema Verhältnismässigkeit bei Tierhalteverboten.» Wenn die Einrichtung erfolgreich war,…
+  - [Schritt 7: Funktionen](https://jonashertner.github.io/de/opencaselaw-connector/schritt-7-funktionen.md): OpenCaseLaw umfasst verschiedene Tools, die für spezifische Rechercheanwendungsfälle optimiert sind.
+
+## Conventions
+
+- Append `.md` to any section slug to fetch the raw Markdown for that section.
+- Full guide as a single Markdown file: https://jonashertner.github.io/llms-full.txt
+- Each chapter URL also accepts `.md`-suffixed section paths under it.
+
+## Source
+
+- Repository: see footer of any HTML page.
+- License: CC BY 4.0 (content), MIT (code).

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For AI / agents — Suchen — Lesen — Analysieren</title>
+<meta name="description" content="LLM-readable endpoints and conventions for the Swiss legal research guide.">
+<meta name="author" content="Kaspar Ehrenzeller, Daniel Brugger">
+
+<link rel="canonical" href="https://jonashertner.github.io/for-ai/">
+
+<meta property="og:title" content="For AI / agents — Suchen — Lesen — Analysieren">
+<meta property="og:description" content="Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" type="text/markdown" href="/llms.txt">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable index">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308612d'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23fafaf7' text-anchor='middle' font-weight='600'%3E§%3C/text%3E%3C/svg%3E">
+</head>
+<body class="for-ai-page">
+
+<header class="site-masthead" role="banner">
+  <a class="brand" href="/de/" aria-label="Zur Startseite">
+    SUCHEN — LESEN — ANALYSIEREN
+    <span class="version-pill">v. April 2026</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Navigation öffnen">
+    <span class="icon" aria-hidden="true">≡</span>
+    <span class="label">Menü</span>
+  </button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Hauptnavigation">
+      <a href="/de/erlasse/">Erlasse</a>
+      <a href="/de/gerichtsentscheide/">Gerichtsentscheide</a>
+      <a href="/de/ki-konzepte/">KI-Konzepte</a>
+      <a href="/de/opencaselaw-connector/">Connector</a>
+    <a class="ai-link" href="/for-ai/">
+      <span class="arrow">⌥</span> For AI / devs
+    </a>
+    <span class="lang-switch" aria-label="Sprache">
+      <span class="lang active" lang="de" title="Deutsch">DE</span>
+      <span class="lang muted" lang="fr" title="Français — folgt">FR</span>
+      <span class="lang muted" lang="it" title="Italiano — folgt">IT</span>
+    </span>
+  </nav>
+</header>
+<div class="drawer-scrim" data-scrim hidden></div>
+<main class="reading">
+<button type="button" class="toc-toggle" aria-controls="chapter-toc" aria-expanded="false" aria-label="Inhaltsübersicht öffnen">
+  <span class="icon" aria-hidden="true">§</span>
+  <span class="label">Inhalt</span>
+</button>
+<aside id="chapter-toc" class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">For AI / Agents</div>
+  <ul>
+    <li><a href="#endpoints">Endpoints</a></li>
+    <li><a href="#conventions">Conventions</a></li>
+    <li><a href="#how-to-fetch-the-whole-guide">How to fetch the whole guide</a></li>
+    <li><a href="#how-to-fetch-a-single-section">How to fetch a single section</a></li>
+    <li><a href="#how-to-use-this-guideandthe-opencaselaw-database-from-claude">How to use this guideandthe OpenCaseLaw database from Claude</a></li>
+    <li><a href="#licence">Licence</a></li>
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+      <li><a href="/de/">I. Einleitung</a></li>
+      <li><a href="/de/erlasse/">II. Erlasse</a></li>
+      <li><a href="/de/gerichtsentscheide/">III. Gerichtsentscheide</a></li>
+      <li><a href="/de/ki-konzepte/">IV. KI-Konzepte</a></li>
+      <li><a href="/de/opencaselaw-connector/">V. Connector</a></li>
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <div class="chapter-eyebrow">// FOR AI / AGENTS</div>
+  <h1 class="chapter-title">For AI / agents</h1>
+
+  <p>This guide is intentionally machine-readable. The same content humans read at <code>/de/…</code> is exposed in raw Markdown and in summarised index form for use by language models, agents, and offline consumers.</p>
+<h2 id="endpoints"><span class="section-num">§ 1</span> Endpoints<a aria-label="Direktlink" class="anchor" href="#endpoints">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">URL</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><code>/llms.txt</code></td>
+<td style="text-align:left">text/plain</td>
+<td style="text-align:left">Index of every chapter and section with one-line descriptions and links. Follows the <a href="https://llmstxt.org/"><code>llms.txt</code> convention</a>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/llms-full.txt</code></td>
+<td style="text-align:left">text/plain</td>
+<td style="text-align:left">The entire guide concatenated as one Markdown document — chapter dividers, no chrome. Designed for one-shot context-window inclusion.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/de/&lt;chapter&gt;/&lt;section&gt;.md</code></td>
+<td style="text-align:left">text/markdown</td>
+<td style="text-align:left">Raw Markdown for a single section (e.g. <code>/de/erlasse/suchen-von-erlassen.md</code>). Same content the chapter HTML page is rendered from, scoped to the named section.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/sitemap.xml</code></td>
+<td style="text-align:left">XML</td>
+<td style="text-align:left">Standard sitemap.</td>
+</tr>
+<tr>
+<td style="text-align:left"><code>/robots.txt</code></td>
+<td style="text-align:left">text/plain</td>
+<td style="text-align:left">Permissive — explicitly allows <code>GPTBot</code>, <code>ClaudeBot</code>, <code>Claude-Web</code>, <code>PerplexityBot</code>, <code>Google-Extended</code>, <code>CCBot</code>, plus standard crawlers.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="conventions"><span class="section-num">§ 2</span> Conventions<a aria-label="Direktlink" class="anchor" href="#conventions">¶</a></h2>
+<ul>
+<li><strong>Slugs</strong> — section anchors are lowercase, German diaereses ASCII-folded (<code>ä→ae</code>, <code>ö→oe</code>, <code>ü→ue</code>, <code>ß→ss</code>), non-alphanumerics collapsed to hyphens. Stable across releases unless a section is renamed.</li>
+<li><strong>Section addressability</strong> — every H2 in every chapter has a stable anchor and a corresponding <code>.md</code> mirror at the same path.</li>
+<li><strong>Footnotes</strong> — preserved as standard Markdown footnote syntax (<code>[^N]</code>) in <code>.md</code> mirrors and <code>llms-full.txt</code>.</li>
+<li><strong>Cross-references</strong> — the human-rendered HTML resolves <code>{{erlass:SR …}}</code> and <code>{{bge:…}}</code> to live URLs. The raw Markdown preserves the original tokens so a downstream agent can re-resolve against its own URL conventions if needed.</li>
+</ul>
+<h2 id="how-to-fetch-the-whole-guide"><span class="section-num">§ 3</span> How to fetch the whole guide<a aria-label="Direktlink" class="anchor" href="#how-to-fetch-the-whole-guide">¶</a></h2>
+<pre><code>curl https://jonashertner.github.io/swiss-legal-research-guide/llms-full.txt
+</code></pre>
+<p>That single response contains the full text of every chapter, in Markdown, with chapter dividers. Suitable for direct ingestion into a model's context.</p>
+<h2 id="how-to-fetch-a-single-section"><span class="section-num">§ 4</span> How to fetch a single section<a aria-label="Direktlink" class="anchor" href="#how-to-fetch-a-single-section">¶</a></h2>
+<pre><code>curl https://jonashertner.github.io/swiss-legal-research-guide/de/erlasse/suchen-von-erlassen.md
+</code></pre>
+<p>Each section's <code>.md</code> mirror begins with an HTML comment pointing back to its canonical HTML location.</p>
+<h2 id="how-to-use-this-guideandthe-opencaselaw-database-from-claude"><span class="section-num">§ 5</span> How to use this guide <em>and</em> the OpenCaseLaw database from Claude<a aria-label="Direktlink" class="anchor" href="#how-to-use-this-guideandthe-opencaselaw-database-from-claude">¶</a></h2>
+<p>Chapter <a href="../de/opencaselaw-connector/">V — Connector</a> walks through adding OpenCaseLaw to Claude as an MCP connector. With both the connector and this guide accessible, an agent can read the guide for methodology and call OpenCaseLaw for primary sources.</p>
+<h2 id="licence"><span class="section-num">§ 6</span> Licence<a aria-label="Direktlink" class="anchor" href="#licence">¶</a></h2>
+<p>Content is published under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>. Attribution: <em>Kaspar Ehrenzeller, Daniel Brugger — Suchen — Lesen — Analysieren: Erlasse und Gerichtsentscheide</em>. The build code is published separately under MIT.</p>
+
+
+  <nav class="chapter-foot" aria-label="Navigation">
+    <a class="prev" href="/de/">← Zurück zum Leitfaden</a>
+<a class="edit" href="https://github.com/jonashertner/swiss-legal-research-guide/edit/main/content/de/for-ai.md" rel="noopener">Edit on GitHub ↗</a>    <span></span>
+  </nav>
+</article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="colophon">
+      <h4>Suchen — Lesen — Analysieren</h4>
+      <p>
+        <strong>Erlasse und Gerichtsentscheide.</strong>
+        Juristisches Handwerk mit und ohne KI.
+      </p>
+      <p>
+        Von
+<a href="mailto:kaspar.ehrenzeller@unisg.ch">Kaspar Ehrenzeller</a> und <a href="mailto:daniel.brugger@unisg.ch">Daniel Brugger</a>,
+        Universität St. Gallen (HSG).
+      </p>
+      <p class="muted">Version April 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Lesen</h4>
+      <a href="/assets/pdf/leitfaden.pdf">PDF (Druckfassung)</a>
+      <a href="/llms-full.txt">Vollständige Version (Markdown)</a>
+<a href="https://github.com/jonashertner/swiss-legal-research-guide/commits/main" rel="noopener">Versionshistorie</a>    </div>
+    <div class="footer-col ai-col">
+      <h4>For AI / Agents</h4>
+      <a href="/llms.txt"><code>/llms.txt</code></a>
+      <a href="/llms-full.txt"><code>/llms-full.txt</code></a>
+      <a href="/sitemap.xml"><code>/sitemap.xml</code></a>
+      <a href="/for-ai/">.md mirror per section</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quelle</h4>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide" rel="noopener">GitHub repository</a>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide/issues" rel="noopener">Issues / feedback</a>
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">Inhalt: CC BY 4.0</a>
+      <a href="https://opensource.org/license/mit" rel="noopener license">Code: MIT</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

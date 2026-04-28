@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wichtige Konzepte der juristischen Arbeit mit KI — Suchen — Lesen — Analysieren</title>
+<meta name="description" content="KI-Konzepte — Suchen — Lesen — Analysieren, Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI.">
+<meta name="author" content="Kaspar Ehrenzeller, Daniel Brugger">
+
+<link rel="canonical" href="https://jonashertner.github.io/de/ki-konzepte/">
+
+<meta property="og:title" content="IV. Wichtige Konzepte der juristischen Arbeit mit KI — Suchen — Lesen — Analysieren">
+<meta property="og:description" content="Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" type="text/markdown" href="/de/ki-konzepte/index.md">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable index">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308612d'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23fafaf7' text-anchor='middle' font-weight='600'%3E§%3C/text%3E%3C/svg%3E">
+</head>
+<body class="chapter-page">
+
+<header class="site-masthead" role="banner">
+  <a class="brand" href="/de/" aria-label="Zur Startseite">
+    SUCHEN — LESEN — ANALYSIEREN
+    <span class="version-pill">v. April 2026</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Navigation öffnen">
+    <span class="icon" aria-hidden="true">≡</span>
+    <span class="label">Menü</span>
+  </button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Hauptnavigation">
+      <a href="/de/erlasse/">Erlasse</a>
+      <a href="/de/gerichtsentscheide/">Gerichtsentscheide</a>
+      <a href="/de/ki-konzepte/">KI-Konzepte</a>
+      <a href="/de/opencaselaw-connector/">Connector</a>
+    <a class="ai-link" href="/for-ai/">
+      <span class="arrow">⌥</span> For AI / devs
+    </a>
+    <span class="lang-switch" aria-label="Sprache">
+      <span class="lang active" lang="de" title="Deutsch">DE</span>
+      <span class="lang muted" lang="fr" title="Français — folgt">FR</span>
+      <span class="lang muted" lang="it" title="Italiano — folgt">IT</span>
+    </span>
+  </nav>
+</header>
+<div class="drawer-scrim" data-scrim hidden></div>
+<main class="reading">
+<button type="button" class="toc-toggle" aria-controls="chapter-toc" aria-expanded="false" aria-label="Inhaltsübersicht öffnen">
+  <span class="icon" aria-hidden="true">§</span>
+  <span class="label">Inhalt</span>
+</button>
+<aside id="chapter-toc" class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">IV. KI-Konzepte</div>
+  <ul>
+    <li><a href="#halluzinationen" data-spy="halluzinationen">Halluzinationen</a></li>
+    <li><a href="#verification-value-paradox" data-spy="verification-value-paradox">Verification-Value Paradox</a></li>
+    <li><a href="#prompting" data-spy="prompting">Prompting</a></li>
+    <li><a href="#kontext-ist-koenig" data-spy="kontext-ist-koenig">Kontext ist König</a></li>
+    <li><a href="#die-ki-lernt-mit-erinnerungsfunktion" data-spy="die-ki-lernt-mit-erinnerungsfunktion">Die KI lernt mit (Erinnerungsfunktion)</a></li>
+    <li><a href="#iteratives-arbeiten-ki-als-sparringspartner" data-spy="iteratives-arbeiten-ki-als-sparringspartner">Iteratives Arbeiten — KI als Sparringspartner</a></li>
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+      <li><a href="/de/">I. Einleitung</a></li>
+      <li><a href="/de/erlasse/">II. Erlasse</a></li>
+      <li><a href="/de/gerichtsentscheide/">III. Gerichtsentscheide</a></li>
+      <li><a href="/de/opencaselaw-connector/">V. Connector</a></li>
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <div class="chapter-eyebrow">// IV. KI-KONZEPTE</div>
+  <h1 class="chapter-title">Wichtige Konzepte der juristischen Arbeit mit KI</h1>
+
+  <h2 id="halluzinationen"><span class="section-num">§ 1</span> Halluzinationen<a aria-label="Direktlink" class="anchor" href="#halluzinationen">¶</a></h2>
+<p>KI-Anwendungen wie Claude ersetzen das eigenständige Suchen, Lesen und Analysieren von Gerichtsentscheiden und Erlassen nicht, sondern ergänzen diese Tätigkeiten — ähnlich wie eine Hilfsperson. Wie solche sind auch KI-Tools sorgfältig auszuwählen, klar zu instruieren und ihr Output stets zu überprüfen. Denn: KI-Tools können <span class="glossary" data-definition="Vom Sprachmodell überzeugend formulierte, aber inhaltlich falsche oder erfundene Aussage — etwa nicht existierende Urteile, falsche Quellen oder erfundene Erlasse. Quellverifikation bleibt deshalb Pflicht." data-full="Halluzination (KI)" data-term="Halluzination">halluzinieren</span>. Mitunter deuten sie — wie übrigens auch Menschen — Gerichtsentscheide und Erlasse um, belegen korrekte Aussagen mit falschen Quellen, verknüpfen passende Rechtsgebiete mit unpassenden Entscheiden, geben einschlägige Entscheide selektiv wieder oder stützen sich auf überholte Rechtsprechung. Immer wieder erfinden sie sogar Erlasse oder Gerichtsurteile, die es nicht gibt. Gewisse Tools reduzieren solche Fehlerrisiken mehr als andere, weil sie auf Gerichts- oder Erlassdatenbanken zugreifen, statt die Antworten bloss aus den Trainingsdaten oder einer unspezifischen Websuche zu generieren. Reduktion darf dabei auf keinen Fall mit der Eliminierung von Halluzination verwechselt werden. Denn: Nach dem derzeitigen Stand der Technik ist es nicht möglich, unrichtige Aussagen von einem KI-Tool gänzlich auszuschliessen. Die Kontrolle von Aussagen und Quellen bleibt daher stets Pflicht!<sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup></p><aside class="sn" data-fn="fn-1"><span class="sn-num">[1]</span> <p>Dazu: Brugger Daniel, <em>Typologie der KI-Halluzinationen im Rechtsbereich</em>, <a href="https://www.iusbubble.com/c/public/typologie-der-ki-halluzinationen-im-rechtsbereich">iusbubble.com</a>.<a class="footnote" href="#fnref-1">↩</a></p></aside>
+<h2 id="verification-value-paradox"><span class="section-num">§ 2</span> Verification-Value Paradox<a aria-label="Direktlink" class="anchor" href="#verification-value-paradox">¶</a></h2>
+<p>Der Rechtswissenschaftler Joshua Yuvaraj hat den Zusammenhang zwischen Effizienzgewinn und Kontrollaufwand beim Einsatz von KI in der juristischen Arbeit auf eine einprägsame Formel gebracht: <strong>Net Value = Efficiency Gain − Verification Cost</strong>.<sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup> Die Kernthese lautet: Die Effizienzgewinne durch KI werden regelmässig durch den notwendigen Kontrollaufwand relativiert oder sogar kannibalisiert. Nach dem <span class="glossary" data-definition="Von Joshua Yuvaraj geprägte Formel: Net Value = Efficiency Gain − Verification Cost. Effizienzgewinne durch KI werden regelmässig durch den Kontrollaufwand relativiert oder kannibalisiert." data-full="Verification-Value Paradox" data-source-label="SSRN 5621550" data-source-url="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5621550" data-term="Verification-Value Paradox">Verification-Value Paradox</span> ist technologische Beschleunigung nicht automatisch effizient. Wer einen Entscheid von der KI zusammenfassen lässt und anschliessend jede Aussage anhand des Originals überprüfen muss, hat unter Umständen nicht weniger, sondern anders geartete Arbeit. Dieses Paradox ist kein prinzipielles Argument gegen den Einsatz von KI, sondern eines für die Entwicklung von Verfahren und Werkzeugen, die die Verifikation von KI-generierten Ergebnissen effizienter und transparenter machen. Die Anbindung von KI-Tools an juristische Datenbanken wie opencaselaw.ch (dazu <a href="../opencaselaw-connector/">Kapitel V</a>) ist ein Beispiel dafür. Gerade das Ermöglichen und Erleichtern der Quellenverifikation ist somit nicht bloss eine Vorsichtsmassnahme, sondern der eigentliche Kern kompetenter KI-Nutzung. Tools wie der «Claude-Skill»,<sup class="footnote-ref" id="fnref-3"><a href="#fn-3">3</a></sup> der Originalquellen verlinkt, können dabei eine nützliche Hilfe sein.</p><aside class="sn" data-fn="fn-3"><span class="sn-num">[3]</span> <p>Skills lehren Claude, wie man bestimmte Aufgaben wiederholbar durchführt, sei es das Erstellen von Dokumenten nach Zitierrichtlinien oder das Verlinken von Urteilen und Erlassen als Quellen (<a href="https://support.claude.com/de/articles/12512176-was-sind-skills">weiterführend</a>).<a class="footnote" href="#fnref-3">↩</a></p></aside><aside class="sn" data-fn="fn-2"><span class="sn-num">[2]</span> <p>Yuvaraj Joshua, <em>The Verification-Value Paradox: A Normative Critique of Gen AI in Legal Practice</em>, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5621550">SSRN 5621550</a>.<a class="footnote" href="#fnref-2">↩</a></p></aside>
+<h2 id="prompting"><span class="section-num">§ 3</span> Prompting<a aria-label="Direktlink" class="anchor" href="#prompting">¶</a></h2>
+<p>Ein Prompt ist eine Eingabeanweisung an ein KI-System. Der Prompt sagt dem LLM, was es tun oder generieren soll. Die Formulierung eines Prompts beeinflusst die Qualität, Genauigkeit und Relevanz der Antwort. Gute Prompts führen zu besseren Ergebnissen. Allerdings ist die Bedeutung ausgefeilter Prompt-Techniken geringer als noch vor einem Jahr. Aktuelle Modelle verstehen regelmässig bereits vage, holzschnittartige Anweisungen und solche voller Tippfehler.<sup class="footnote-ref" id="fnref-4"><a href="#fn-4">4</a></sup> Es kann hilfreich sein, den Prompt mündlich über die Spracheingabe einzugeben und damit nach unserer Erfahrung in der Regel mehr Informationen mitzugeben, als wenn man den Prompt tippen muss. Es ist auch sehr hilfreich, das KI-Tool anschliessend zu bitten, den Prompt selbst zu verbessern (bei gewissen Legal Tech Tools, wie z. B. Harvey.ai, gibt es dafür ein spezifisches Feature «Improve Prompt»). Dieser iterative Ansatz führt in der täglichen praktischen Arbeit oft schneller zu guten Ergebnissen als das aufwändige Formulieren eines vermeintlich perfekten Prompts. Und auch hier gilt: Übung macht den Meister. Sie werden mit der Zeit merken, mit welchen Promptinformationen Sie zum gewünschten Ergebnis kommen.</p><aside class="sn" data-fn="fn-4"><span class="sn-num">[4]</span> <p>Als Beispiel: Der Prompting-Guide von OpenAI für GPT 5.5: <a href="https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5">https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5</a>.<a class="footnote" href="#fnref-4">↩</a></p></aside>
+<h2 id="kontext-ist-koenig"><span class="section-num">§ 4</span> Kontext ist König<a aria-label="Direktlink" class="anchor" href="#kontext-ist-koenig">¶</a></h2>
+<p>Der grösste Hebel beim Prompting liegt heute unseres Erachtens weniger in ausgefeilten Prompt-Techniken als darin, der KI den richtigen Kontext mitzugeben. Je mehr relevante Informationen der KI gegeben wird, desto besser antwortet sie — unabhängig davon, wie «schön» der Prompt formuliert ist. Statt also lediglich zu schreiben «<em>Fasse mir das Bundesgerichtsurteil 2C_166/2009 zusammen</em>», ist der Kontext juristischen Arbeitens mit KI im konkreten Zusammenhang klarzustellen. Unseres Erachtens hilft es sich vorab die folgenden Fragen zu stellen und die Antworten der KI im Prompt mitzugeben:</p>
+<ul>
+<li><em>Wer:</em> In welcher Rolle soll eine KI-Antworten generieren?</li>
+<li><em>Was:</em> Welche konkrete Aufgabe soll gelöst werden (z. B. Zusammenfassung, Prüfung, Vergleich, Entwurf)?</li>
+<li><em>Wen:</em> An welche Zielgruppe richtet sich die Antwort?</li>
+<li><em>Wie:</em> In welchem Stil (verständlich, akademisch, fachsprachlich), in welchem Format (z. B. als Memo, E-Mail, Tabelle usw.) sollen Antworten verfasst werden?</li>
+<li><em>Warum:</em> Welche Ziele werden mit den gesuchten Antworten verfolgt?</li>
+</ul>
+<p>Das vorgestellte Kurzschema mit Wer, Was, Wen, Wie und Warum ist in vielen Fällen ausreichend und hilft, einen Prompt strukturiert aufzubauen und bessere Ergebnisse zu erzielen. Je nach Frage und Einsatzzweck können sich jedoch weitere Dimensionen stellen, die den Prompt zusätzlich schärfen. Beispielhaft: Welcher Kontext und welche Quellen stehen zur Verfügung (z. B. Sachverhalt, einschlägige Normen, Urteile, Mandantenunterlagen)? Welche Einschränkungen und Qualitätsanforderungen gelten (z. B. Zitierweise, Offenlegung von Unsicherheiten)? Schliesslich kann es auch sinnvoll sein, dem Prompt ein Beispiel oder Muster beizugeben (z. B. eine besonders gelungene Zusammenfassung, ein Vertragsmuster, eine Rechtsschrift, eine gute Urteilsbesprechung), aus dem das Modell die gewünschten Eigenschaften ableiten kann. Dies ist oft wirkungsvoller als eine abstrakte Beschreibung. Bildhaft: Ähnlich wie das Kochen, hängt juristisches Arbeiten mit wie ohne KI entscheidend von den verwendeten Zutaten (<span class="glossary" data-term="Kontext">Kontext</span> z. B. Erlasse, Urteile, Materialien) und einem ausgefeilten Rezept (Prompt) ab.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Prompt zur Inspiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><em>Du bist ein erfahrener Schweizer Rechtsanwalt mit Spezialisierung im öffentlichen Recht (Wer). Fasse das Bundesgerichtsurteil 2C_166/2009 zusammen und arbeite die zentralen Erwägungen heraus (Was). Die Zusammenfassung richtet sich an Studierende des zweiten Semesters im Bachelorstudium der Rechtswissenschaft an der Universität St. Gallen (Wen). Verfasse den Entscheid in verständlicher, aber fachlich präziser Sprache im Format eines kurzen Memos mit den Abschnitten Sachverhalt, Rechtsfrage, Erwägungen und Ergebnis (Wie). Ziel ist es, dass die Studierenden die wesentliche Argumentation des Bundesgerichts nachvollziehen und das Urteil in einer Falllösungsübung zitieren können (Warum).</em></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Faustregel:</strong> <em>Ähnlich wie beim Kochen gilt beim Prompten: Je besser Zutaten, Rezept und Koch, desto besser wird das Menü.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="die-ki-lernt-mit-erinnerungsfunktion"><span class="section-num">§ 5</span> Die KI lernt mit (Erinnerungsfunktion)<a aria-label="Direktlink" class="anchor" href="#die-ki-lernt-mit-erinnerungsfunktion">¶</a></h2>
+<p>Moderne KI-Anwendungen verfügen über Funktionen, welche die Notwendigkeit, jedem Prompt aufwändig Kontext mitzugeben, reduzieren. Bei Claude lässt sich beispielsweise eine Erinnerungsfunktion aktivieren, die wahlweise ein- oder ausgeschaltet werden kann. Ist sie aktiviert, merkt sich das Tool über mehrere Konversationen hinweg relevante Informationen zur Person, zu deren fachlichem Arbeitsbereich, zu bevorzugten Formulierungsstilen und zu wiederkehrenden Aufgabenmustern. Je länger und intensiver mit dem Tool gearbeitet wird, desto präziser versteht es, was in einem bestimmten Kontext erwartet wird. Das hat zur Folge, dass immer weniger Informationen im einzelnen Prompt mitgegeben werden müssen. Die KI greift auf das gelernte Profil zurück und ergänzt Fehlendes aus dem etablierten Arbeitskontext selbständig. In der Praxis erweist sich die Erinnerungsfunktion einerseits als äusserst nützlich. Andererseits kann sie zu unerwünschten Pfadabhängigkeiten und Vorverständnissen führen, welche die Sicht auf das Problem verzerren. Beispielhaft: Wer sich analog oder digital schwerpunktmässig mit Grundrechten befasst, tendiert dazu, konkrete Probleme auch dort als grundrechtliche Frage zu behandeln, wo solche einfacher und genauer als staats- oder verwaltungsrechtliche Frage behandelt werden. Ferner stellt sich die Grundsatzfrage, ob man so viele (persönliche) Daten mit den KI-Betreibern teilen möchte.</p>
+<h2 id="iteratives-arbeiten-ki-als-sparringspartner"><span class="section-num">§ 6</span> Iteratives Arbeiten — KI als Sparringspartner<a aria-label="Direktlink" class="anchor" href="#iteratives-arbeiten-ki-als-sparringspartner">¶</a></h2>
+<p>Ein häufiges Missverständnis im Umgang mit KI-Tools besteht im Glauben, eine einzelne Abfrage führe zu einem fertigen Ergebnis. In der Praxis ist ein dialogisches Arbeiten mit KI-Tools oft zielführender. Eine erste Antwort der KI ist selten die beste Antwort. Vielmehr empfiehlt es sich, Rückfragen zu stellen, Antworten kritisch zu hinterfragen und Ergebnisse schrittweise zu verfeinern. Hilfreich ist es auch, das KI-Tool zu fragen, welche (weiteren) Informationen es braucht, um die Frage sinnvoll zu beantworten. Kurz gesagt: KI-Tools sind als Sparring-Partner einzusetzen. Wer etwa einen Gerichtsentscheid von der KI zusammenfassen lässt, kann anschliessend gezielt nachfragen, ob bestimmte Erwägungen korrekt wiedergegeben wurden, ob relevante Aspekte fehlen oder ob die Zusammenfassung an einer bestimmten Stelle zu vereinfachend ausgefallen ist. Dieses iterative Vorgehen entspricht dem analogen juristischen Arbeiten. Auch bei der analogen Analyse eines Entscheids nähert man sich dem Verständnis schrittweise und nicht in einem einzigen Durchgang. KI ist in diesem Sinne ein Gesprächspartner, kein allwissendes Orakel; Mustererkennungsmaschine, keine echte Intelligenz.</p>
+<section class="footnotes">
+<ol>
+<li id="fn-1"><p>Dazu: Brugger Daniel, <em>Typologie der KI-Halluzinationen im Rechtsbereich</em>, <a href="https://www.iusbubble.com/c/public/typologie-der-ki-halluzinationen-im-rechtsbereich">iusbubble.com</a>.<a class="footnote" href="#fnref-1">↩</a></p></li>
+<li id="fn-2"><p>Yuvaraj Joshua, <em>The Verification-Value Paradox: A Normative Critique of Gen AI in Legal Practice</em>, <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5621550">SSRN 5621550</a>.<a class="footnote" href="#fnref-2">↩</a></p></li>
+<li id="fn-3"><p>Skills lehren Claude, wie man bestimmte Aufgaben wiederholbar durchführt, sei es das Erstellen von Dokumenten nach Zitierrichtlinien oder das Verlinken von Urteilen und Erlassen als Quellen (<a href="https://support.claude.com/de/articles/12512176-was-sind-skills">weiterführend</a>).<a class="footnote" href="#fnref-3">↩</a></p></li>
+<li id="fn-4"><p>Als Beispiel: Der Prompting-Guide von OpenAI für GPT 5.5: <a href="https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5">https://developers.openai.com/api/docs/guides/prompt-guidance?model=gpt-5.5</a>.<a class="footnote" href="#fnref-4">↩</a></p></li>
+</ol>
+</section>
+
+
+  <nav class="chapter-foot" aria-label="Kapitelnavigation">
+      <a class="prev" href="/de/gerichtsentscheide/">← III. Gerichtsentscheide</a>
+<a class="edit" href="https://github.com/jonashertner/swiss-legal-research-guide/edit/main/content/de/30-ki-konzepte.md" rel="noopener">Edit on GitHub ↗</a>      <a class="next" href="/de/opencaselaw-connector/">V. Connector <span class="next-arrow">→</span></a>
+  </nav>
+</article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="colophon">
+      <h4>Suchen — Lesen — Analysieren</h4>
+      <p>
+        <strong>Erlasse und Gerichtsentscheide.</strong>
+        Juristisches Handwerk mit und ohne KI.
+      </p>
+      <p>
+        Von
+<a href="mailto:kaspar.ehrenzeller@unisg.ch">Kaspar Ehrenzeller</a> und <a href="mailto:daniel.brugger@unisg.ch">Daniel Brugger</a>,
+        Universität St. Gallen (HSG).
+      </p>
+      <p class="muted">Version April 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Lesen</h4>
+      <a href="/assets/pdf/leitfaden.pdf">PDF (Druckfassung)</a>
+      <a href="/llms-full.txt">Vollständige Version (Markdown)</a>
+<a href="https://github.com/jonashertner/swiss-legal-research-guide/commits/main" rel="noopener">Versionshistorie</a>    </div>
+    <div class="footer-col ai-col">
+      <h4>For AI / Agents</h4>
+      <a href="/llms.txt"><code>/llms.txt</code></a>
+      <a href="/llms-full.txt"><code>/llms-full.txt</code></a>
+      <a href="/sitemap.xml"><code>/sitemap.xml</code></a>
+      <a href="/for-ai/">.md mirror per section</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quelle</h4>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide" rel="noopener">GitHub repository</a>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide/issues" rel="noopener">Issues / feedback</a>
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">Inhalt: CC BY 4.0</a>
+      <a href="https://opensource.org/license/mit" rel="noopener license">Code: MIT</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

@@ -179,6 +179,7 @@ def render_chapter(
         h.append(anchor)
 
     _enrich_glossary_titles(soup, glossary)
+    _annotate_tables(soup)
     _promote_footnotes_to_sidenotes(soup)
 
     return RenderedChapter(
@@ -187,6 +188,20 @@ def render_chapter(
         raw_body_md=body_md,
         section_md=section_md,
     )
+
+
+def _annotate_tables(soup: BeautifulSoup) -> None:
+    """Tag single-column tables so CSS can render them as a quiet list."""
+    for table in soup.find_all("table"):
+        first_row = table.find("tr")
+        if first_row is None:
+            continue
+        cells = first_row.find_all(["th", "td"])
+        if len(cells) == 1:
+            classes = table.get("class") or []
+            if "single-col" not in classes:
+                classes.append("single-col")
+            table["class"] = classes
 
 
 def _enrich_glossary_titles(soup: BeautifulSoup, glossary: dict[str, dict[str, Any]]) -> None:

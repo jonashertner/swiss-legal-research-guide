@@ -1,0 +1,8 @@
+<!-- Canonical HTML: https://jonashertner.github.io/de/ki-konzepte/#die-ki-lernt-mit-erinnerungsfunktion -->
+# IV.die-ki-lernt-mit-erinnerungsfunktion — Die KI lernt mit (Erinnerungsfunktion)
+
+_From: Wichtige Konzepte der juristischen Arbeit mit KI — Suchen — Lesen — Analysieren (April 2026)_
+
+Die KI lernt mit (Erinnerungsfunktion)
+
+Moderne KI-Anwendungen verfügen über Funktionen, welche die Notwendigkeit, jedem Prompt aufwändig Kontext mitzugeben, reduzieren. Bei Claude lässt sich beispielsweise eine Erinnerungsfunktion aktivieren, die wahlweise ein- oder ausgeschaltet werden kann. Ist sie aktiviert, merkt sich das Tool über mehrere Konversationen hinweg relevante Informationen zur Person, zu deren fachlichem Arbeitsbereich, zu bevorzugten Formulierungsstilen und zu wiederkehrenden Aufgabenmustern. Je länger und intensiver mit dem Tool gearbeitet wird, desto präziser versteht es, was in einem bestimmten Kontext erwartet wird. Das hat zur Folge, dass immer weniger Informationen im einzelnen Prompt mitgegeben werden müssen. Die KI greift auf das gelernte Profil zurück und ergänzt Fehlendes aus dem etablierten Arbeitskontext selbständig. In der Praxis erweist sich die Erinnerungsfunktion einerseits als äusserst nützlich. Andererseits kann sie zu unerwünschten Pfadabhängigkeiten und Vorverständnissen führen, welche die Sicht auf das Problem verzerren. Beispielhaft: Wer sich analog oder digital schwerpunktmässig mit Grundrechten befasst, tendiert dazu, konkrete Probleme auch dort als grundrechtliche Frage zu behandeln, wo solche einfacher und genauer als staats- oder verwaltungsrechtliche Frage behandelt werden. Ferner stellt sich die Grundsatzfrage, ob man so viele (persönliche) Daten mit den KI-Betreibern teilen möchte.

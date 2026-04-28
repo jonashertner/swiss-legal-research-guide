@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suchen, Lesen und Analysieren von Gerichtsentscheiden — Suchen — Lesen — Analysieren</title>
+<meta name="description" content="Gerichtsentscheide — Suchen — Lesen — Analysieren, Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI.">
+<meta name="author" content="Kaspar Ehrenzeller, Daniel Brugger">
+
+<link rel="canonical" href="https://jonashertner.github.io/de/gerichtsentscheide/">
+
+<meta property="og:title" content="III. Suchen, Lesen und Analysieren von Gerichtsentscheiden — Suchen — Lesen — Analysieren">
+<meta property="og:description" content="Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" type="text/markdown" href="/de/gerichtsentscheide/index.md">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable index">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308612d'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23fafaf7' text-anchor='middle' font-weight='600'%3E§%3C/text%3E%3C/svg%3E">
+</head>
+<body class="chapter-page">
+
+<header class="site-masthead" role="banner">
+  <a class="brand" href="/de/" aria-label="Zur Startseite">
+    SUCHEN — LESEN — ANALYSIEREN
+    <span class="version-pill">v. April 2026</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Navigation öffnen">
+    <span class="icon" aria-hidden="true">≡</span>
+    <span class="label">Menü</span>
+  </button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Hauptnavigation">
+      <a href="/de/erlasse/">Erlasse</a>
+      <a href="/de/gerichtsentscheide/">Gerichtsentscheide</a>
+      <a href="/de/ki-konzepte/">KI-Konzepte</a>
+      <a href="/de/opencaselaw-connector/">Connector</a>
+    <a class="ai-link" href="/for-ai/">
+      <span class="arrow">⌥</span> For AI / devs
+    </a>
+    <span class="lang-switch" aria-label="Sprache">
+      <span class="lang active" lang="de" title="Deutsch">DE</span>
+      <span class="lang muted" lang="fr" title="Français — folgt">FR</span>
+      <span class="lang muted" lang="it" title="Italiano — folgt">IT</span>
+    </span>
+  </nav>
+</header>
+<div class="drawer-scrim" data-scrim hidden></div>
+<main class="reading">
+<button type="button" class="toc-toggle" aria-controls="chapter-toc" aria-expanded="false" aria-label="Inhaltsübersicht öffnen">
+  <span class="icon" aria-hidden="true">§</span>
+  <span class="label">Inhalt</span>
+</button>
+<aside id="chapter-toc" class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">III. Gerichtsentscheide</div>
+  <ul>
+    <li><a href="#suchen-von-gerichtsentscheiden" data-spy="suchen-von-gerichtsentscheiden">Suchen von Gerichtsentscheiden</a></li>
+    <li><a href="#aufbau-von-gerichtsentscheiden" data-spy="aufbau-von-gerichtsentscheiden">Aufbau von Gerichtsentscheiden</a></li>
+    <li><a href="#lesen-von-gerichtsentscheiden" data-spy="lesen-von-gerichtsentscheiden">Lesen von Gerichtsentscheiden</a></li>
+    <li><a href="#analysieren-von-gerichtsentscheiden" data-spy="analysieren-von-gerichtsentscheiden">Analysieren von Gerichtsentscheiden</a></li>
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+      <li><a href="/de/">I. Einleitung</a></li>
+      <li><a href="/de/erlasse/">II. Erlasse</a></li>
+      <li><a href="/de/ki-konzepte/">IV. KI-Konzepte</a></li>
+      <li><a href="/de/opencaselaw-connector/">V. Connector</a></li>
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <div class="chapter-eyebrow">// III. GERICHTSENTSCHEIDE</div>
+  <h1 class="chapter-title">Suchen, Lesen und Analysieren von Gerichtsentscheiden</h1>
+
+  <h2 id="suchen-von-gerichtsentscheiden"><span class="section-num">§ 1</span> Suchen von Gerichtsentscheiden<a aria-label="Direktlink" class="anchor" href="#suchen-von-gerichtsentscheiden">¶</a></h2>
+<p><em>Funktion von Gerichtsentscheiden.</em> Gerichtsentscheide urteilen <em>ex post</em> verbindlich über streitige Rechtsfragen in konkreten Fällen. Zugleich stiften sie dadurch Orientierung für spätere, ähnlich gelagerte Fälle (sog. präjudizielle Wirkung). Insofern wirken Gerichtsentscheide wie Normen, Materialien oder Lehrmeinungen als Rechtserkenntnisquellen. Gerade den Bundesgerichtsentscheiden besitzen häufig eine <em>normähnliche</em> Wirkung, indem sie Rechtsnormen letztverbindlich auslegen, diese konkretisieren und neue Regeln schaffen, wo Normen lückenhaft sind (Art. 1 Abs. 2 <span class="glossary" data-definition="Zivilgesetzbuch vom 10. Dezember 1907." data-full="Schweizerisches Zivilgesetzbuch" data-source-label="SR 210" data-source-url="https://www.fedlex.admin.ch/eli/cc/24/233_245_233/de" data-term="ZGB">ZGB</span>).</p>
+<p><em>Publikation der Verwaltungspraxis.</em> Das Bundesgesetz über das Öffentlichkeitsprinzip der Verwaltung<sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> gewährleistet umfassenden Zugang zu amtlichen Dokumenten (Art. 1 <span class="glossary" data-definition="Öffentlichkeitsgesetz vom 17. Dezember 2004." data-full="Bundesgesetz über das Öffentlichkeitsprinzip der Verwaltung" data-source-label="SR 152.3" data-source-url="https://www.fedlex.admin.ch/eli/cc/2006/355/de" data-term="BGÖ">BGÖ</span>). Vorbehalten bleiben Ausnahmen zum Schutz überwiegender persönlicher oder öffentlicher Interessen (Art. 7 BGÖ). Der Anspruch muss im Einzelfall durch ein Gesuch geltend gemacht werden (Art. 10 BGÖ). Da Verfahren der Staats- und Verwaltungsrechtspflege nach Art. 3 Abs. 1 Bst. a Ziff. 5 BGÖ nicht unter das Öffentlichkeitsprinzip fallen, besteht grundsätzlich weder ein Anspruch auf Publikation von Verwaltungsentscheiden noch ein Anspruch auf Zugang zu solchen. Nur gewisse Verwaltungsbehörden publizieren daher ihre Praxis.<sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup></p><aside class="sn" data-fn="fn-2"><span class="sn-num">[2]</span> <p>Z. B. die <a href="https://www.weko.admin.ch/de/entscheide">Wettbewerbskommission</a> sowie auf kantonaler Ebene etwa die Departemente des Kantons St. Gallens, des Kantons Zürichs oder des Kantons Aargau, die alle oder bestimmte Leitentscheide auf ihren Homepages veröffentlichen.<a class="footnote" href="#fnref-2">↩</a></p></aside><aside class="sn" data-fn="fn-1"><span class="sn-num">[1]</span> <p>Bundesgesetz vom 17. Dezember 2004 über das Öffentlichkeitsprinzip der Verwaltung (Öffentlichkeitsgesetz, BGÖ; SR 152.3).<a class="footnote" href="#fnref-1">↩</a></p></aside>
+<p><em>Publikation der Gerichtspraxis.</em> Die in der Verfassung gewährleistete Justizöffentlichkeit (Art. 30 Abs. 3 <span class="glossary" data-definition="Verfassung des Bundes vom 18. April 1999." data-full="Bundesverfassung der Schweizerischen Eidgenossenschaft" data-source-label="SR 101" data-source-url="https://www.fedlex.admin.ch/eli/cc/1999/404/de" data-term="BV">BV</span>)<sup class="footnote-ref" id="fnref-3"><a href="#fn-3">3</a></sup> enthält zwei Teilgehalte: die <em>Öffentlichkeit der Verhandlung</em> und die <em>Öffentlichkeit der Urteilsverkündung</em>. Das Gesetz kann Ausnahmen vorsehen, etwa zum Schutz der Persönlichkeit Betroffener. Ein Anspruch auf eine allgemeinzugängliche <em>Publikation von Gerichtsentscheiden</em> und <em>Zugang zu Gerichtsentscheiden</em> besteht nicht. Verschiedene Gerichte werden jedoch gesetzlich dazu verpflichtet, bestimmte Entscheide zu veröffentlichen. So informiert das Bundesgericht nach Art. 27 <span class="glossary" data-definition="Bundesgerichtsgesetz vom 17. Juni 2005." data-full="Bundesgesetz über das Bundesgericht" data-source-label="SR 173.110" data-source-url="https://www.fedlex.admin.ch/eli/cc/2006/218/de" data-term="BGG">BGG</span> die Öffentlichkeit über seine Rechtsprechung (Abs. 1). Die Veröffentlichung der Entscheide hat grundsätzlich in anonymisierter Form zu erfolgen (Abs. 2). Entscheide von grundsätzlicher Bedeutung — sog. <span class="glossary" data-definition="Entscheid des Bundesgerichts von grundsätzlicher Bedeutung. Wird in Fünferbesetzung gefällt und in der amtlichen Sammlung publiziert." data-full="Leitentscheid (BGE)" data-source-label="Art. 20 / 58 BGG" data-source-url="https://www.fedlex.admin.ch/eli/cc/2006/218/de" data-term="Leitentscheid">Leitentscheide</span> — werden in der amtlichen Entscheidsammlung des Bundesgerichts (Art. 58 <span class="glossary" data-definition="Reglement für das Schweizerische Bundesgericht vom 20. November 2006." data-full="Reglement für das Bundesgericht" data-source-label="SR 173.110.131" data-source-url="https://www.fedlex.admin.ch/eli/cc/2006/772/de" data-term="BGerR">BGerR</span>)<sup class="footnote-ref" id="fnref-4"><a href="#fn-4">4</a></sup> unter dem Aktenzeichenformat «BGE 139 I 16, E. 4.3» veröffentlicht. Weitere Bundesgerichtsentscheide, denen das Gericht keine grundsätzliche Bedeutung, also keine über den beurteilten Einzelfall hinausgehende Tragweite attestiert, publiziert das Bundesgericht seit 2007 (grösstenteils bereits ab 2000) in einer eigenen <a href="https://www.bger.ch/">Datenbank</a> (Art. 59 Abs. 1 lit. b BGerR; frühere, nicht vom Bundesgericht publizierte Entscheide sind teilweise in Fachzeitschriften abgedruckt). Diese Entscheide werden unter dem Aktenzeichenformat «Urteil (des Bundesgerichts) 5C_260/2006 vom 30. März 2007» veröffentlicht (näher Kapitel III.2.a). <span class="glossary" data-definition="Aktenzeichen, Vorinstanz, Verfahrensbeteiligte, Vertretung, Streitgegenstand sowie Grösse und Zusammensetzung des Spruchkörpers." data-full="Rubrum (Urteilskopf)" data-term="Rubrum">Rubrum</span> und <span class="glossary" data-definition="Hoheitliche Festlegung des Resultats — Nichteintreten, Gutheissung oder Abweisung, Kostenverlegung, Anordnungen. Daran knüpft die Rechtskraftwirkung des Urteils." data-full="Dispositiv (Urteilsformel)" data-term="Dispositiv">Dispositiv</span> aller Urteile werden am Sitz des Bundesgerichts während 30 Tagen öffentlich und in nicht anonymisierter Form aufgelegt, soweit das Gesetz nicht eine Anonymisierung verlangt (Art. 60 BGerR). Zugleich veröffentlicht das Bundesgericht alle End- und Teilentscheide sowie die vom Abteilungspräsidium bezeichneten Vor- und Zwischenentscheide (Art. 59 Abs. 1 lit. b BGerR), nicht aber verfahrensleitende Entscheide wie solche über die Gewährung der aufschiebenden Wirkung in einem bundesgerichtlichen Verfahren.</p><aside class="sn" data-fn="fn-4"><span class="sn-num">[4]</span> <p>Reglement für das Bundesgericht (BGerR; SR 173.110.131).<a class="footnote" href="#fnref-4">↩</a></p></aside><aside class="sn" data-fn="fn-3"><span class="sn-num">[3]</span> <p>Bundesverfassung der Schweizerischen Eidgenossenschaft vom 18. April 1999 (BV; SR 101).<a class="footnote" href="#fnref-3">↩</a></p></aside>
+<p><em>Öffentliche Urteilsberatung.</em> Das Bundesgericht berät Entscheide öffentlich, wenn (I) der Abteilungspräsident beziehungsweise die Abteilungspräsidentin dies anordnet, (II) ein Richter beziehungsweise eine Richterin es verlangt oder (III) wenn sich keine Einstimmigkeit ergibt (Art. 58 BGG).<sup class="footnote-ref" id="fnref-5"><a href="#fn-5">5</a></sup> Eine öffentliche Beratung soll die interne Entscheidfindung des Gerichts transparent machen. Sie erlaubt es den Richterinnen und Richtern auch, ihre abweichende Meinung öffentlich bekannt zu geben. Denn das bundesgerichtliche Verfahren bietet im Gegensatz zu ausländischen Gerichten keine Möglichkeit, eine «dissenting opinion» schriftlich festzuhalten.<sup class="footnote-ref" id="fnref-6"><a href="#fn-6">6</a></sup> Der Besuch einer öffentlichen Beratung des Bundesgerichts ist lohnenswert für das Verständnis der bundesgerichtlichen Entscheidfindung.</p><aside class="sn" data-fn="fn-6"><span class="sn-num">[6]</span> <p>Anders hingegen z. B. am Kantonsgericht des Kantons Waadt (Art. 134 der Verfassung des Kantons Waadt vom 14. April 2003 (SR 131.231, KV/VD)).<a class="footnote" href="#fnref-6">↩</a></p></aside><aside class="sn" data-fn="fn-5"><span class="sn-num">[5]</span> <p>Zum speziellen Verfahren vgl. die Art. 43 ff. des Reglements für das Bundesgericht.<a class="footnote" href="#fnref-5">↩</a></p></aside>
+<p><em>Suche von Gerichtsentscheiden.</em> Die amtliche Entscheidsammlung des Bundesgerichts ist heute digital zugänglich über die Webseite des höchsten Gerichts <a href="https://www.bger.ch/">www.bger.ch</a>, entweder über den <a href="https://www.bger.ch/">Index</a> oder eine <a href="https://www.bger.ch/">Volltextsuche</a>. Auf der Seite «<a href="https://www.bger.ch/">Liste der neu aufgenommenen Entscheide</a>» werden neue Entscheide aufgeschaltet. Das Bundesgericht unterscheidet dabei — wie dargelegt — zwischen Leitentscheiden (<span class="glossary" data-definition="Amtlich publizierter Leitentscheid des Bundesgerichts. Format: «BGE 139 I 16, E. 4.3.1, S. 26»." data-full="Bundesgerichtsentscheid (amtlich publiziert)" data-source-label="Art. 58 BGerR" data-source-url="https://www.fedlex.admin.ch/eli/cc/2006/218/de" data-term="BGE">BGE</span>) und weiteren Urteilen: Die Leitentscheide sind ab 1954 auf der Webseite des Bundesgerichts abrufbar. Die Universität Bern erlaubt den Zugang zu den BGEs ab Band 1 (1875).<sup class="footnote-ref" id="fnref-7"><a href="#fn-7">7</a></sup> Studierenden sowie Abonnentinnen und Abonnenten steht zudem die hilfreiche <a href="https://www.bger.ch/">Registersuche</a> zur Verfügung. Das Bundesstrafgericht,<sup class="footnote-ref" id="fnref-8"><a href="#fn-8">8</a></sup> das Bundesverwaltungsgericht<sup class="footnote-ref" id="fnref-9"><a href="#fn-9">9</a></sup> und das Bundespatentgericht<sup class="footnote-ref" id="fnref-10"><a href="#fn-10">10</a></sup> haben separate Datenbanken. Auch in den Kantonen ermöglichen kantonale Datenbanken für Gerichtsentscheide vielfach,<sup class="footnote-ref" id="fnref-11"><a href="#fn-11">11</a></sup> aber nicht überall<sup class="footnote-ref" id="fnref-12"><a href="#fn-12">12</a></sup> einen einfachen Zugang zur publizierten kantonalen Rechtsprechung. Die von einem privaten Verein betriebene Plattform <a href="https://www.entscheidsuche.ch/">www.entscheidsuche.ch</a> erleichtert die Suche in allen publizierten Gerichtsurteilen von Schweizer Gerichten aller Instanzen. Daneben existieren kommerzielle Anbieter: Vorab Datenbanken der grossen juristischen Verlage, <a href="https://www.swisslex.ch/">Swisslex</a> (bzw. in der abgespeckten Variante für Universitäten: <a href="https://www.lexcampus.ch/">LexCampus</a>) oder <a href="https://www.legalis.ch/">Legalis</a>, wo sich nicht nur juristische Literatur findet, sondern auch Gerichtsentscheide.</p><aside class="sn" data-fn="fn-12"><span class="sn-num">[12]</span> <p>Z. B. im Kanton Zürich existiert keine umfassende Plattform für sämtliche Zürcher Gerichte.<a class="footnote" href="#fnref-12">↩</a></p></aside><aside class="sn" data-fn="fn-11"><span class="sn-num">[11]</span> <p>Vgl. etwa für die Kantone St. Gallen, Aargau sowie zumindest für einzelne Gerichte im Kanton Basel-Stadt.<a class="footnote" href="#fnref-11">↩</a></p></aside><aside class="sn" data-fn="fn-10"><span class="sn-num">[10]</span> <p><a href="https://www.bundespatentgericht.ch/rechtsprechung">https://www.bundespatentgericht.ch/rechtsprechung</a>.<a class="footnote" href="#fnref-10">↩</a></p></aside><aside class="sn" data-fn="fn-9"><span class="sn-num">[9]</span> <p><a href="https://www.bvger.ch/de/rechtsprechung/entscheiddatenbank">https://www.bvger.ch/de/rechtsprechung/entscheiddatenbank</a>.<a class="footnote" href="#fnref-9">↩</a></p></aside><aside class="sn" data-fn="fn-8"><span class="sn-num">[8]</span> <p><a href="https://bstger.weblaw.ch/">https://bstger.weblaw.ch/</a>.<a class="footnote" href="#fnref-8">↩</a></p></aside><aside class="sn" data-fn="fn-7"><span class="sn-num">[7]</span> <p><a href="https://servat.unibe.ch/dfr/dfr_bge00.html">https://servat.unibe.ch/dfr/dfr_bge00.html</a>.<a class="footnote" href="#fnref-7">↩</a></p></aside>
+<p><em>Regelmässige Updates zur Rechtsprechung.</em> Neben diversen Zeitschriften, Newslettern, Push Services und Plattformen, welche über die neuste Rechtsprechung informieren, gibt es die von einem Luzerner Richter betriebene, kostenlose Webseite <a href="https://www.bger-update.ch/">bger-update.ch</a>. Sie veröffentlicht die neusten Urteile des Bundesgerichts und fasst sie mithilfe von KI zusammen. Besonders nützlich sind die Möglichkeiten, die neusten Bundesgerichtsurteile nach verschiedenen Kriterien zu filtern, etwa nach Rechtsgebiet oder nach den Urteilen, die zur amtlichen Publikation vorgesehen sind.</p>
+<p><em>KI-gestützte Suche von Gerichtsentscheiden.</em> Verschiedene Legal-Tech-Anbieter wie <a href="https://justement.ch/">Justement</a>, <a href="https://www.lexisearch.ch/">LexiSearch</a> oder <a href="https://lexplorer.ch/">Lexplorer</a>, um nur ein paar der Anbieter zu nennen, bieten ebenfalls eine KI-gestützte Suche von Gerichtsentscheide an. Dasselbe ermöglicht die frei zugängliche Datenbank <a href="https://opencaselaw.ch/">opencaselaw.ch</a>. Sie kann über eine sogenannte <span class="glossary" data-definition="Offenes Protokoll, das KI-Anwendungen wie Claude den Anschluss an externe Datenquellen und Tools erlaubt — z. B. an die juristische Datenbank OpenCaseLaw." data-full="Model Context Protocol" data-source-label="modelcontextprotocol.io" data-source-url="https://modelcontextprotocol.io/" data-term="MCP">MCP</span>-Schnittstelle direkt an KI-Anwendungen wie Claude oder ChatGPT angeschlossen werden, sodass in natürlicher Sprache nach Entscheiden gesucht werden kann, ohne die Plattform separat aufzurufen (zur Anleitung für die Einrichtung dieser Schnittstelle unten <a href="../opencaselaw-connector/">Kapitel V</a>). Ein typischer Einstieg wäre etwa: «<em>Suche mir aktuelle Bundesgerichtsentscheide zum Thema Verhältnismässigkeit bei Tierhalteverboten.</em>» Claude durchsucht dann die Datenbank und liefert eine Auswahl relevanter Entscheide mit Aktenzeichen und Kurzzusammenfassung. Besonders nützlich ist dies sodann, wenn man ausgehend von einem bereits bekannten Leitentscheid verwandte Entscheide finden möchte. Fragt man Claude «<em>Welche Entscheide zitieren BGE 139 I 16?</em>», so erhält man einen Überblick über die Rezeption eines Entscheids in der späteren Rechtsprechung. Wichtig ist dabei: Jeder von der KI genannte Entscheid muss daher anhand der Originalquelle überprüft werden. Denn KI-Assistenten können bei der Recherche falsche oder inexistente Entscheide ausgeben (sog. <span class="glossary" data-definition="Vom Sprachmodell überzeugend formulierte, aber inhaltlich falsche oder erfundene Aussage — etwa nicht existierende Urteile, falsche Quellen oder erfundene Erlasse. Quellverifikation bleibt deshalb Pflicht." data-full="Halluzination (KI)" data-term="Halluzination">Halluzinationen</span>; dazu unten <a href="../ki-konzepte/">Kapitel IV</a>). Die Anbindung an eine juristische Datenbank wie opencaselaw.ch reduziert dieses Risiko zwar erheblich, schliesst es aber nicht vollständig aus. Eine gezielte Suche beginnt mit der richtigen Frage. Die folgenden Prompts illustrieren unterschiedliche Suchstrategien: die thematische Breitensuche, die gezielte Einzelfallsuche und die vergleichende Gruppierung.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Prompts zur Inspiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">‣ <em>Suche mir möglichst viele Urteile zur polizeilichen Generalklausel.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Welche Entscheide zitieren Urteil 2C_166/2009 vom 30.11.2009?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Gruppiere mir Bundesgerichtsurteile zur polizeilichen Generalklausel zwischen 2005-heute nach Sachverhalten.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Suche mir den neusten Leitentscheid des Bundesgerichts zum Legalitätsprinzip.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Welche Fallnummer hat das Urteil «Spring» des Bundesgerichts.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Skizziere mir die Entscheidkette zur Entwicklung der polizeilichen Generalklausel in der bundesgerichtlichen Rechtsprechung.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="aufbau-von-gerichtsentscheiden"><span class="section-num">§ 2</span> Aufbau von Gerichtsentscheiden<a aria-label="Direktlink" class="anchor" href="#aufbau-von-gerichtsentscheiden">¶</a></h2>
+<p><strong>Weiterführende Literatur:</strong> Forstmoser Peter / Ogorek Regina / Schindler Benjamin, <em>Juristisches Arbeiten, eine Anleitung für Studierende</em>, 7. Aufl., Zürich 2023, § 11; Münch Peter, <em>Bundesgerichtliche Leitentscheide analysieren, einordnen und hinterfragen</em>, 3. Aufl., Zürich 2021; Reimer Franz, <em>Juristische Methodenlehre</em>, 2. Aufl., Baden-Baden 2020, Rz. 454-474.</p>
+<p><em>Unterschiede zwischen Leitentscheiden und weiteren Entscheiden des Bundesgerichts.</em> Entscheide des Bundesgerichts von grundsätzlicher Bedeutung werden von fünf Richterinnen und Richtern der Abteilung gefällt (Art. 20 Abs. 2 BGG) und in der Amtlichen Sammlung des Bundesgerichts veröffentlicht (Art. 58 Abs. 1 BGerR). Sie besitzen eine besondere Bedeutung für die Rechtsfortbildung. Über die Veröffentlichung in der Amtlichen Sammlung bestimmt die zuständige Abteilung (Art. 58 Abs. 2 BGerR). Entscheide, denen das Bundesgericht keine grundsätzliche Bedeutung beimisst, werden in Dreierbesetzung gefällt (Art. 20 Abs. 1 BGG). In der Praxis werden solche Entscheide teilweise auch als «unpublizierte» Entscheide bezeichnet, obschon auch sie veröffentlicht werden, wenn auch nicht in der amtlichen Sammlung. Es kommt vor, dass das Bundesgericht in Fünferbesetzung entscheidet (Art. 20 Abs. 2 BGG), aber der Entscheid trotzdem nicht in der amtlichen Sammlung publiziert wird.<sup class="footnote-ref" id="fnref-13"><a href="#fn-13">13</a></sup> Das kommt vor allem dann vor, wenn sich das Bundesgericht über die neue Rechtsfrage noch nicht abschliessend schlüssig ist und eine verfrühte Signalwirkung durch einen publizierten Leitentscheid vermeiden möchte. Da sämtliche Entscheide des Bundesgerichts veröffentlicht werden, lässt sich eine präjudizielle Wirkung solcher Urteile allerdings nicht verhindern. Immerhin fühlt sich das Bundesgericht durch einen «einfachen», nicht in der amtlichen Sammlung publizierten Fünferentscheid weniger gebunden als durch einen Leitentscheid.</p><aside class="sn" data-fn="fn-13"><span class="sn-num">[13]</span> <p>Z. B. Urteil (BGer) vom 30.11.2009, 2C_166/2009 (Hundeeuthanasie).<a class="footnote" href="#fnref-13">↩</a></p></aside>
+<p>Jedes Urteil des Bundesgerichts wird zunächst als «gewöhnliches» Urteil veröffentlicht — mit dem Hinweis, es sei für die Publikation in der amtlichen Sammlung vorgesehen. Amtlich publizierte Leitentscheide des Bundesgerichts sind gekürzte Versionen eines «normal» publizierten Entscheids des Bundesgerichts, indem die aus Sicht des Bundesgerichts weniger wichtigen Erwägungen weggelassen und nicht amtlich publiziert werden. Der Urteilskopf eines bundesgerichtlichen Leitentscheids besteht lediglich aus seinem Aktenzeichen und einem Verweis auf die Dossiernummer des vollständigen Entscheids. Alle weiteren Informationen werden weggelassen. Im Unterschied zu normal publizierten Entscheiden enthalten Leitentscheide des Bundesgerichts dafür eine sogenannte <span class="glossary" data-definition="Vom entscheidenden Abteilungspräsidium formulierte Leitsätze, die in BGE den Erwägungen vorangestellt werden. In allen drei Amtssprachen abgefasst. Hat selbst keine juristisch-normative Bedeutung." data-full="Regeste" data-term="Regeste">Regeste</span> in allen drei Amtssprachen (Deutsch, Französisch, Italienisch). Die entscheidende Abteilung gibt darin noch vor dem Sachverhalt zentrale Leitsätze des Entscheids wieder. Eine juristisch-normative Bedeutung haben Regesten nicht. Sodann werden bei Leitentscheiden häufig nicht alle Erwägungen wiedergegeben und die Urteilsformel, die Rechtsmittelbelehrung und die Eröffnungsformel weggelassen. Aus all diesen Gründen kann der Blick in den normal publizierten Entscheid hinter einen Leitentscheid bei dessen Analyse durchaus helfen.</p>
+<h3 id="aktenzeichen-von-bundesgerichtsentscheiden">Aktenzeichen von Bundesgerichtsentscheiden<a aria-label="Direktlink" class="anchor" href="#aktenzeichen-von-bundesgerichtsentscheiden">¶</a></h3>
+<p><em>Was besagen die Aktenzeichen von Bundesgerichtsentscheiden?</em> Aus den Aktenzeichen von Leitentscheiden (z. B. «BGE 139 I 16, E. 4.3.1, S. 26») und weiteren Entscheiden des Bundesgerichts (z. B. «Urteil [BGer] 2C_166/2009 vom 30.11.2009») lassen sich wertvolle Informationen gewinnen. Die beiden nachfolgenden Tabellen sollen dabei helfen, diese zu entschlüsseln.</p>
+<h4 id="bundesgerichtliche-leitentscheide">Bundesgerichtliche Leitentscheide<a aria-label="Direktlink" class="anchor" href="#bundesgerichtliche-leitentscheide">¶</a></h4>
+<p>Das Bundesgericht publiziert seine Leitentscheide unter dem Aktenzeichen mit folgendem Titelformat «BGE 139 I 16, E. 4.3, S. 26». Im Einzelnen lassen sich daraus folgende Informationen entnehmen:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Element</th>
+<th style="text-align:left">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>BGE</strong></td>
+<td style="text-align:left">Amtlich publizierter Entscheid des Bundesgerichts, der in der Amtlichen Sammlung der Entscheidungen des Bundesgerichts veröffentlicht wurde (Art. 57 BGerR). Diese Entscheide können elektronisch in der Datenbank «Leitentscheide» abgerufen werden (ab 1954).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>139</strong></td>
+<td style="text-align:left">Bandzahl (ohne Jahr): Jahrgang des Entscheids in der bundesgerichtlichen Rechtsprechung, beginnend im Jahr 1875. Berechnung des Entscheidungsjahres: 139 + 1875 − 1 = <strong>2013</strong>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>I</strong></td>
+<td style="text-align:left">Die römische Nummer bezeichnet den Band. Seit dem Jahrgang 1995 (Band 121) werden die Bände wie folgt gegliedert:<sup class="footnote-ref" id="fnref-14"><a href="#fn-14">14</a></sup> (I) Verfassungsrecht; (II) Verwaltungsrecht und Internationales öffentliches Recht; (III) Zivilrecht und Schuldbetreibungs- und Konkursrecht; (IV) Strafrecht und Strafvollzug; (V) Sozialversicherungsrecht.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>16</strong></td>
+<td style="text-align:left">Erste Seite des Urteils in der amtlichen Entscheidsammlung. Früher wurden Entscheide teilweise ohne die Erwägungsziffer, sondern nur mit der Seite der relevanten Erwägung zitiert (z. B. BGE 139 I 26). Das ist heute nicht mehr gebräuchlich, vielmehr wird die erste Seite des Urteils angegeben, samt Erwägung, also BGE 139 I 16 E. 4.3.1.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>E. 4.3.1</strong></td>
+<td style="text-align:left"><span class="glossary" data-definition="Nummerierter Abschnitt der Urteilsbegründung. In Aktenzeichen abgekürzt mit «E.» (z. B. E. 4.3)." data-full="Erwägung (E.)" data-term="Erwägung">Erwägung</span></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>S. 26</strong></td>
+<td style="text-align:left">Seitenzahl des Erwägungsbeginns oder der relevanten Aussage in der Erwägung wird in neuen Entscheiden grundsätzlich nicht mehr angegeben. Nach den Zitierregeln des Bundesgerichts wird die Erwägung mit der entsprechenden Seite ausnahmsweise ergänzt, wenn dies aufgrund besonderer Umstände als angezeigt erachtet wird, z. B. eine spezifische Aussage auf einer bestimmten Seite in einer besonders langen Erwägung.<sup class="footnote-ref" id="fnref-15"><a href="#fn-15">15</a></sup></td>
+</tr>
+</tbody>
+</table>
+<h4 id="aktenzeichen-weiterer-entscheide">Aktenzeichen weiterer Entscheide<a aria-label="Direktlink" class="anchor" href="#aktenzeichen-weiterer-entscheide">¶</a></h4>
+<p>Nicht in der amtlichen Sammlung publizierten Entscheide werden unter der Verfahrensnummer mit folgendem Titelformat «Urteil (des Bundesgerichts) 5C_260/2006 vom 30. März 2007» publiziert. Die Veröffentlichung erfolgt (im Gegensatz zu BGEs) im Volltext, ohne Kürzung und ohne Regeste.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Element</th>
+<th style="text-align:left">Bedeutung</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Urteil</strong></td>
+<td style="text-align:left">Nicht amtlich publizierter Entscheid des Bundesgerichts.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>5</strong></td>
+<td style="text-align:left">Abteilung, die den Entscheid gefällt hat: 1. I. öffentlich-rechtliche Abteilung · 2. II. öffentlich-rechtliche Abteilung · 3. (Reserve) · 4. I. zivilrechtliche Abteilung · 5. II. zivilrechtliche Abteilung · 6. I. strafrechtliche Abteilung · 7. II. strafrechtliche Abteilung · 8. IV. öffentlich-rechtliche Abteilung · 9. III. öffentlich-rechtliche Abteilung.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>C</strong></td>
+<td style="text-align:left">Buchstabe für das Verfahren: A: Beschwerde in Zivilsachen (Art. 72 ff. BGG); B: Beschwerde in Strafsachen (Art. 78 ff. BGG); C: Beschwerde in öffentlich-rechtlichen Angelegenheiten (Art. 82 ff. BGG); D: Subsidiäre Verfassungsbeschwerde (Art. 113 ff. BGG); E: Klage nach Art. 120 BGG; F: Revision (Art. 121 ff. BGG); G: Erläuterung und Berichtigung (Art. 129 BGG); T: Aufsichtsanzeige; U: Interne Meinungsaustausch; V: Externe Meinungsaustausch; W: EMRK-Vernehmlassung; X, Y: Verfügung und Beschwerde nach VwVG; Z: Freiwillige Gerichtsbarkeit.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>260</strong></td>
+<td style="text-align:left">Dossiernummer (fortlaufende Nummerierung pro Jahr).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>2006</strong></td>
+<td style="text-align:left">Jahrgang des Entscheids, wobei das Datum der Beschwerdeeingabe massgeblich ist.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>30. März 2007</strong></td>
+<td style="text-align:left">Datum des Entscheids.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>E. 4.3</strong></td>
+<td style="text-align:left">Erwägung.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="grundstruktur">Grundstruktur<a aria-label="Direktlink" class="anchor" href="#grundstruktur">¶</a></h3>
+<p><em>Wie sind Entscheide von Gerichten grundsätzlich aufgebaut?</em> Eine gewisse Grundstruktur rechtlicher Entscheide soll für Rationalität sorgen und die Orientierung in der Verwaltungs- und Gerichtspraxis erleichtern (Strukturierungsfunktion).<sup class="footnote-ref" id="fnref-16"><a href="#fn-16">16</a></sup> Im Wesentlichen besitzt ein Gerichtsentscheid folgende Teile:</p><aside class="sn" data-fn="fn-16"><span class="sn-num">[16]</span> <p>Zu den rechtlichen Minimalanforderungen siehe z. B. Art. 61 Abs. 2 u. 3 VwVG; s.a. Art. 238 ZPO.<a class="footnote" href="#fnref-16">↩</a></p></aside>
+<ul>
+<li><strong>Urteilskopf (<span class="glossary" data-definition="Aktenzeichen, Vorinstanz, Verfahrensbeteiligte, Vertretung, Streitgegenstand sowie Grösse und Zusammensetzung des Spruchkörpers." data-full="Rubrum (Urteilskopf)" data-term="Rubrum">Rubrum</span>).</strong> Nennung des Aktenzeichens, der Vorinstanz, der Verfahrensbeteiligten und ihrer Vertreter, des Streitgegenstandes sowie der Grösse und der Zusammensetzung des Spruchkörpers (vgl. z. B. Art. 20 BGG / Art. 21 <span class="glossary" data-definition="Verwaltungsgerichtsgesetz vom 17. Juni 2005." data-full="Bundesgesetz über das Bundesverwaltungsgericht" data-source-label="SR 173.32" data-source-url="https://www.fedlex.admin.ch/eli/cc/2006/219/de" data-term="VGG">VGG</span>,<sup class="footnote-ref" id="fnref-17"><a href="#fn-17">17</a></sup> § 38 f. VRG-ZH<sup class="footnote-ref" id="fnref-18"><a href="#fn-18">18</a></sup>). Der Spruchkörper setzt sich aus den beteiligten Richterinnen und Richtern zusammen, genannt wird in aller Regel auch die Gerichtsschreiberin oder der Gerichtsschreiber.</li><aside class="sn" data-fn="fn-18"><span class="sn-num">[18]</span> <p>Verwaltungsrechtspflegegesetz des Kantons Zürichs vom 01.05.1960 (LS 175.2; VRG).<a class="footnote" href="#fnref-18">↩</a></p></aside><aside class="sn" data-fn="fn-17"><span class="sn-num">[17]</span> <p>Bundesgesetz über das Bundesverwaltungsgericht vom 17. Juni 2005 (VGG; SR 173.32).<a class="footnote" href="#fnref-17">↩</a></p></aside>
+<li><strong><span class="glossary" data-definition="Zusammenfassung des konkreten Falles mitsamt Prozessgeschichte, Akteure und Anträgen — der tatsächliche Hintergrund des juristischen Streits." data-full="Sachverhalt" data-term="Sachverhalt">Sachverhalt</span>.</strong> Kurze Zusammenfassung des Sachverhalts mitsamt Prozessgeschichte, den daran beteiligten Akteuren und den Anträgen der Parteien. Im Verwaltungsrecht wird der Sachverhalt grundsätzlich von der Behörde von Amtes wegen festgestellt, allerdings bleiben die Parteien zur Mitwirkung verpflichtet (zum Untersuchungsgrundsatz z. B. Art. 12 VwVG). Obere Gerichtsinstanzen wie das Bundesgericht haben ihre Entscheide grundsätzlich auf die Sachverhaltsfeststellungen der Vorinstanzen zu stützen (vgl. Art. 105 BGG). Neue Tatsachen und Beweismittel (sog. Noven) dürfen in öffentlich-rechtlichen Verfahren im Grundsatz vorgebracht werden. Vor Bundesgericht besteht allerdings eine Ausnahme (Art. 99 Abs. 1 BGG).</li>
+<li><strong>Urteilsbegründung (<span class="glossary" data-definition="Nummerierter Abschnitt der Urteilsbegründung. In Aktenzeichen abgekürzt mit «E.» (z. B. E. 4.3)." data-full="Erwägung (E.)" data-term="Erwägung">Erwägungen</span>).</strong> Dieser Hauptabschnitt eines Urteils umfasst die juristische Argumentation im eigentlichen Sinne. Er ist in einzelne durchnummerierte Abschnitte und Unterabschnitte gegliedert. Aufgabe der Urteilsbegründung ist es, die Überlegungen offenzulegen, von denen sich das Gericht bei seiner Entscheidung leiten liess. Eine Urteilsbegründung des Bundesgerichts beginnt typischerweise mit dem Stichwort «Erwägungen». Zunächst wird im Sinne eines «Vorspanns» häufig dargetan, welche formellen und materiellen Rechtsfragen der konkrete Sachverhalt aufwirft und was als festgestellt bzw. unbestritten angenommen wird. Nicht selten werden zudem die Argumente der Verfahrensparteien und der Vorinstanz nochmals zusammengefasst. Danach wird auf die einzelnen Rechtsfragen eingegangen. Es lassen sich drei Schritte unterscheiden:<ul>
+<li><em>Erörterung der konkreten Rügen und Rechtsfragen.</em> Die einzelne Rechtsfrage/Rüge wird zunächst dargelegt. Grundsätzlich werden die sich stellenden Rechtsfragen einzeln abgehandelt, wobei mit den formellen Eintretens- oder Sachurteilsvoraussetzungen (Beschwerdelegitimation, Frist, Form) begonnen wird.</li>
+<li><em>Erstellen des massgeblichen Normprogramms (Obersatz i.w.S.).</em> Im Anschluss werden für die dargelegten Rechtsfragen die einschlägigen Rechtsvorschriften aus Verfassung, Gesetz, aber auch völkerrechtlichen Vorgaben und Verordnung <em>zusammengetragen</em> und unter Zuhilfenahme von Materialien und ihrer Konkretisierung in der bisherigen Praxis und Lehre (wo nötig) <em>ausgelegt</em>. Damit wird die Rechtsanwendung auf den konkreten Sachverhalt vorbereitet. Die Ausführungen bleiben aber noch auf einer abstrakten Ebene. Sie beanspruchen nicht nur für den konkreten Fall Geltung, sondern über diesen hinaus.</li>
+<li><em><span class="glossary" data-definition="Anwendung der ausgelegten Rechtsnorm auf den konkreten Sachverhalt — der dritte Schritt der juristischen Argumentation nach Norminterpretation und Sachverhaltsfeststellung." data-full="Subsumtion" data-term="Subsumtion">Subsumtion</span>.</em> Schliesslich wird das erarbeitete Normprogramm auf den konkreten Sachverhalt angewandt und die konkrete Rechtsfrage anhand von diesem beantwortet.</li>
+</ul>
+</li>
+<li><strong>Nebenfragen.</strong> Vereinzelt nutzen Gerichte Erwägungen, um auf nicht entscheiderhebliche Weise und ohne Rechtsverbindlichkeit mit der Umwelt zu kommunizieren (sog. <em>Obiter Dictum</em>; auf Deutsch: nebenbei Gesagtes). Das in Abgrenzung von der «eigentlichen» Entscheidbegründung, der <em>ratio decidendi</em>. Abweichende Minderheitsmeinungen einzelner Richterinnen und Richter des Spruchkörpers in Bezug auf einzelne Rechtsfragen oder den Gesamtentscheid (sog. «dissenting opinion») finden in Bund und Kantonen — anders als z. B. beim EGMR — keinen Eingang in den Entscheid. Man sieht einem Urteil nicht an, ob und welche Elemente im Spruchkörper umstritten waren oder ob sich das Gericht in allen Punkten einig war. Die Mehrheitsverhältnisse werden im Entscheid nicht offengelegt, damit das Urteil als Produkt von Konsens und Kompromiss eines Gesamtgerichts daherkommt. In der Schweiz bildet die Möglichkeit zur Veröffentlichung abweichender Meinungen daher die Ausnahme.<sup class="footnote-ref" id="fnref-19"><a href="#fn-19">19</a></sup></li><aside class="sn" data-fn="fn-19"><span class="sn-num">[19]</span> <p>Vgl. z. B. Art. 134 KV/VD; Art. 13 Abs. 3 des Geschäftsreglementes vom 28.09.2011 für das Bundespatentgericht (SR 173.413.1; GR-PatGer); Art. 55 Abs. 1 Justizgesetz vom 09.11.2009 des Kantons Schaffhausens (SHR 173.200).<a class="footnote" href="#fnref-19">↩</a></p></aside>
+<li><strong>Urteilsformel (<span class="glossary" data-definition="Hoheitliche Festlegung des Resultats — Nichteintreten, Gutheissung oder Abweisung, Kostenverlegung, Anordnungen. Daran knüpft die Rechtskraftwirkung des Urteils." data-full="Dispositiv (Urteilsformel)" data-term="Dispositiv">Dispositiv</span>).</strong> Das Dispositiv hält das Resultat des Entscheids fest: die hoheitliche Festlegung des streitigen Rechtsverhältnisses durch Nichteintreten, Gutheissung oder Abweisung der Beschwerde, die Kostenverlegung und allfällige weitere Anordnungen. Die Rechtskraftwirkung eines Urteils knüpft an sein Dispositiv.</li>
+<li><strong>(Rechtsmittelbelehrung).</strong> Nennung etwaiger zulässiger Rechtsmittel und der massgeblichen Rechtsmittelfrist (vgl. Art. 112 Abs. 1 Bst. d BGG).</li>
+<li><strong>Eröffnungsformel.</strong> Nennung, an wen der Entscheid ergeht sowie Unterschriften, in der Regel durch die vorsitzende Person des Spruchkörpers und der Gerichtsschreiberin oder des Gerichtsschreibers.</li>
+</ul>
+<h3 id="fallbeispiel-urteil-2c-166-2009-vom-30-11-2009-hundeeuthanasie">Fallbeispiel: Urteil 2C_166/2009 vom 30.11.2009 (Hundeeuthanasie)<a aria-label="Direktlink" class="anchor" href="#fallbeispiel-urteil-2c-166-2009-vom-30-11-2009-hundeeuthanasie">¶</a></h3>
+<p>Das Bundesgerichtsurteil <a href="https://opencaselaw.ch/decisions/2C_166%2F2009"><a class="xref xref-bge" href="https://opencaselaw.ch/decisions/2C_166/2009" rel="noopener noreferrer" target="_blank">2C_166/2009 vom 30. November 2009</a></a> (Hundeeuthanasie) illustriert die soeben dargestellte Grundstruktur an einem konkreten Fall. Die folgende Strukturierung folgt dem Entscheid in seiner publizierten Form.</p>
+<h4 id="urteilskopf-rubrum">Urteilskopf (Rubrum)<a aria-label="Direktlink" class="anchor" href="#urteilskopf-rubrum">¶</a></h4>
+<p><strong>Bundesgericht — Tribunal fédéral — Tribunale federale — Tribunal federal</strong></p>
+<p>{T 0/2}</p>
+<ul>
+<li><strong>Fallnummer:</strong> 2C_166/2009</li>
+<li><strong>Datum:</strong> Urteil vom 30. November 2009</li>
+<li><strong>Abteilung:</strong> II. öffentlich-rechtliche Abteilung</li>
+<li><strong>Vorsitzende Person:</strong> Bundesrichter Müller, Präsident</li>
+<li><strong>5er Besetzung:</strong> Bundesrichter Merkli, Karlen, Zünd, Donzallaz</li>
+<li><strong>Gerichtsschreiber:</strong> Errass</li>
+</ul>
+<p><strong>Verfahrensbeteiligte:</strong> Beschwerdeführende Person: X., vertreten durch Rechtsanwalt Dr. Dominik Infanger — <em>gegen</em> — Beschwerdegegnerin: Departement für Volkswirtschaft und Soziales Graubünden (DVS).</p>
+<p><strong>Beschwerdegegenstand:</strong> Euthanasie eines Hundes; Beschwerde gegen das Urteil des Verwaltungsgerichts des Kantons Graubünden, 1. Kammer, vom 20. Januar 2009.</p>
+<h4 id="sachverhalt">Sachverhalt<a aria-label="Direktlink" class="anchor" href="#sachverhalt">¶</a></h4>
+<p><strong>A. Begebenheiten des Anlassfalls.</strong> X. war Eigentümer eines Hirten- und Schutzhundes der «Tornjak»-Hunderasse, welche in Kroatien sowie in Bosnien und Herzegowina beheimatet ist. Im August 2007 weilte er in den Ferien. Während dieser Zeit kümmerte sich seine von ihm getrennt lebende Ehefrau Y. um den Hund. Am 15. August 2007 führte sie diesen um 11.00 Uhr an der Leine aus. Dabei griff der Hund unvermittelt eine Velofahrerin an und biss diese in den Oberschenkel sowie in den rechten Oberarm; sie musste im Spital ärztlich behandelt werden. Die Ehefrau konnte den Hund in das Haus zurückbringen. Der Polizei gelang es — der Aggressivität und des Gewichts (60 kg) des Hundes wegen — erst nach mehreren Versuchen unter Beizug ihres Hundespezialisten, das Haus zu betreten und ihn ins Tierheim zu bringen. Der beigezogene stellvertretende Kantonstierarzt ordnete dort die sofortige Einschläferung des Hundes an.</p>
+<p><strong>B. Verwaltungsinternes Verfahren.</strong> Am 21. August 2007 verfügte das kantonale Amt für Lebensmittel und Tiergesundheit, «der Hund [...] von X. [...] wird per 15. August 2007 entschädigungslos beschlagnahmt und unverzüglich euthanasiert (getötet)». Eine Beschwerde dagegen wies das Departement für Volkswirtschaft und Soziales des Kantons Graubünden ab. Das Verwaltungsgericht bestätigte dessen Entscheid.</p>
+<p><strong>C. Streitiges Verfahren vor Bundesgericht.</strong> Mit Eingabe vom 9. März 2009 beantragt X., das Urteil des Verwaltungsgerichts des Kantons Graubünden vom 20. Januar 2009 sowie die Verfügung des Amtes für Lebensmittel und Tiergesundheit und den Entscheid des Departementes für Volkswirtschaft und Soziales des Kantons Graubünden aufzuheben und festzustellen, dass der Hund zu Unrecht euthanasiert wurde. Zur Begründung führt er im Wesentlichen aus, dass hierfür keine gesetzliche Grundlage bestehe und das Verhältnismässigkeitsprinzip verletzt worden sei. Das Departement und das Verwaltungsgericht beantragen, die Beschwerde abzuweisen.</p>
+<h4 id="urteilsbegruendung-erwaegungen">Urteilsbegründung — Erwägungen<a aria-label="Direktlink" class="anchor" href="#urteilsbegruendung-erwaegungen">¶</a></h4>
+<p><strong>1. Prozessvoraussetzungen — Formelle Beschwerde (Art. 86 BGG).</strong> Beim angefochtenen Entscheid handelt es sich um einen letztinstanzlichen kantonalen Entscheid in einer Angelegenheit des öffentlichen Rechts, die unter keinen Ausschlussgrund gemäss Art. 83 BGG fällt und daher mit Beschwerde in öffentlich-rechtlichen Angelegenheiten an das Bundesgericht weitergezogen werden kann (Art. 82 lit. a und Art. 86 Abs. 1 lit. d BGG).</p>
+<p><strong>1.2 Materielle Beschwerde (Art. 89 Abs. 1 Bst. b/c BGG).</strong> Zur Beschwerde ist nur legitimiert, wer u. a. ein schutzwürdiges Interesse an der Beurteilung seiner Eingabe hat (Art. 89 Abs. 1 lit. c BGG). Dieses muss nicht nur bei der Beschwerdeeinreichung, sondern auch noch im Zeitpunkt der Urteilsfällung aktuell und praktisch sein (BGE 123 II 285 E. 4 S. 286 f.). Fällt das schutzwürdige Interesse im Laufe des Verfahrens dahin, wird die Sache als erledigt erklärt; fehlte es schon bei der Beschwerdeeinreichung, ist auf die Eingabe nicht einzutreten (BGE 118 Ib 1 E. 2 S. 7). Das Bundesgericht verzichtet ausnahmsweise auf das Erfordernis des aktuellen praktischen Interesses, wenn sich die aufgeworfenen Fragen unter gleichen oder ähnlichen Umständen jederzeit wieder stellen können, eine rechtzeitige Überprüfung im Einzelfall kaum je möglich wäre und die Beantwortung wegen deren grundsätzlicher Bedeutung im öffentlichen Interesse liegt.</p>
+<p><strong>1.2.2</strong> Am 15. August 2007 biss der Hund des Beschwerdeführers eine Velofahrerin. Gleichentags wurde er ohne Erlass einer Verfügung durch den stellvertretenden Kantonstierarzt eingeschläfert. Es handelt sich dabei um einen Realakt im Sinne des unmittelbaren Vollzugs oder — aufgrund einer Typisierung nach dem Verhältnis zur Verfügung — um einen verfügungsvertretenden Realakt. Die nachträgliche, ohne Anlass des Beschwerdeführers erlassene Verfügung kommt einer Feststellungsverfügung gleich. Darin wird die Rechtmässigkeit des Realaktes festgestellt. Auch die Anfechtung einer solchen Verfügung verlangt ein oben umschriebenes Rechtsschutzinteresse. Das Bundesgericht verzichtet hier ausnahmsweise auf dieses: Eine Euthanasierung eines Hundes als verfügungsvertretender Realakt kann nie rechtzeitig überprüft werden, weshalb es im öffentlichen Interesse liegt, zu prüfen, wann eine solche zulässig ist.</p>
+<p><strong>1.3 Massgebliche Verfahrensvorschriften — Rechtsanwendung und Rügepflicht.</strong> Das Bundesgericht wendet das Recht von Amtes wegen an (Art. 106 Abs. 1 BGG), doch prüft es, unter Berücksichtigung der allgemeinen Rüge- und Begründungspflicht (Art. 42 Abs. 1 und 2 BGG), nur die geltend gemachten Vorbringen, falls allfällige weitere rechtliche Mängel nicht geradezu offensichtlich sind (BGE 133 II 249 E. 1.4.1 S. 254). Der Grundsatz der Rechtsanwendung von Amtes wegen gilt nicht, soweit eine Verletzung von Grundrechten sowie von kantonalem und interkantonalem Recht geltend gemacht wird (vgl. Art. 106 Abs. 2 BGG). In diesem Fall müssen die Beschwerdeführer in ihrer Eingabe präzise und in Auseinandersetzung mit den Ausführungen der Vorinstanz im Einzelnen darlegen, inwiefern der angefochtene Entscheid widerrechtlich sein soll («qualifizierte Rügepflicht»; vgl. BGE 133 II 249 E. 1.4.2 S. 254; 133 IV 286 E. 1.4 S. 287). Das Bundesgericht legt seinem Urteil zudem den von der Vorinstanz festgestellten Sachverhalt zugrunde (Art. 105 Abs. 1 BGG), es sei denn, dieser sei offensichtlich unrichtig oder beruhe auf einer Rechtsverletzung im Sinne von Art. 95 BGG (Art. 105 Abs. 2 BGG).</p>
+<p><strong>2. Materielle Rechtsfragen.</strong> Das Bundesgericht prüfte in der Folge fünf materielle Rechtsfragen:</p>
+<ol>
+<li>Bietet die bundesrechtliche Tierschutzgesetzgebung (<span class="glossary" data-definition="Bundesgesetz über den Tierschutz vom 16. Dezember 2005." data-full="Tierschutzgesetz" data-source-label="SR 455" data-source-url="https://www.fedlex.admin.ch/eli/cc/2008/414/de" data-term="TSchG">TSchG</span>/<span class="glossary" data-definition="Verordnung über den Tierschutz vom 23. April 2008." data-full="Tierschutzverordnung" data-source-label="SR 455.1" data-source-url="https://www.fedlex.admin.ch/eli/cc/2008/416/de" data-term="TSchV">TSchV</span>) eine gesetzliche Grundlage für die Tötung des Hundes? — <em>Ergebnis:</em> Nein. Art. 25 aTSchG schützt das Tier vor dem Menschen (Vernachlässigung, unrichtige Haltung), nicht den Menschen vor dem Tier. Auch Art. 34a/34b aTSchV decken die Tötung eines aggressiven Hundes nicht ab.</li>
+<li>Bietet das damalige kantonale Veterinärgesetz Graubündens (VetG; BR 914.000) eine gesetzliche Grundlage? — <em>Ergebnis:</em> Nein, mangels einer auf den vorliegenden Sachverhalt anwendbaren gesetzlichen Übergangsregelung waren die Vorschriften des VetG zum Zeitpunkt der behördlichen Handlung im August 2007 nicht anwendbar.</li>
+<li>Kann die <span class="glossary" data-definition="Verfassungsrechtliche Grundlage (Art. 36 Abs. 1 BV) für Eingriffe der Polizei, wenn ohne fehlende gesetzliche Grundlage öffentliche Ordnung oder fundamentale Rechtsgüter gegen schwere und zeitlich unmittelbar drohende Gefahren zu schützen sind." data-full="Polizeiliche Generalklausel" data-term="Polizeiliche Generalklausel">polizeiliche Generalklausel</span> (Art. 36 Abs. 1 BV) eine fehlende gesetzliche Grundlage ersetzen? — <em>Ergebnis:</em> Ja, im konkreten Fall. Das Verwaltungsgericht hat sich auf die polizeiliche Generalklausel gestützt. Diese legitimiert — selbst schwerwiegende — Eingriffe in Grundrechte, wenn ohne und soweit die öffentliche Ordnung und fundamentale Rechtsgüter des Staates oder Privater gegen schwere und zeitlich unmittelbar drohende Gefahren zu schützen sind, die unter den konkreten Umständen nicht anders abgewendet werden können als mit gesetzlich nicht ausdrücklich vorgesehenen Mitteln (BGE 126 I 112 E. 4b S. 118; 121 I 22 E. 4b/aa S. 27 f.; 111 Ia 246 E. 2 und 3a mit Hinweisen).</li>
+<li>War das Anwendungsfeld der polizeilichen Generalklausel hier gegeben? — <em>Ergebnis:</em> Ja. Der Hund stellte angesichts seiner Aggressivität, seines Gewichts und der unmittelbar geschehenen Attacke eine echte und unvorhersehbare Gefahr für Leib und Leben dar. Die fehlende gesetzliche Grundlage zur Einschränkung der Eigentumsfreiheit konnte daher durch die polizeiliche Generalklausel ersetzt werden.</li>
+<li>War die Euthanasierung des Hundes verhältnismässig? — <em>Ergebnis:</em> Ja. Das verfassungsmässige Gebot der Verhältnismässigkeit verlangt, dass staatliche Hoheitsakte für das Erreichen des im übergeordneten öffentlichen Interesse liegenden Zieles geeignet, notwendig und den Betroffenen zumutbar sein müssen. Die Tötung des Hundes war geeignet, erforderlich und zumutbar. Mildere Massnahmen — längeres Halten im Tierheim, Beruhigungsmittel, dauerhafte Stilllegung — kamen nicht in Frage. Auf der einen Seite stand das Eigentum des Beschwerdeführers, auf der anderen Seite die fundamentalen Rechtsgüter des Lebens und der Gesundheit. Angesichts des unmittelbar drohenden, grossen, massigen, unmotiviert aggressiven Hundes lag ein offensichtliches Missverhältnis zwischen dem öffentlichen Interesse am Schutz der Allgemeinheit und dem privaten Interesse am Eigentum des Beschwerdeführers vor.</li>
+</ol>
+<p><strong>3. Kostenfolge.</strong> 3.1 Die Beschwerde ist demnach abzuweisen, soweit darauf eingetreten wird. 3.2 Dem Verfahrensausgang entsprechend hat der unterliegende Beschwerdeführer die Gerichtskosten zu tragen (Art. 66 Abs. 1 und Art. 65 BGG). Eine Parteientschädigung ist nicht geschuldet (Art. 68 Abs. 3 BGG).</p>
+<h4 id="urteilsformel-dispositiv">Urteilsformel (Dispositiv)<a aria-label="Direktlink" class="anchor" href="#urteilsformel-dispositiv">¶</a></h4>
+<p>Demnach erkennt das Bundesgericht:</p>
+<ol>
+<li>Die Beschwerde wird abgewiesen, soweit darauf einzutreten ist.</li>
+<li>Die Gerichtskosten von Fr. 2'500.– werden dem Beschwerdeführer auferlegt.</li>
+<li>Dieses Urteil wird den Verfahrensbeteiligten und dem Verwaltungsgericht des Kantons Graubünden, 1. Kammer, schriftlich mitgeteilt.</li>
+</ol>
+<h4 id="eroeffnungsformel">Eröffnungsformel<a aria-label="Direktlink" class="anchor" href="#eroeffnungsformel">¶</a></h4>
+<p>Lausanne, 30. November 2009 — Im Namen der II. öffentlich-rechtlichen Abteilung des Schweizerischen Bundesgerichts. Der Präsident: Müller. Der Gerichtsschreiber: Errass.</p>
+<h2 id="lesen-von-gerichtsentscheiden"><span class="section-num">§ 3</span> Lesen von Gerichtsentscheiden<a aria-label="Direktlink" class="anchor" href="#lesen-von-gerichtsentscheiden">¶</a></h2>
+<p><em>Wie liest man Gerichtsentscheide?</em> Ähnlich wie die Lektüre eines Erlasses (siehe oben <a href="../erlasse/#lesen-und-analysieren-von-erlassen">Kapitel II.3</a>) erfolgt auch das Lesen von Urteilen mit einem bestimmten Fokus. Drei Aspekte stehen dabei im Zentrum:</p>
+<p><em>Rechtliche Entscheide sind als juristische Textgattung zu lesen.</em> Gerichts- und Verwaltungsentscheide sind eine spezielle Textsorte. <em>Sprachlich</em> kennzeichnen Gerichtsentscheide technische Ausdrücke (Rechtsbegriffe), eine hohe Präzision sowie Nüchternheit, Sachlichkeit und Unpersönlichkeit (Unabhängigkeit) sowie ein oft komplexer Satzbau. Wer rechtliche Entscheide lesen will, muss sich mit dieser Sprache vertraut machen, die selbst Juristinnen und Juristen mitunter herausfordert. Die <em>Begründungsstruktur</em> von Gerichts- und Verwaltungsentscheiden besitzt in der Regel deduktive Züge, indem aus einem Normprogramm (Obersatz) Antworten auf konkrete Rechtsfragen in einem bestimmten Sachverhalt abgeleitet werden (sog. Subsumtion).</p>
+<p><em>Rechtliche Entscheide sind stets mit Blick auf den konkret massgeblichen Sachverhalt zu lesen.</em> Urteile sind vor dem Hintergrund des Sachverhalts und der Parteienkonstellation zu lesen, der Anlass zum Verfahren und zum gerichtlichen Entscheid gegeben haben. Entsprechende Informationen ergeben sich aus der Sachverhaltsdarstellung eines Entscheids (vgl. zum Aufbau oben). Formelhafte Regesten und Obersätze, wie sie bundesgerichtliche Leitentscheide verwenden, befördern die Trennung von Text und Kontext eines Gerichtsurteils. Sie sollten daher nie isoliert gelesen werden.</p>
+<p><em>Rechtliche Entscheide sind stets im Lichte ihrer Verfahrensgeschichte, der daran beteiligten Organe und des Anfechtungsobjekts zu lesen.</em> Entsprechende Informationen ergeben sich aus dem Rubrum sowie der Sachverhaltsdarstellung eines Entscheids (vgl. zum Aufbau oben Kapitel III.2.b).</p>
+<p><em>Rechtliche (Rechtsmittel)Entscheide sind anhand der erhobenen Rügen zu lesen.</em> Das Bundesgericht prüft in aller Regel nur die erhobenen Rügen (vgl. Art. 42 Abs. 2 BGG). Erhebt eine Partei eine bestimmte Rüge nicht, behandelt das höchste Gericht die Frage nicht. Für die Lektüre bedeutet das, dass ein Entscheid des Bundesgerichts nicht sämtliche Rechtsfragen eines Falles abhandelt wie ein erstinstanzliches Gericht, sondern nur diejenigen, die von den Parteien aufgeworfen wurden. Aus dem Schweigen des Gerichts zu einer bestimmten Frage darf daher nicht geschlossen werden, dass diese Frage unproblematisch wäre oder das Gericht sie nicht «gesehen» hätte.</p>
+<p><em>Rechtliche Entscheide sind unter Beizug der einschlägigen Rechtsnormen zu lesen.</em> Gerichtsentscheide geben im Begründungsteil rechtliche Bindungsprogramme aus einer oder mehreren Rechtsnormen wieder, anhand derer konkrete Rechtsfragen zu beantworten sind. Die einschlägigen Rechtsnormen sind das Resultat eines (häufig höchst aufwändigen und anspruchsvollen) Suchlesens in der Rechtsordnung. Bei der Lektüre von Gerichtsentscheiden, stellen sich somit auch die Fragen, ob weitere Rechtsnormen einschlägig wären, aufgeführte irrelevant sind und welche Auslegungsspielräume die erwähnten Bestimmungen im Hinblick auf den fraglichen Sachverhalt besitzen.</p>
+<p><em>Methode.</em> Das massgebliche Fallrecht zählt zu den massgeblichen Rechtsquellen für das Beantworten von Rechtsfragen. Seine Interpretation verlangt andere Methoden als jene von Erlassen. Der Gewinn von Erkenntnis aus Fallrecht verlangt zunächst eine <em>Identifikation</em> der Gerichts- und Verwaltungsentscheide, die im konkreten Fall einschlägig sein könnten. Zeitlich ist bei den neusten Urteilen zu beginnen. Institutionell sind Entscheide des Bundesgerichts vor Entscheide erstinstanzlicher Gerichte des Bundes und der Bundesverwaltung beizuziehen, föderal jene der Bundesorgane gegenüber kantonalen oder kommunalen Behörden. Bei der <em>Deutung</em> von Fallrecht geht es weniger darum, durch Auslegung Obersätze zu bilden und diese auf den Anlassfall zu subsumieren. Im Vordergrund steht das Vergleichen und Abgrenzen des Anlassfalls mit Vergleichsfällen im Hinblick auf Sachverhalt, mitwirkende Organe und Verfahren des konkreten Falls. Es ist darzutun, inwiefern der Anlassfall die eigene Entscheidpraxis bestätigt, weiterentwickelt, präzisiert oder abändert und inwiefern bestimmte Rechtsfragen erstmals zu entscheiden sind.</p>
+<p><em>Gerichtsentscheide in verschiedenen Landessprachen.</em> Aufgrund der vier Landessprachen der Schweiz (Art. 4 BV) ergehen Gerichtsentscheide des Bundes in einer der Landessprachen (Deutsch, Französisch, Italienisch, Rumantsch).<sup class="footnote-ref" id="fnref-20"><a href="#fn-20">20</a></sup> Kantonale Gerichtsentscheide sind in der oder den kantonalen Amtssprache(n) abgefasst. Für Streitigkeiten in internationalen Handelssachen kann die englische Sprache genutzt werden (vgl. Art. 129 Abs. 2 lit. b ZPO).<sup class="footnote-ref" id="fnref-21"><a href="#fn-21">21</a></sup> Die Lektüre und Analyse von Gerichtsentscheiden in anderen Landessprachen ist für Juristinnen und Juristen in der Schweiz unverzichtbar, aber mitunter auch herausfordernd. Folgende Hilfestellungen existieren: Es gibt zwar keine offiziellen amtlichen Übersetzungen von Gerichtsentscheiden, aber immerhin private Übersetzungen ausgewählter Entscheide, beispielsweise durch die Zeitschrift «Praxis» (Übersetzung anderssprachiger Entscheide auf Deutsch). Am einfachsten zu finden sind diese durch eine Suche des fraglichen Entscheids über die Suchmaske von <a href="https://www.legalis.ch/">www.legalis.ch</a> (für Studierende kostenlos). Solche blossen Übersetzungsleistungen werden zunehmend obsolet, da KI-Tools leisten immer bessere Dienste bei der Übersetzung einzelner Erwägungen oder ganzer Entscheide. Ferner sind Abfragen im «<a href="https://www.bger.ch/">Thesaurus Jurivoc</a>» des Bundesgerichts eine wertvolle Hilfe bei der Übersetzung von Fachbegriffen der schweizerischen Gesetzes- und Entscheidsprache. Trotz allem bleibt das Übersetzen von Gerichtsentscheiden juristische Präzisionsarbeit, die behutsam vorzunehmen ist und durch maschinelle wie menschliche Übersetzungshilfen erleichtert, aber nicht ersetzt werden kann.</p><aside class="sn" data-fn="fn-21"><span class="sn-num">[21]</span> <p>S.a. Art. 36 Abs. 3 des Bundesgesetzes vom 20.03.2009 über das Bundespatentgericht (SR 173.41; PatGG).<a class="footnote" href="#fnref-21">↩</a></p></aside><aside class="sn" data-fn="fn-20"><span class="sn-num">[20]</span> <p>Vgl. Art. 54 BGG.<a class="footnote" href="#fnref-20">↩</a></p></aside>
+<p><em>KI als Lesehilfe.</em> Beim Lesen von Entscheiden stösst man regelmässig auf unbekannte Fachbegriffe, komplexe Verweisketten oder Passagen in einer anderen Landessprache. KI-Anwendungen können hier Unterstützung leisten:</p>
+<ul>
+<li><em>Übersetzung fremdsprachiger Entscheide.</em> Da Bundesgerichtsentscheide in Deutsch, Französisch, Italienisch und Rumantsch ergehen, kann ein KI-Tool beim Verständnis von Entscheiden in einer weniger vertrauten Landessprache helfen. Dabei ist zu beachten, dass juristische Fachbegriffe nicht immer eins zu eins übersetzbar sind.</li>
+<li><em>Fachbegriffe klären.</em> Man kann eine Erwägung in ein KI-Tool einfügen und fragen: «<em>Erkläre mir die in dieser Passage verwendeten Rechtsbegriffe in einfacher Sprache.</em>» Das ist besonders hilfreich beispielsweise bei prozessualen Begriffen wie <span class="glossary" data-definition="Mit der Anrufung der Rechtsmittelinstanz geht die Sache auf diese über; die Vorinstanzverfügung wird durch den Beschwerdeentscheid ersetzt." data-full="Devolutiveffekt" data-term="Devolutiveffekt">Devolutiveffekt</span>, Kognitionsbeschränkung oder Rügeprinzip, die für Studierende im Anfangsstadium oft schwer zugänglich sind.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Prompts zur Inspiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">‣ <em>Übersetze die Erwägungen 3.1 bis 3.3 dieses französischsprachigen Urteils ins Deutsche.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Fasse mir das rätoromanische Urteil (BGer) vom 10.12.2012, 1C_160/2012 auf Deutsch zusammen.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Was versteht man unter dem Devolutiveffekt.</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="analysieren-von-gerichtsentscheiden"><span class="section-num">§ 4</span> Analysieren von Gerichtsentscheiden<a aria-label="Direktlink" class="anchor" href="#analysieren-von-gerichtsentscheiden">¶</a></h2>
+<p><em>Wie analysiert man Gerichtsentscheide effizient und methodisch korrekt?</em> Gerichtsentscheide sind ausgehend vom konkreten Anlassfall zu analysieren. Es ist zu klären, welche Akteure am fraglichen Verwaltungsverhältnis beteiligt sind, welchen Verlauf das Verfahren bisher genommen hat, welche Sachverhaltselemente wesentlich sind und welche Rechtsfragen sich stellen. Dabei hilft folgende Leitfrage: <strong>Wer (I) will von wem (II) in welchem Verfahren, also wodurch (III), was gestützt worauf (IV) im konkreten Sachverhalt?</strong></p>
+<h3 id="vier-grundfragen">Vier Grundfragen<a aria-label="Direktlink" class="anchor" href="#vier-grundfragen">¶</a></h3>
+<ul>
+<li><strong>I. Wer:</strong> Welche Akteurinnen und Akteure sind am fraglichen Rechtsverhältnis beteiligt (Parteien, Vorinstanzen [eidgenössische und kantonale Verwaltungsrechtsträger, Gerichte, weitere Behörden])?</li>
+<li><strong>II. Wem:</strong> Welches Organ soll im fraglichen Rechtsverhältnis hoheitlich über Rechtsfragen entscheiden (Bundesgericht, Bundesverwaltungsgericht, Verwaltungsbehörde, kantonale Instanzen)?</li>
+<li><strong>III. Wodurch:</strong> In welchem Verfahren wird über den Anlassfall entschieden?<ul>
+<li><em>Verfahrensart und ‑phase:</em> Um was für eine Art von Verfahren geht es und in welchem Abschnitt davon befinden wir uns (Einleitungs‑, Ermittlungs- und Entscheidphase, Neubeurteilungsphase, Beschwerdephase sowie Vollzugsphase)?</li>
+<li><em>Verfahrensfragen:</em> Welche Verfahrensvorschriften werfen im konkreten Anlassfall zu klärende Fragen auf? Häufige Problemfelder sind etwa die Sachverhaltsermittlung und Beweisführung (Grundsatz der Untersuchungsmaxime), Fragen der Parteirechte, Fragen der Verfahrenshoheit (Offizial- oder Dispositionsmaxime), Prozessvoraussetzungen (örtliche und sachliche Zuständigkeit, Partei- und Prozessfähigkeit, Rechtsschutzinteresse der Partei, Form- und Fristerfordernisse) wie auch Vorschriften über die Beschwerdegründe und die Kognition (Prüfungsdichte).</li>
+<li><em>Instrumente:</em> Zu welchem Zweck setzen die Verfahrensbeteiligten welche Instrumente ein (z. B. Verfügung, Gesuch, Rechtsmittel)?</li>
+</ul>
+</li>
+<li><strong>IV. Was und gestützt worauf:</strong> Was ist der Gegenstand des konkreten Verwaltungsverhältnisses und über was wird gestützt auf welche Rechtsgrundlagen aus welchen sachlichen Gründen entschieden?<ul>
+<li><em>Rügen:</em> Was wird von wem vorgebracht und welche Interessen werden dabei verfolgt? Welche rechtlichen Voraussetzungen bestehen für die Vorbringen und wie argumentieren die beteiligten Akteurinnen und Akteure?</li>
+<li><em>Rechtsfragen:</em> Welches sind vorliegend die strittigen Rechtsfragen, über die im konkreten Sachverhalt zu entscheiden ist? Eine Unterscheidung zwischen prozessualen und materiellen Teilfragen kann dabei hilfreich sein.</li>
+<li><em>Entscheid:</em> Wie werden die strittigen Rechtsfragen von der hoheitlich entscheidenden Behörde vorliegend beurteilt? Ergeht ein Entscheid in der Sache oder (bloss) ein Prozessurteil?</li>
+</ul>
+</li>
+</ul>
+<p><em>Analyse von Entscheiden mit KI.</em> Der beschriebene Fragekatalog (Wer, Wem, Wodurch, Was) eignet sich hervorragend als Strukturvorgabe für ein KI-Tool. Man kann der KI-Anwendung beispielsweise den vollständigen Entscheid übergeben und instruieren: «<em>Beantworte die folgenden Fragen zu diesem Entscheid: Welche Akteure sind beteiligt? Welches Organ entscheidet? In welchem Verfahren wird entschieden? Was ist der Streitgegenstand? Welche Rechtsfragen sind strittig? Wie werden sie beurteilt?</em>» Das Ergebnis ersetzt die eigene Analyse nicht, aber liefert einen wertvollen Ausgangspunkt. Der Mehrwert liegt vor allem darin, dass man seine eigene Analyse mit der KI-gestützten Auswertung abgleichen kann. Wo die eigene Einschätzung von jener der KI abweicht, lohnt sich eine vertiefte Auseinandersetzung.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Prompts zur Inspiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">‣ <em>Fasse mir das Urteil (BGer) vom 30.11.2009, 2C_166/2009 zusammen.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Beantworte die folgenden Fragen zum Urteil (BGer) vom 30.11.2009, 2C_166/2009: Welche Akteure sind beteiligt? Welches Organ entscheidet? In welchem Verfahren wird entschieden? Was ist der Streitgegenstand? Welche Rechtsfragen sind strittig? Wie werden sie beurteilt?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Erstelle mir eine Timeline des Sachverhalts des Urteils.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Wer will in diesem Urteil von wem in welchem Verfahren was mit welchem Rechtsmittel gestützt auf welche Rechtsgrundlagen.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Was sagt das Urteil zu den Anforderungen der polizeilichen Generalklausel und inwiefern stimmt es mit der bisherigen Rechtsprechung überein?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <strong>Faustregel:</strong> <em>Je mehr man über ein Urteil wissen will, desto mehr Handarbeit ist erforderlich.</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="hinterfragen-des-gerichtsentscheids">Hinterfragen des Gerichtsentscheids<a aria-label="Direktlink" class="anchor" href="#hinterfragen-des-gerichtsentscheids">¶</a></h3>
+<p><em>Hinterfragen von Gerichtsentscheiden.</em> Gerichtsentscheide, auch diejenigen des Bundesgerichts, sind nicht sakrosankt. Jurisprudenz ist eine Wertungswissenschaft. Entsprechend sind auch Gerichtsentscheide letztlich Wertungen der Richterschaft, die manchmal mehr und manchmal weniger überzeugen. Gerichtsentscheide dürfen und sollen daher von der Lehre kritisch analysiert und wo nötig kritisiert werden. Gerichtsentscheide können in Bezug auf das Ergebnis und die Begründung Fragen aufwerfen. Als Ausgangspunkt für ein Hinterfragen eines Gerichtsentscheids könnten insbesondere die folgenden Fragen dienen:</p>
+<p><strong>I. Ergebnis</strong></p>
+<ul>
+<li>Überzeugt das Ergebnis des Entscheids in der konkreten Sache?</li>
+<li>Wurde zu Recht (nicht) auf die Beschwerde eingetreten?</li>
+<li>Überzeugt das Ergebnis des Entscheids im Hinblick auf seine Konsequenzen für die Entscheidpraxis, die Politik und allenfalls die Rechtsetzung?</li>
+<li>Steht das Ergebnis im Einklang mit den bestimmbaren Vorentscheiden des Gesetzgebers?</li>
+<li>Welche Folgen hat der Entscheid in verfahrensrechtlicher, materiell-rechtlicher und tatsächlicher, aber auch politischer oder wirtschaftlicher Hinsicht?</li>
+</ul>
+<p><strong>II. Formelle und materielle Entscheidbegründung</strong></p>
+<ul>
+<li>Ist die Begründung kohärent?</li>
+<li>Setzt sich die Begründung mit den relevanten Rechtsfragen auseinander? Bleiben Fragen offen oder nicht genügend abgehandelt? Gibt es überflüssige Begründungen?</li>
+<li>Wie werden die massgeblichen Rechtsnormen ausgelegt?</li>
+<li>Stützt das Urteil seine Begründung auf die Lehre, ausländische Urteile (Rechtsvergleich) oder nichtjuristisches Fachwissen ab?</li>
+</ul>
+<p><em>Hinterfragen mit KI.</em> Für eine (kritische) Würdigung von Entscheiden kann ein KI-Tool als Sparringspartner dienen. Mit KI lassen sich Kritikpunkte an Urteilen entwickeln, die man selbst weiterdenken und bewerten muss. Über opencaselaw.ch in Verbindung mit Claude lässt sich zudem analysieren, wie ein Entscheid in der späteren Praxis aufgenommen wurde. Die Funktion <code>find_citations</code> zeigt, welche späteren Entscheide auf ein bestimmtes Urteil verweisen. So lässt sich prüfen, ob ein Entscheid tatsächlich als Leitentscheid rezipiert wurde oder ob die Rechtsprechung inzwischen eine andere Richtung eingeschlagen hat.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Prompts zur Inspiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">‣ <em>Welche Schwächen könnte man in der Argumentation des Bundesgerichts in E. 5 sehen?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Gibt es Aspekte, die das Gericht nicht ausreichend berücksichtigt hat?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Welche verfahrensrechtlichen Fragen stellen sich/stellen sich auch noch?</em></td>
+</tr>
+</tbody>
+</table>
+<section class="footnotes">
+<ol>
+<li id="fn-1"><p>Bundesgesetz vom 17. Dezember 2004 über das Öffentlichkeitsprinzip der Verwaltung (Öffentlichkeitsgesetz, BGÖ; SR 152.3).<a class="footnote" href="#fnref-1">↩</a></p></li>
+<li id="fn-2"><p>Z. B. die <a href="https://www.weko.admin.ch/de/entscheide">Wettbewerbskommission</a> sowie auf kantonaler Ebene etwa die Departemente des Kantons St. Gallens, des Kantons Zürichs oder des Kantons Aargau, die alle oder bestimmte Leitentscheide auf ihren Homepages veröffentlichen.<a class="footnote" href="#fnref-2">↩</a></p></li>
+<li id="fn-3"><p>Bundesverfassung der Schweizerischen Eidgenossenschaft vom 18. April 1999 (BV; SR 101).<a class="footnote" href="#fnref-3">↩</a></p></li>
+<li id="fn-4"><p>Reglement für das Bundesgericht (BGerR; SR 173.110.131).<a class="footnote" href="#fnref-4">↩</a></p></li>
+<li id="fn-5"><p>Zum speziellen Verfahren vgl. die Art. 43 ff. des Reglements für das Bundesgericht.<a class="footnote" href="#fnref-5">↩</a></p></li>
+<li id="fn-6"><p>Anders hingegen z. B. am Kantonsgericht des Kantons Waadt (Art. 134 der Verfassung des Kantons Waadt vom 14. April 2003 (SR 131.231, KV/VD)).<a class="footnote" href="#fnref-6">↩</a></p></li>
+<li id="fn-7"><p><a href="https://servat.unibe.ch/dfr/dfr_bge00.html">https://servat.unibe.ch/dfr/dfr_bge00.html</a>.<a class="footnote" href="#fnref-7">↩</a></p></li>
+<li id="fn-8"><p><a href="https://bstger.weblaw.ch/">https://bstger.weblaw.ch/</a>.<a class="footnote" href="#fnref-8">↩</a></p></li>
+<li id="fn-9"><p><a href="https://www.bvger.ch/de/rechtsprechung/entscheiddatenbank">https://www.bvger.ch/de/rechtsprechung/entscheiddatenbank</a>.<a class="footnote" href="#fnref-9">↩</a></p></li>
+<li id="fn-10"><p><a href="https://www.bundespatentgericht.ch/rechtsprechung">https://www.bundespatentgericht.ch/rechtsprechung</a>.<a class="footnote" href="#fnref-10">↩</a></p></li>
+<li id="fn-11"><p>Vgl. etwa für die Kantone St. Gallen, Aargau sowie zumindest für einzelne Gerichte im Kanton Basel-Stadt.<a class="footnote" href="#fnref-11">↩</a></p></li>
+<li id="fn-12"><p>Z. B. im Kanton Zürich existiert keine umfassende Plattform für sämtliche Zürcher Gerichte.<a class="footnote" href="#fnref-12">↩</a></p></li>
+<li id="fn-13"><p>Z. B. Urteil (BGer) vom 30.11.2009, 2C_166/2009 (Hundeeuthanasie).<a class="footnote" href="#fnref-13">↩</a></p></li>
+<li id="fn-14"><p><a href="http://relevancy.bger.ch/php/clir/http/index.php?type=help&amp;lang=de">http://relevancy.bger.ch/php/clir/http/index.php?type=help&amp;lang=de</a>.<a class="footnote" href="#fnref-14">↩</a></p></li>
+<li id="fn-15"><p><a href="https://www.bger.ch/files/live/sites/tfl/files/pdf/Reglemente/01_Zitierregeln_d.pdf">https://www.bger.ch/files/live/sites/tfl/files/pdf/Reglemente/01_Zitierregeln_d.pdf</a>.<a class="footnote" href="#fnref-15">↩</a></p></li>
+<li id="fn-16"><p>Zu den rechtlichen Minimalanforderungen siehe z. B. Art. 61 Abs. 2 u. 3 VwVG; s.a. Art. 238 ZPO.<a class="footnote" href="#fnref-16">↩</a></p></li>
+<li id="fn-17"><p>Bundesgesetz über das Bundesverwaltungsgericht vom 17. Juni 2005 (VGG; SR 173.32).<a class="footnote" href="#fnref-17">↩</a></p></li>
+<li id="fn-18"><p>Verwaltungsrechtspflegegesetz des Kantons Zürichs vom 01.05.1960 (LS 175.2; VRG).<a class="footnote" href="#fnref-18">↩</a></p></li>
+<li id="fn-19"><p>Vgl. z. B. Art. 134 KV/VD; Art. 13 Abs. 3 des Geschäftsreglementes vom 28.09.2011 für das Bundespatentgericht (SR 173.413.1; GR-PatGer); Art. 55 Abs. 1 Justizgesetz vom 09.11.2009 des Kantons Schaffhausens (SHR 173.200).<a class="footnote" href="#fnref-19">↩</a></p></li>
+<li id="fn-20"><p>Vgl. Art. 54 BGG.<a class="footnote" href="#fnref-20">↩</a></p></li>
+<li id="fn-21"><p>S.a. Art. 36 Abs. 3 des Bundesgesetzes vom 20.03.2009 über das Bundespatentgericht (SR 173.41; PatGG).<a class="footnote" href="#fnref-21">↩</a></p></li>
+</ol>
+</section>
+
+
+  <nav class="chapter-foot" aria-label="Kapitelnavigation">
+      <a class="prev" href="/de/erlasse/">← II. Erlasse</a>
+<a class="edit" href="https://github.com/jonashertner/swiss-legal-research-guide/edit/main/content/de/20-gerichtsentscheide.md" rel="noopener">Edit on GitHub ↗</a>      <a class="next" href="/de/ki-konzepte/">IV. KI-Konzepte <span class="next-arrow">→</span></a>
+  </nav>
+</article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="colophon">
+      <h4>Suchen — Lesen — Analysieren</h4>
+      <p>
+        <strong>Erlasse und Gerichtsentscheide.</strong>
+        Juristisches Handwerk mit und ohne KI.
+      </p>
+      <p>
+        Von
+<a href="mailto:kaspar.ehrenzeller@unisg.ch">Kaspar Ehrenzeller</a> und <a href="mailto:daniel.brugger@unisg.ch">Daniel Brugger</a>,
+        Universität St. Gallen (HSG).
+      </p>
+      <p class="muted">Version April 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Lesen</h4>
+      <a href="/assets/pdf/leitfaden.pdf">PDF (Druckfassung)</a>
+      <a href="/llms-full.txt">Vollständige Version (Markdown)</a>
+<a href="https://github.com/jonashertner/swiss-legal-research-guide/commits/main" rel="noopener">Versionshistorie</a>    </div>
+    <div class="footer-col ai-col">
+      <h4>For AI / Agents</h4>
+      <a href="/llms.txt"><code>/llms.txt</code></a>
+      <a href="/llms-full.txt"><code>/llms-full.txt</code></a>
+      <a href="/sitemap.xml"><code>/sitemap.xml</code></a>
+      <a href="/for-ai/">.md mirror per section</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quelle</h4>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide" rel="noopener">GitHub repository</a>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide/issues" rel="noopener">Issues / feedback</a>
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">Inhalt: CC BY 4.0</a>
+      <a href="https://opensource.org/license/mit" rel="noopener license">Code: MIT</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

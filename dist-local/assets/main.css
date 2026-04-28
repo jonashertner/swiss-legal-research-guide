@@ -372,36 +372,6 @@ main.reading {
   width: 1%;
 }
 
-/* Single-column tables (e.g. "Prompts zur Inspiration") render as a quiet bordered list */
-.prose table.single-col {
-  border: 1px solid var(--rule);
-  border-radius: 4px;
-  margin: 28px 0;
-}
-.prose table.single-col th {
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--green);
-  background: var(--paper-2);
-  border-bottom: 1px solid var(--rule);
-  padding: 12px 18px;
-}
-.prose table.single-col tbody tr td:first-child,
-.prose table.single-col tbody td {
-  font-family: var(--font-serif);
-  font-size: 16px;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--ink);
-  padding: 12px 18px;
-  border-bottom: 1px solid var(--rule-soft);
-  white-space: normal;
-  width: auto;
-}
-.prose table.single-col tbody tr:last-child td { border-bottom: none; }
-
 /* Inline code */
 .prose code {
   font-family: var(--font-mono);
@@ -814,51 +784,23 @@ body.toc-open .drawer-scrim {
   .prose h3 { font-size: 17px; }
   .chapter-eyebrow { font-size: 10px; }
 
-  /* German compound words can be 30+ chars — break in body text only */
-  .prose p, .prose li, .prose blockquote {
+  /* German compound words can be 30+ chars — let them break */
+  .prose p, .prose li, .prose td, .prose th, .prose blockquote {
     overflow-wrap: anywhere;
     word-break: normal;
     hyphens: auto;
   }
 
-  /* Multi-column tables: enable horizontal scroll, keep cell text normal */
-  .prose table:not(.single-col) {
+  /* Tables: enable horizontal scroll inside a wrapper-less <table> */
+  .prose table {
     display: block;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
-  }
-  .prose table:not(.single-col) thead,
-  .prose table:not(.single-col) tbody {
-    display: table;
-    width: max-content;
-    min-width: 100%;
-  }
-  .prose table:not(.single-col) th,
-  .prose table:not(.single-col) td {
-    overflow-wrap: normal;
-    word-break: normal;
-    hyphens: none;
-    min-width: 90px;
-  }
-  .prose table:not(.single-col) td:first-child { min-width: 110px; }
-
-  /* Single-column tables (Prompts boxes): wrap freely, full width */
-  .prose table.single-col {
-    width: 100%;
-  }
-  .prose table.single-col td {
-    overflow-wrap: anywhere;
-    word-break: normal;
-    hyphens: auto;
-  }
-  .prose table.single-col tbody tr td:first-child {
-    width: auto;
     white-space: normal;
-    font-family: var(--font-serif);
-    color: var(--ink);
-    font-style: italic;
   }
+  .prose table tbody, .prose table thead { display: table; width: 100%; min-width: 540px; }
+  .prose td:first-child { white-space: normal; }
 
   /* Glossary card: fit phone width, narrow padding */
   .glossary-card { width: min(280px, calc(100vw - 32px)); padding: 12px 14px; }

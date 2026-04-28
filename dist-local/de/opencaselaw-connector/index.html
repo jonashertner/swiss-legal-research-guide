@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anhang: OpenCaseLaw in Claude als Connector hinzufügen — Suchen — Lesen — Analysieren</title>
+<meta name="description" content="Connector — Suchen — Lesen — Analysieren, Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI.">
+<meta name="author" content="Kaspar Ehrenzeller, Daniel Brugger">
+
+<link rel="canonical" href="https://jonashertner.github.io/de/opencaselaw-connector/">
+
+<meta property="og:title" content="V. Anhang: OpenCaseLaw in Claude als Connector hinzufügen — Suchen — Lesen — Analysieren">
+<meta property="og:description" content="Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" type="text/markdown" href="/de/opencaselaw-connector/index.md">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable index">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308612d'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23fafaf7' text-anchor='middle' font-weight='600'%3E§%3C/text%3E%3C/svg%3E">
+</head>
+<body class="chapter-page">
+
+<header class="site-masthead" role="banner">
+  <a class="brand" href="/de/" aria-label="Zur Startseite">
+    SUCHEN — LESEN — ANALYSIEREN
+    <span class="version-pill">v. April 2026</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Navigation öffnen">
+    <span class="icon" aria-hidden="true">≡</span>
+    <span class="label">Menü</span>
+  </button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Hauptnavigation">
+      <a href="/de/erlasse/">Erlasse</a>
+      <a href="/de/gerichtsentscheide/">Gerichtsentscheide</a>
+      <a href="/de/ki-konzepte/">KI-Konzepte</a>
+      <a href="/de/opencaselaw-connector/">Connector</a>
+    <a class="ai-link" href="/for-ai/">
+      <span class="arrow">⌥</span> For AI / devs
+    </a>
+    <span class="lang-switch" aria-label="Sprache">
+      <span class="lang active" lang="de" title="Deutsch">DE</span>
+      <span class="lang muted" lang="fr" title="Français — folgt">FR</span>
+      <span class="lang muted" lang="it" title="Italiano — folgt">IT</span>
+    </span>
+  </nav>
+</header>
+<div class="drawer-scrim" data-scrim hidden></div>
+<main class="reading">
+<button type="button" class="toc-toggle" aria-controls="chapter-toc" aria-expanded="false" aria-label="Inhaltsübersicht öffnen">
+  <span class="icon" aria-hidden="true">§</span>
+  <span class="label">Inhalt</span>
+</button>
+<aside id="chapter-toc" class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">V. Connector</div>
+  <ul>
+    <li><a href="#schritt-1-claude-oeffnen" data-spy="schritt-1-claude-oeffnen">Schritt 1: Claude öffnen</a></li>
+    <li><a href="#schritt-2-einstellungen-oeffnen" data-spy="schritt-2-einstellungen-oeffnen">Schritt 2: Einstellungen öffnen</a></li>
+    <li><a href="#schritt-3-custom-connector-hinzufuegen" data-spy="schritt-3-custom-connector-hinzufuegen">Schritt 3: Custom Connector hinzufügen</a></li>
+    <li><a href="#schritt-4-verbindungsdaten-eingeben" data-spy="schritt-4-verbindungsdaten-eingeben">Schritt 4: Verbindungsdaten eingeben</a></li>
+    <li><a href="#schritt-5-konnektor-aktivieren" data-spy="schritt-5-konnektor-aktivieren">Schritt 5: Konnektor aktivieren</a></li>
+    <li><a href="#schritt-6-testen" data-spy="schritt-6-testen">Schritt 6: Testen</a></li>
+    <li><a href="#schritt-7-funktionen" data-spy="schritt-7-funktionen">Schritt 7: Funktionen</a></li>
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+      <li><a href="/de/">I. Einleitung</a></li>
+      <li><a href="/de/erlasse/">II. Erlasse</a></li>
+      <li><a href="/de/gerichtsentscheide/">III. Gerichtsentscheide</a></li>
+      <li><a href="/de/ki-konzepte/">IV. KI-Konzepte</a></li>
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <div class="chapter-eyebrow">// V. CONNECTOR</div>
+  <h1 class="chapter-title">Anhang: OpenCaseLaw in Claude als Connector hinzufügen</h1>
+
+  <p><em><span class="glossary" data-term="OpenCaseLaw">opencaselaw.ch</span> als Connector in Claude einrichten.</em> Die Datenbank opencaselaw.ch lässt sich über eine sogenannte <span class="glossary" data-definition="Offenes Protokoll, das KI-Anwendungen wie Claude den Anschluss an externe Datenquellen und Tools erlaubt — z. B. an die juristische Datenbank OpenCaseLaw." data-full="Model Context Protocol" data-source-label="modelcontextprotocol.io" data-source-url="https://modelcontextprotocol.io/" data-term="MCP">MCP</span>-Schnittstelle (Model Context Protocol) direkt an Claude anschliessen. Damit kann direkt in Claude in natürlicher Sprache auf Schweizer Gerichtsentscheide und Erlasse zugegriffen werden, ohne dass die Plattform separat aufgerufen werden muss. Die Einrichtung erfolgt in wenigen Schritten und erfordert keine technischen Vorkenntnisse. Weitere Informationen finden Sie hier: <a href="https://opencaselaw.ch/mcp/">https://opencaselaw.ch/mcp/</a>. Bitte beachten Sie, dass Claude und OpenCaseLaw stetig weiterentwickelt werden, sodass sich die Oberfläche und genauen Schritte ändern können.</p>
+<h2 id="schritt-1-claude-oeffnen"><span class="section-num">§ 1</span> Schritt 1: Claude öffnen<a aria-label="Direktlink" class="anchor" href="#schritt-1-claude-oeffnen">¶</a></h2>
+<p>Rufen Sie <a href="https://claude.ai">https://claude.ai</a> im Browser auf und melden Sie sich mit Ihrem Konto an. Die Einrichtung funktioniert auch auf dem kostenlosen Claude-Account.</p>
+<h2 id="schritt-2-einstellungen-oeffnen"><span class="section-num">§ 2</span> Schritt 2: Einstellungen öffnen<a aria-label="Direktlink" class="anchor" href="#schritt-2-einstellungen-oeffnen">¶</a></h2>
+<p>Klicken Sie in der linken Seitenleiste unten auf Ihr Profil und wählen Sie «Einstellungen».</p>
+<h2 id="schritt-3-custom-connector-hinzufuegen"><span class="section-num">§ 3</span> Schritt 3: Custom Connector hinzufügen<a aria-label="Direktlink" class="anchor" href="#schritt-3-custom-connector-hinzufuegen">¶</a></h2>
+<p>Klicken Sie auf «Konnektoren» und dann unten auf «Benutzerdefinierten Connector hinzufügen».</p>
+<h2 id="schritt-4-verbindungsdaten-eingeben"><span class="section-num">§ 4</span> Schritt 4: Verbindungsdaten eingeben<a aria-label="Direktlink" class="anchor" href="#schritt-4-verbindungsdaten-eingeben">¶</a></h2>
+<p>Es öffnet sich ein Dialogfeld mit zwei Feldern. Geben Sie die folgenden Daten ein:</p>
+<ul>
+<li><strong>Name:</strong> OpenCaseLaw (oder ein beliebiger Name)</li>
+<li><strong>Remote MCP Server URL:</strong> <a href="https://mcp.opencaselaw.ch">https://mcp.opencaselaw.ch</a></li>
+</ul>
+<p>Erweiterte Einstellungen sind für OpenCaseLaw nicht erforderlich, da der Server keine Authentifizierung verlangt. Klicken Sie auf «Hinzufügen».</p>
+<h2 id="schritt-5-konnektor-aktivieren"><span class="section-num">§ 5</span> Schritt 5: Konnektor aktivieren<a aria-label="Direktlink" class="anchor" href="#schritt-5-konnektor-aktivieren">¶</a></h2>
+<p>Der Konnektor erscheint nun in Ihrer Konnektoren-Liste. Um ihn in einer Chat-Konversation zu verwenden, klicken Sie im Chatbot auf die «+»-Schaltfläche unten links im Chatfenster und wählen Sie «Konnektoren». Dort können Sie OpenCaseLaw für die aktuelle Konversation aktivieren.</p>
+<h2 id="schritt-6-testen"><span class="section-num">§ 6</span> Schritt 6: Testen<a aria-label="Direktlink" class="anchor" href="#schritt-6-testen">¶</a></h2>
+<p>Stellen Sie eine Frage, die eine Suche in der Datenbank auslöst, beispielsweise: «<em>Suche mir aktuelle Bundesgerichtsentscheide zum Thema Verhältnismässigkeit bei Tierhalteverboten.</em>» Wenn die Einrichtung erfolgreich war, greift Claude direkt auf die Datenbank zu und liefert Entscheide mit Aktenzeichen und Kurzzusammenfassung. Beim ersten Aufruf eines Tools fragt Claude um Erlaubnis, ob das Tool verwendet werden darf. Sie können die Nutzung einzeln bestätigen oder dauerhaft erlauben.</p>
+<p><em>Hinweis.</em> Dieselbe Einrichtung funktioniert auch in der Claude Desktop-App und in Claude Cowork. In der mobilen App (iOS/Android) können bereits eingerichtete Konnektoren verwendet, aber keine neuen hinzugefügt werden.</p>
+<h2 id="schritt-7-funktionen"><span class="section-num">§ 7</span> Schritt 7: Funktionen<a aria-label="Direktlink" class="anchor" href="#schritt-7-funktionen">¶</a></h2>
+<p>OpenCaseLaw umfasst verschiedene Tools, die für spezifische Rechercheanwendungsfälle optimiert sind. Sie können via Prompt aktiviert werden.</p>
+<p><strong>23 Tools im Überblick</strong> — jedes Tool ist für einen spezifischen Rechercheanwendungsfall optimiert. Volle Schemas via MCP-Protokoll-Tools-Liste, hier gruppiert nach Funktion:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Gruppe</th>
+<th style="text-align:left">Tools</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Entscheide suchen &amp; abrufen</strong></td>
+<td style="text-align:left"><code>search_decisions</code> · <code>get_decision</code> · <code>get_case_brief</code> · <code>list_courts</code> · <code>get_statistics</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Doktrin &amp; Studium</strong></td>
+<td style="text-align:left"><code>get_doctrine</code> · <code>get_commentary</code> · <code>search_commentaries</code> · <code>generate_exam_question</code> · <code>draft_mock_decision</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Zitationsgraph</strong></td>
+<td style="text-align:left"><code>find_citations</code> · <code>find_appeal_chain</code> · <code>find_leading_cases</code> · <code>analyze_legal_trend</code></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Gesetzestext</strong></td>
+<td style="text-align:left"><code>get_law</code> · <code>search_laws</code> · <code>get_legislation</code> · <code>search_legislation</code> · <code>browse_legislation_changes</code></td>
+</tr>
+</tbody>
+</table>
+<p>* * *</p>
+
+
+  <nav class="chapter-foot" aria-label="Kapitelnavigation">
+      <a class="prev" href="/de/ki-konzepte/">← IV. KI-Konzepte</a>
+<a class="edit" href="https://github.com/jonashertner/swiss-legal-research-guide/edit/main/content/de/40-opencaselaw-connector.md" rel="noopener">Edit on GitHub ↗</a><span></span>  </nav>
+</article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="colophon">
+      <h4>Suchen — Lesen — Analysieren</h4>
+      <p>
+        <strong>Erlasse und Gerichtsentscheide.</strong>
+        Juristisches Handwerk mit und ohne KI.
+      </p>
+      <p>
+        Von
+<a href="mailto:kaspar.ehrenzeller@unisg.ch">Kaspar Ehrenzeller</a> und <a href="mailto:daniel.brugger@unisg.ch">Daniel Brugger</a>,
+        Universität St. Gallen (HSG).
+      </p>
+      <p class="muted">Version April 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Lesen</h4>
+      <a href="/assets/pdf/leitfaden.pdf">PDF (Druckfassung)</a>
+      <a href="/llms-full.txt">Vollständige Version (Markdown)</a>
+<a href="https://github.com/jonashertner/swiss-legal-research-guide/commits/main" rel="noopener">Versionshistorie</a>    </div>
+    <div class="footer-col ai-col">
+      <h4>For AI / Agents</h4>
+      <a href="/llms.txt"><code>/llms.txt</code></a>
+      <a href="/llms-full.txt"><code>/llms-full.txt</code></a>
+      <a href="/sitemap.xml"><code>/sitemap.xml</code></a>
+      <a href="/for-ai/">.md mirror per section</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quelle</h4>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide" rel="noopener">GitHub repository</a>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide/issues" rel="noopener">Issues / feedback</a>
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">Inhalt: CC BY 4.0</a>
+      <a href="https://opensource.org/license/mit" rel="noopener license">Code: MIT</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

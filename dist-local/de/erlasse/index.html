@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suchen, Lesen und Analysieren von Erlassen — Suchen — Lesen — Analysieren</title>
+<meta name="description" content="Erlasse — Suchen — Lesen — Analysieren, Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI.">
+<meta name="author" content="Kaspar Ehrenzeller, Daniel Brugger">
+
+<link rel="canonical" href="https://jonashertner.github.io/de/erlasse/">
+
+<meta property="og:title" content="II. Suchen, Lesen und Analysieren von Erlassen — Suchen — Lesen — Analysieren">
+<meta property="og:description" content="Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG).">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" type="text/markdown" href="/de/erlasse/index.md">
+<link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-readable index">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="/assets/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308612d'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23fafaf7' text-anchor='middle' font-weight='600'%3E§%3C/text%3E%3C/svg%3E">
+</head>
+<body class="chapter-page">
+
+<header class="site-masthead" role="banner">
+  <a class="brand" href="/de/" aria-label="Zur Startseite">
+    SUCHEN — LESEN — ANALYSIEREN
+    <span class="version-pill">v. April 2026</span>
+  </a>
+  <button type="button" class="nav-toggle" aria-controls="primary-nav" aria-expanded="false" aria-label="Navigation öffnen">
+    <span class="icon" aria-hidden="true">≡</span>
+    <span class="label">Menü</span>
+  </button>
+  <nav id="primary-nav" class="primary-nav" aria-label="Hauptnavigation">
+      <a href="/de/erlasse/">Erlasse</a>
+      <a href="/de/gerichtsentscheide/">Gerichtsentscheide</a>
+      <a href="/de/ki-konzepte/">KI-Konzepte</a>
+      <a href="/de/opencaselaw-connector/">Connector</a>
+    <a class="ai-link" href="/for-ai/">
+      <span class="arrow">⌥</span> For AI / devs
+    </a>
+    <span class="lang-switch" aria-label="Sprache">
+      <span class="lang active" lang="de" title="Deutsch">DE</span>
+      <span class="lang muted" lang="fr" title="Français — folgt">FR</span>
+      <span class="lang muted" lang="it" title="Italiano — folgt">IT</span>
+    </span>
+  </nav>
+</header>
+<div class="drawer-scrim" data-scrim hidden></div>
+<main class="reading">
+<button type="button" class="toc-toggle" aria-controls="chapter-toc" aria-expanded="false" aria-label="Inhaltsübersicht öffnen">
+  <span class="icon" aria-hidden="true">§</span>
+  <span class="label">Inhalt</span>
+</button>
+<aside id="chapter-toc" class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">II. Erlasse</div>
+  <ul>
+    <li><a href="#suchen-von-erlassen" data-spy="suchen-von-erlassen">Suchen von Erlassen</a></li>
+    <li><a href="#aufbau-von-erlassen" data-spy="aufbau-von-erlassen">Aufbau von Erlassen</a></li>
+    <li><a href="#lesen-und-analysieren-von-erlassen" data-spy="lesen-und-analysieren-von-erlassen">Lesen und Analysieren von Erlassen</a></li>
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+      <li><a href="/de/">I. Einleitung</a></li>
+      <li><a href="/de/gerichtsentscheide/">III. Gerichtsentscheide</a></li>
+      <li><a href="/de/ki-konzepte/">IV. KI-Konzepte</a></li>
+      <li><a href="/de/opencaselaw-connector/">V. Connector</a></li>
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <div class="chapter-eyebrow">// II. ERLASSE</div>
+  <h1 class="chapter-title">Suchen, Lesen und Analysieren von Erlassen</h1>
+
+  <p><strong>Weiterführende Literatur:</strong> Forstmoser Peter / Ogorek Regina / Schindler Benjamin, <em>Juristisches Arbeiten, eine Anleitung für Studierende</em>, 7. Aufl., Zürich 2023, § 10; Reimer Franz, <em>Juristische Methodenlehre</em>, 2. Aufl., Baden-Baden 2020, Rz. 157 ff.; Wyss Martin / Kummer Franz / Häcki Rafael, <em>Suchen — Finden — Überzeugen, Arbeitstechniken im juristischen Alltag</em>, 2. Aufl., Bern 2013, S. 19 ff.; Bundesamt für Justiz, <em>Gesetzgebungsleitfaden</em>, 5. Aufl., Bern 2025.</p>
+<h2 id="suchen-von-erlassen"><span class="section-num">§ 1</span> Suchen von Erlassen<a aria-label="Direktlink" class="anchor" href="#suchen-von-erlassen">¶</a></h2>
+<p><em>Was sind <span class="glossary" data-definition="Mehrheit generell-abstrakter Rechtsnormen des geschriebenen Rechts, von einem Gemeinwesen verabschiedet, in Kraft gesetzt und publiziert. Existiert in den Formen Verfassung, Gesetz und Verordnung." data-full="Erlass" data-term="Erlass">Erlasse</span>?</em> Unter einem Erlass versteht man eine Mehrheit <em>generell-abstrakter</em> Rechtsnormen des geschriebenen Rechts, die von einem Gemeinwesen verabschiedet, in Kraft gesetzt und publiziert worden sind. Eine generell-abstrakte Rechtsnorm regelt für eine unbestimmte Vielzahl von Personen (generell) eine unbestimmte Anzahl von Sachverhalten (abstrakt). Durch ihren generell-abstrakten Charakter unterscheiden sich Erlasse von der individuell-konkreten <span class="glossary" data-definition="Individuell-konkreter Hoheitsakt einer Verwaltungsbehörde im Einzelfall. Anders als der Erlass regelt sie nicht generell-abstrakt." data-full="Verfügung" data-source-label="Art. 5 VwVG" data-source-url="https://www.fedlex.admin.ch/eli/cc/1969/737_757_755/de" data-term="Verfügung">Verfügung</span> und dem gerichtlichen Urteil.<sup class="footnote-ref" id="fnref-1"><a href="#fn-1">1</a></sup> Zudem sind sie einerseits von privat gesetzten Rechtsnormen abzugrenzen, andererseits von staatlichen Rechtsnormen, die noch nicht oder nicht mehr in Kraft sind. Erlasse existieren sodann in unterschiedlichen Formen, namentlich als Verfassung, Gesetz und Verordnung. In der Schweiz als Bundesstaat ist ferner zwischen den Erlassen verschiedener Gemeinwesen — Bund, Kantonen und Gemeinden — zu unterscheiden. Daneben enthalten rechtsetzende Verträge zwischen Gemeinwesen Rechtsnormen. Sie werden als interkantonale oder ‑kommunale Verträge, Konkordate respektive völkerrechtliche Verträge (zwischen Staaten) bezeichnet.</p><aside class="sn" data-fn="fn-1"><span class="sn-num">[1]</span> <p>Vgl. z. B. Forstmoser Peter / Ogorek Regina / Schindler Benjamin, <em>Juristisches Arbeiten, eine Anleitung für Studierende</em>, 7. Aufl., Zürich 2023, S. 215 ff.<a class="footnote" href="#fnref-1">↩</a></p></aside>
+<p><em>Wie sind Erlasse publiziert?</em> Erlasse gelten erst und nur dann, wenn sie korrekt veröffentlicht wurden.<sup class="footnote-ref" id="fnref-2"><a href="#fn-2">2</a></sup> Geheimrecht ist unvereinbar mit dem Legalitätsprinzip. Neue oder geänderte Erlasse des Bundes werden laufend und chronologisch in der <a href="https://www.fedlex.admin.ch/de/cc">Amtlichen Sammlung des Bundesrechts</a> (<span class="glossary" data-definition="Chronologische Sammlung der neuen oder geänderten Erlasse des Bundes." data-full="Amtliche Sammlung des Bundesrechts" data-source-label="Fedlex" data-source-url="https://www.fedlex.admin.ch/de/cc" data-term="AS">AS</span>) publiziert. Die Kantone kennen ähnliche Sammlungen. Zudem werden Erlasse des Bundes in ihrer jeweils gültigen Fassung in der <a href="https://www.fedlex.admin.ch/de/cc">Systematischen Sammlung des Bundesrechts</a> (<span class="glossary" data-definition="Nach Sachgebieten geordnete Sammlung des geltenden Bundesrechts." data-full="Systematische Sammlung des Bundesrechts" data-source-label="Fedlex" data-source-url="https://www.fedlex.admin.ch/de/cc" data-term="SR">SR</span>) nach Sachgebieten geordnet wiedergegeben. In den Kantonen existieren analoge Sammlungen. Die Systematische Sammlung des Bundes und aller Kantone sind heute online abrufbar. Kommunale Erlasse und rechtsetzende Verträge sind teilweise nur in gedruckter Form verfügbar.</p><aside class="sn" data-fn="fn-2"><span class="sn-num">[2]</span> <p>Vgl. für den Bund: Art. 8 Abs. 1 des Bundesgesetzes vom 18. Juni 2004 über die Sammlungen des Bundesrechts und das Bundesblatt (<span class="glossary" data-definition="Bundesgesetz vom 18. Juni 2004 über die Sammlungen des Bundesrechts und das Bundesblatt." data-full="Publikationsgesetz" data-source-label="SR 170.512" data-source-url="https://www.fedlex.admin.ch/eli/cc/2004/746/de" data-term="PublG">PublG</span>; SR 170.512).<a class="footnote" href="#fnref-2">↩</a></p></aside>
+<p><em>Wie findet man Erlasse?</em> Geltende Erlasse findet man am besten online über die Systematische Sammlung des Bundes, des fraglichen Kantons und seinen Gemeinden. <a href="https://www.lexfind.ch/">Lex-find.ch</a> (ein Projekt im Auftrag der schweizerischen Staatsschreiberkonferenz) bietet eine nützliche Suchmaske, um alle geltenden Erlasse von Bund und Kantonen zu durchsuchen. Wo Erlasse bloss in gedruckter Form existieren, ist man auf Kopien angewiesen, die bisweilen von kantonalen Staatskanzleien zur Verfügung gestellt werden können. Andernfalls ist noch immer (und hoffentlich nicht mehr lange) der Gang ins entsprechende Archiv erforderlich.</p>
+<p><em>Erlasssuche mittels KI.</em> Eine Rechtsfrage ist häufig in unterschiedlichen Erlassen (Verfassung, Gesetz, Verordnung) verschiedener Gemeinwesen (Bund, Kanton, Gemeinde) geregelt. So finden sich bspw. Regeln zum Bauen auf kommunaler Stufe in Bau- und Zonenordnungen und in Kanton und Bund in Bau- und Raumplanungsgesetzen und den dazugehörigen Verordnungen.<sup class="footnote-ref" id="fnref-3"><a href="#fn-3">3</a></sup> Das Zusammentragen der verschiedenen Erlasse für einen konkreten Fall ist traditionell zeitaufwändig, weil mühsame Handarbeit. Die KI-unterstützte Erlasssuche eröffnet hier neue Möglichkeiten, indem sie einzelne Schritte dieser Arbeit automatisiert. Verschiedene (kommerzielle) LegalTech-Anbieter bieten solche Suchen an. Es existieren aber auch kostenlose Angebote, die unseres Erachtens mindestens so leistungsstark sind. Namentlich lässt sich die frei zugängliche Datenbank <a href="https://opencaselaw.ch/">opencaselaw.ch</a> über eine sogenannte <span class="glossary" data-definition="Offenes Protokoll, das KI-Anwendungen wie Claude den Anschluss an externe Datenquellen und Tools erlaubt — z. B. an die juristische Datenbank OpenCaseLaw." data-full="Model Context Protocol" data-source-label="modelcontextprotocol.io" data-source-url="https://modelcontextprotocol.io/" data-term="MCP">MCP</span>-Schnittstelle direkt an KI-Anwendungen wie Claude anschliessen. Dadurch können Erlasse von Bund und Kantonen in natürlicher Sprache ge- und durchsucht werden (zur Anleitung für die Einrichtung dieser Schnittstelle unten <a href="../opencaselaw-connector/">Kapitel V</a>). Für die Erlasse des Bundes existiert die Alternative <a href="https://www.fedlex.admin.ch/">Fedlex-Connector</a>, die — ähnlich wie OpenCaseLaw — an Claude angeschlossen werden kann. Tools zur KI-unterstützten Suche werden zwar immer besser, eine Kontrolle anhand der Originalerlasse bleibt jedoch unverzichtbar (dazu auch unten <a href="../ki-konzepte/">Kapitel IV</a>). Eine isolierte Lektüre von Rechtsnormen vermittelt auch mit KI zu oft ein unvollständiges Bild. Das «Suchlesen» in den einschlägigen Erlassen bleibt oft aufschlussreich und kann mithilfe von KI nur bedingt vereinfacht werden.</p><aside class="sn" data-fn="fn-3"><span class="sn-num">[3]</span> <p>Für den Bund: Bundesgesetz über die Raumplanung (<span class="glossary" data-definition="Bundesgesetz über die Raumplanung vom 22. Juni 1979." data-full="Raumplanungsgesetz" data-source-label="SR 700" data-source-url="https://www.fedlex.admin.ch/eli/cc/1979/1573_1573_1573/de" data-term="RPG">RPG</span>; SR 700) und Raumplanungsverordnung (RPV; SR 700.1).<a class="footnote" href="#fnref-3">↩</a></p></aside>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Prompts zur Inspiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">‣ <em>Welche Voraussetzungen stellt das Bundesrecht und das kantonale Recht Graubündens an die Einschläferung eines gewalttätigen Hundes?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Welche Unterschiede und Gemeinsamkeiten bestehen in Bund und Kantonen hinsichtlich der Regelung der Abwahl und Abberufung von Regierungsräten? Bilde Gruppen.</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Erkläre unter Angaben der massgeblichen Artikel die Regelung des Fristbeginns in <span class="glossary" data-definition="Zivilprozessordnung vom 19. Dezember 2008." data-full="Schweizerische Zivilprozessordnung" data-source-label="SR 272" data-source-url="https://www.fedlex.admin.ch/eli/cc/2010/262/de" data-term="ZPO">ZPO</span>,<sup class="footnote-ref" id="fnref-4"><a href="#fn-4">4</a></sup> <span class="glossary" data-definition="Strafprozessordnung vom 5. Oktober 2007." data-full="Schweizerische Strafprozessordnung" data-source-label="SR 312.0" data-source-url="https://www.fedlex.admin.ch/eli/cc/2010/267/de" data-term="StPO">StPO</span>,<sup class="footnote-ref" id="fnref-5"><a href="#fn-5">5</a></sup> <span class="glossary" data-definition="Verwaltungsverfahrensgesetz vom 20. Dezember 1968." data-full="Bundesgesetz über das Verwaltungsverfahren" data-source-label="SR 172.021" data-source-url="https://www.fedlex.admin.ch/eli/cc/1969/737_757_755/de" data-term="VwVG">VwVG</span><sup class="footnote-ref" id="fnref-6"><a href="#fn-6">6</a></sup> und <span class="glossary" data-definition="Bundesgerichtsgesetz vom 17. Juni 2005." data-full="Bundesgesetz über das Bundesgericht" data-source-label="SR 173.110" data-source-url="https://www.fedlex.admin.ch/eli/cc/2006/218/de" data-term="BGG">BGG</span><sup class="footnote-ref" id="fnref-7"><a href="#fn-7">7</a></sup>?</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="aufbau-von-erlassen"><span class="section-num">§ 2</span> Aufbau von Erlassen<a aria-label="Direktlink" class="anchor" href="#aufbau-von-erlassen">¶</a></h2>
+<p><em>Wie sind Erlasse aufgebaut?</em> In einem Erlass kodifizierte Rechtsnormen können prinzipiell beliebig gegliedert werden. Durchgesetzt hat sich ein typischer Aufbau, den das Bundesamt für Justiz wie folgt beschreibt:<sup class="footnote-ref" id="fnref-8"><a href="#fn-8">8</a></sup></p><aside class="sn" data-fn="fn-8"><span class="sn-num">[8]</span> <p>Die folgende Tabelle ist entnommen aus Bundesamt für Justiz, <em>Gesetzgebungsleitfaden</em>, 5. Aufl., Bern 2025, Rz. 602.<a class="footnote" href="#fnref-8">↩</a></p></aside>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Abschnitt</th>
+<th style="text-align:left">Inhalte</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>Einleitung</strong></td>
+<td style="text-align:left">Ziel/Zweck · Geltungsbereich · Begriffsbestimmungen</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Hauptteil</strong> (innerhalb des Hauptteils wird vorwiegend nach sachlichen Gliederungskriterien strukturiert)</td>
+<td style="text-align:left">Organisation · Verfahren · Finanzierung · Kosten · Gebühren · Strafbestimmungen</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>Schlussbestimmungen</strong></td>
+<td style="text-align:left">Vollzug · Aufhebung und Änderung anderer Erlasse · Übergangsrecht · Referendum · Inkrafttreten</td>
+</tr>
+</tbody>
+</table>
+<p>Vor allem die Gliederung des Hauptteils von Erlassen richtet sich nach dem spezifischen Regelungsgegenstand, weshalb nur bedingt verallgemeinerbare Aussagen zur näheren Gliederung möglich sind.<sup class="footnote-ref" id="fnref-9"><a href="#fn-9">9</a></sup></p><aside class="sn" data-fn="fn-9"><span class="sn-num">[9]</span> <p>Bundesamt für Justiz, <em>Gesetzgebungsleitfaden</em>, 5. Aufl., Bern 2025, Rz. 602 ff.<a class="footnote" href="#fnref-9">↩</a></p></aside>
+<h2 id="lesen-und-analysieren-von-erlassen"><span class="section-num">§ 3</span> Lesen und Analysieren von Erlassen<a aria-label="Direktlink" class="anchor" href="#lesen-und-analysieren-von-erlassen">¶</a></h2>
+<p><em>Wie liest man Erlasse?</em> Erlasse zählen — wie auch Gerichtsentscheide<sup class="footnote-ref" id="fnref-10"><a href="#fn-10">10</a></sup> — zur Gattung juristischer Texte. Ähnlich wie ein Gedicht (Schönheit), eine Tageszeitung (Information) oder ein Krimi (Unterhaltung) werden auch Erlasse mit einem bestimmten Fokus gelesen.</p><aside class="sn" data-fn="fn-10"><span class="sn-num">[10]</span> <p>Vgl. dazu unten <a href="../gerichtsentscheide/#lesen-von-gerichtsentscheiden">Kapitel III.3</a>.<a class="footnote" href="#fnref-10">↩</a></p></aside>
+<p><em>Zielorientierte Rechtsnormsuche.</em> In der Regel liest man Erlasse mit Blick auf eine konkrete Rechtsfrage. Sie formt das Ziel der Lektüre erheblich. In der Regel sind dafür unterschiedliche Erlasse (Verfassung, Gesetz, Verordnung) verschiedener Gemeinwesen (Bund, Kanton, Gemeinde) in Betracht zu ziehen und einander zuzuordnen. Diese Abstimmungs- oder Koordinationsarbeit ist Interpretationsarbeit.<sup class="footnote-ref" id="fnref-11"><a href="#fn-11">11</a></sup></p><aside class="sn" data-fn="fn-11"><span class="sn-num">[11]</span> <p>Ehrenzeller Kaspar, in: Ehrenzeller Bernhard / Egli Patricia / Hettich Peter / Hongler Peter / Schindler Benjamin / Schmid Stefan G. / Schweizer Rainer J. (Hrsg.), <em>Die schweizerische Bundesverfassung</em>, 4. Aufl., Zürich/St. Gallen 2023, <em>Verfassungsinterpretation</em>, Rz. 105 ff.<a class="footnote" href="#fnref-11">↩</a></p></aside>
+<p><em>Akteurorientiertes Lesen von Erlassen.</em> Das Lesen von Erlassen erfolgt üblicherweise in einer bestimmten Rolle, welche die Lektüre entscheidend mitbestimmt. Ein Gericht liest denselben Erlass — zum Beispiel ein Verfahrensgesetz — anders als eine Partei, diese wiederum anders als der Gesetzgeber oder die Verwaltung.</p>
+<p><em>Zielorientierte Erlasslektüre.</em> Rechtsnormsuche und Erlasslektüre bleiben ein wechselseitiger Prozess: Eine zielorientierte Rechtsnormsuche setzt voraus, dass man eine Rechtsnorm im Kontext ihrer Erlasse liest. Ein Erlass wird meist mit Fokus auf bestimmte Rechtsnormen oder Rechtsnormgruppen gelesen.</p>
+<p><em>Wie analysiert man Erlasse?</em> Ähnlich wie bei Gerichts- und Verwaltungsentscheiden stellen sich auch bei der Erlassanalyse typische Grundfragen, die sich mithilfe von KI-Tools beantworten lassen. Sie können auch als Musterprompts verwendet werden. Unter anderem durch folgende Prompts:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Prompts zur Inspiration</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">‣ <em>Auf welchen Bundeskompetenzen beruht ein Bundesgesetz und inwiefern belässt es Raum für kantonale Rechtsetzung?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Der Erfüllung welcher Staatsaufgaben dient der Erlass?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Was sind Ziel und Zweck des Erlasses und inwiefern werden sie genauer geregelt?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Wie ist der sachliche, räumliche und zeitliche Geltungsbereich des Erlasses geregelt?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Wie regelt der Erlass Vollzug und Rechtsschutz?</em></td>
+</tr>
+<tr>
+<td style="text-align:left">‣ <em>Existieren intertemporalrechtliche Vorschriften und, wenn ja, welche?</em></td>
+</tr>
+</tbody>
+</table>
+<section class="footnotes">
+<ol>
+<li id="fn-1"><p>Vgl. z. B. Forstmoser Peter / Ogorek Regina / Schindler Benjamin, <em>Juristisches Arbeiten, eine Anleitung für Studierende</em>, 7. Aufl., Zürich 2023, S. 215 ff.<a class="footnote" href="#fnref-1">↩</a></p></li>
+<li id="fn-2"><p>Vgl. für den Bund: Art. 8 Abs. 1 des Bundesgesetzes vom 18. Juni 2004 über die Sammlungen des Bundesrechts und das Bundesblatt (<span class="glossary" data-definition="Bundesgesetz vom 18. Juni 2004 über die Sammlungen des Bundesrechts und das Bundesblatt." data-full="Publikationsgesetz" data-source-label="SR 170.512" data-source-url="https://www.fedlex.admin.ch/eli/cc/2004/746/de" data-term="PublG">PublG</span>; SR 170.512).<a class="footnote" href="#fnref-2">↩</a></p></li>
+<li id="fn-3"><p>Für den Bund: Bundesgesetz über die Raumplanung (<span class="glossary" data-definition="Bundesgesetz über die Raumplanung vom 22. Juni 1979." data-full="Raumplanungsgesetz" data-source-label="SR 700" data-source-url="https://www.fedlex.admin.ch/eli/cc/1979/1573_1573_1573/de" data-term="RPG">RPG</span>; SR 700) und Raumplanungsverordnung (RPV; SR 700.1).<a class="footnote" href="#fnref-3">↩</a></p></li>
+<li id="fn-4"><p>Schweizerische Zivilprozessordnung vom 19. Dezember 2008 (ZPO; SR 272).<a class="footnote" href="#fnref-4">↩</a></p></li>
+<li id="fn-5"><p>Schweizerische Strafprozessordnung vom 5. Oktober 2007 (StPO; SR 312.0).<a class="footnote" href="#fnref-5">↩</a></p></li>
+<li id="fn-6"><p>Bundesgesetz vom 20.12.1968 über das Verwaltungsverfahren (VwVG; SR 172.021).<a class="footnote" href="#fnref-6">↩</a></p></li>
+<li id="fn-7"><p>Bundesgesetz über das Bundesgericht vom 17. Juni 2005 (BGG; SR 173.110).<a class="footnote" href="#fnref-7">↩</a></p></li>
+<li id="fn-8"><p>Die folgende Tabelle ist entnommen aus Bundesamt für Justiz, <em>Gesetzgebungsleitfaden</em>, 5. Aufl., Bern 2025, Rz. 602.<a class="footnote" href="#fnref-8">↩</a></p></li>
+<li id="fn-9"><p>Bundesamt für Justiz, <em>Gesetzgebungsleitfaden</em>, 5. Aufl., Bern 2025, Rz. 602 ff.<a class="footnote" href="#fnref-9">↩</a></p></li>
+<li id="fn-10"><p>Vgl. dazu unten <a href="../gerichtsentscheide/#lesen-von-gerichtsentscheiden">Kapitel III.3</a>.<a class="footnote" href="#fnref-10">↩</a></p></li>
+<li id="fn-11"><p>Ehrenzeller Kaspar, in: Ehrenzeller Bernhard / Egli Patricia / Hettich Peter / Hongler Peter / Schindler Benjamin / Schmid Stefan G. / Schweizer Rainer J. (Hrsg.), <em>Die schweizerische Bundesverfassung</em>, 4. Aufl., Zürich/St. Gallen 2023, <em>Verfassungsinterpretation</em>, Rz. 105 ff.<a class="footnote" href="#fnref-11">↩</a></p></li>
+</ol>
+</section>
+
+
+  <nav class="chapter-foot" aria-label="Kapitelnavigation">
+      <a class="prev" href="/de/">← I. Einleitung</a>
+<a class="edit" href="https://github.com/jonashertner/swiss-legal-research-guide/edit/main/content/de/10-erlasse.md" rel="noopener">Edit on GitHub ↗</a>      <a class="next" href="/de/gerichtsentscheide/">III. Gerichtsentscheide <span class="next-arrow">→</span></a>
+  </nav>
+</article>
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="colophon">
+      <h4>Suchen — Lesen — Analysieren</h4>
+      <p>
+        <strong>Erlasse und Gerichtsentscheide.</strong>
+        Juristisches Handwerk mit und ohne KI.
+      </p>
+      <p>
+        Von
+<a href="mailto:kaspar.ehrenzeller@unisg.ch">Kaspar Ehrenzeller</a> und <a href="mailto:daniel.brugger@unisg.ch">Daniel Brugger</a>,
+        Universität St. Gallen (HSG).
+      </p>
+      <p class="muted">Version April 2026.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Lesen</h4>
+      <a href="/assets/pdf/leitfaden.pdf">PDF (Druckfassung)</a>
+      <a href="/llms-full.txt">Vollständige Version (Markdown)</a>
+<a href="https://github.com/jonashertner/swiss-legal-research-guide/commits/main" rel="noopener">Versionshistorie</a>    </div>
+    <div class="footer-col ai-col">
+      <h4>For AI / Agents</h4>
+      <a href="/llms.txt"><code>/llms.txt</code></a>
+      <a href="/llms-full.txt"><code>/llms-full.txt</code></a>
+      <a href="/sitemap.xml"><code>/sitemap.xml</code></a>
+      <a href="/for-ai/">.md mirror per section</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quelle</h4>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide" rel="noopener">GitHub repository</a>
+      <a href="https://github.com/jonashertner/swiss-legal-research-guide/issues" rel="noopener">Issues / feedback</a>
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">Inhalt: CC BY 4.0</a>
+      <a href="https://opensource.org/license/mit" rel="noopener license">Code: MIT</a>
+    </div>
+  </div>
+</footer>
+<script src="/assets/site.js" defer></script>
+</body>
+</html>

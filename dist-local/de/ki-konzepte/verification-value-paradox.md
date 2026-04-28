@@ -1,0 +1,8 @@
+<!-- Canonical HTML: https://jonashertner.github.io/de/ki-konzepte/#verification-value-paradox -->
+# IV.verification-value-paradox — Verification-Value Paradox
+
+_From: Wichtige Konzepte der juristischen Arbeit mit KI — Suchen — Lesen — Analysieren (April 2026)_
+
+Verification-Value Paradox
+
+Der Rechtswissenschaftler Joshua Yuvaraj hat den Zusammenhang zwischen Effizienzgewinn und Kontrollaufwand beim Einsatz von KI in der juristischen Arbeit auf eine einprägsame Formel gebracht: **Net Value = Efficiency Gain − Verification Cost**.[^35] Die Kernthese lautet: Die Effizienzgewinne durch KI werden regelmässig durch den notwendigen Kontrollaufwand relativiert oder sogar kannibalisiert. Nach dem [[Verification-Value Paradox]] ist technologische Beschleunigung nicht automatisch effizient. Wer einen Entscheid von der KI zusammenfassen lässt und anschliessend jede Aussage anhand des Originals überprüfen muss, hat unter Umständen nicht weniger, sondern anders geartete Arbeit. Dieses Paradox ist kein prinzipielles Argument gegen den Einsatz von KI, sondern eines für die Entwicklung von Verfahren und Werkzeugen, die die Verifikation von KI-generierten Ergebnissen effizienter und transparenter machen. Die Anbindung von KI-Tools an juristische Datenbanken wie opencaselaw.ch (dazu [Kapitel V](../opencaselaw-connector/)) ist ein Beispiel dafür. Gerade das Ermöglichen und Erleichtern der Quellenverifikation ist somit nicht bloss eine Vorsichtsmassnahme, sondern der eigentliche Kern kompetenter KI-Nutzung. Tools wie der «Claude-Skill»,[^36] der Originalquellen verlinkt, können dabei eine nützliche Hilfe sein.
