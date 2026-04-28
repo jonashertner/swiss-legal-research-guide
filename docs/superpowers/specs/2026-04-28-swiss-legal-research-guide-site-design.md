@@ -46,10 +46,11 @@ Five HTML pages, one per chapter. Subsections live as anchors. For every section
 | `/de/gerichtsentscheide/` | `20-gerichtsentscheide.md` | III. Gerichtsentscheide |
 | `/de/ki-konzepte/` | `30-ki-konzepte.md` | IV. KI-Konzepte |
 | `/de/opencaselaw-connector/` | `40-opencaselaw-connector.md` | V. Anhang: OpenCaseLaw-Connector |
+| `/for-ai/` | `for-ai.md` (utility page) | Endpoints and conventions for LLM/agent consumers |
 
-Section anchors are kebab-case slugs of headings (e.g., `#suchen-von-erlassen`, `#fallbeispiel-hundeeuthanasie`). Per-section Markdown mirrors live at the same path with `.md` suffix (`/de/erlasse/suchen.md`).
+Section anchors are kebab-case slugs of headings (e.g., `#suchen-von-erlassen`, `#fallbeispiel-hundeeuthanasie`). Slugification rules: lowercase, German diaereses ASCII-folded (`ä→ae`, `ö→oe`, `ü→ue`, `ß→ss`), non-alphanumerics → single hyphen, leading/trailing hyphens stripped. Per-section Markdown mirrors live at the same path with `.md` suffix (`/de/erlasse/suchen.md`).
 
-`/de/` is first-class and live; `/fr/` and `/it/` are reserved. The language switcher in the masthead shows DE active and FR / IT visibly disabled until those translations exist.
+`/de/` is first-class and live; `/fr/` and `/it/` are reserved. The language switcher in the masthead shows DE active and FR / IT visibly disabled until those translations exist. The `/for-ai/` utility page is locale-neutral.
 
 ## 4. Content model
 
@@ -152,7 +153,7 @@ Total client-side JavaScript budget: < 5 KB minified, no framework, no third-par
 
 The site teaches AI-assisted legal research; its own LLM-readability is therefore a feature, not an afterthought.
 
-**`/llms.txt`** — root-level plain text, follows the [`llms.txt` convention](https://llmstxt.org/). Short index linking to each chapter and (with `.md` paths) each section, with one-line descriptions. Generated from chapter frontmatter and the first paragraph of each section.
+**`/llms.txt`** — root-level plain text, follows the [`llms.txt` convention](https://llmstxt.org/). Short index linking to each chapter and (with `.md` paths) each section, with one-line descriptions. Description source per entry: an optional `description:` field in chapter frontmatter (or in `## Section {description: "..."}` heading attribute) wins; otherwise the build extracts the first sentence of the section body, stripping inline footnote markers.
 
 **`/llms-full.txt`** — entire guide concatenated as one Markdown document, chapters in order, no frontmatter clutter, version line at top, last-updated date. Generated from the same source on every build, so it cannot drift.
 
