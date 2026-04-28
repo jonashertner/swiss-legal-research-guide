@@ -169,6 +169,8 @@ def render_chapter(
             section_marker = soup.new_tag("span", attrs={"class": "section-num"})
             section_marker.string = f"§ {section_counter}"
             h.insert(0, section_marker)
+            # Trailing space so running-header text concatenation reads "§ 1 Title".
+            h.insert(1, NavigableString(" "))
             headings.append(Heading(level=2, slug=slug, text=text, section_num=section_counter))
         else:
             headings.append(Heading(level=int(h.name[1]), slug=slug, text=text, section_num=None))

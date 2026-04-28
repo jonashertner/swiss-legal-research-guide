@@ -37,6 +37,7 @@ from lib.parser import (
     slugify_de,
     split_frontmatter,
 )
+from lib.pdf import post_process_for_print, render_pdf, weasyprint_available
 from lib.sitemap import emit_robots, emit_sitemap
 
 
@@ -62,6 +63,11 @@ def parse_args() -> argparse.Namespace:
         help="Full base URL (e.g. https://example.ch). Overrides site.base_url.",
     )
     p.add_argument("--out", default=str(DIST), help="Output directory (default: dist/)")
+    p.add_argument(
+        "--no-pdf",
+        action="store_true",
+        help="Skip PDF generation even if WeasyPrint is available.",
+    )
     return p.parse_args()
 
 
@@ -281,12 +287,60 @@ def main() -> int:
     # .nojekyll for GH Pages (no jekyll processing)
     (out / ".nojekyll").write_text("", encoding="utf-8")
 
+    # PDF (auto-generated print version)
+    pdf_built = False
+    if not args.no_pdf and weasyprint_available():
+        try:
+            _build_pdf(env, rendered, meta, site, out)
+            pdf_built = True
+        except Exception as e:
+            print(f"WARN: PDF generation failed: {e}", file=sys.stderr)
+
     print(f"Built {len(artifacts)} chapters → {out}")
     print(f"  HTML pages: {sum(1 for _ in out.rglob('index.html'))}")
     print(f"  .md mirrors: {sum(1 for _ in out.rglob('*.md'))}")
     print(f"  llms.txt: {(out / 'llms.txt').exists()}")
     print(f"  llms-full.txt: {(out / 'llms-full.txt').exists()}")
+    print(f"  PDF: {pdf_built}")
     return 0
+
+
+def _build_pdf(env, rendered: list[dict[str, Any]], meta: dict[str, Any], site, out: Path) -> None:
+    """Render the print PDF from the same source HTML as the web build."""
+    chapters_for_print: list[dict[str, Any]] = []
+    for r in rendered:
+        fm = r["fm"]
+        printable_html = post_process_for_print(r["result"].html)
+        chapters_for_print.append({
+            "slug": fm["slug"],
+            "chapter": fm.get("chapter", ""),
+            "title": fm["title"],
+            "short_title": fm.get("short_title", fm["title"]),
+            "html": printable_html,
+            "headings": [h.__dict__ for h in r["result"].headings],
+        })
+
+    print_template = env.get_template("print.html.j2")
+    print_html = print_template.render(
+        site={
+            "title": site.title,
+            "subtitle": site.subtitle,
+            "version": site.version,
+            "base_url": site.base_url,
+            "base_path": site.base_path,
+            "authors": meta["authors"],
+            "license": meta["license"],
+            "repository": meta["repository"],
+        },
+        chapters=chapters_for_print,
+    )
+
+    pdf_dir = out / "assets" / "pdf"
+    pdf_dir.mkdir(parents=True, exist_ok=True)
+    out_path = pdf_dir / "leitfaden.pdf"
+
+    print_css = ROOT / "styles" / "print.css"
+    render_pdf(print_html, base_dir=ROOT, out_path=out_path, extra_stylesheets=[print_css])
 
 
 def _chapter_url(base_path: str, slug: str) -> str:

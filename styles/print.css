@@ -1,0 +1,587 @@
+/* Suchen — Lesen — Analysieren · Print stylesheet for WeasyPrint
+ * A4, Source Serif 4 body, JetBrains Mono labels, deep PDF green accent.
+ * Footnotes via CSS `float: footnote`; running headers via `string-set`. */
+
+:root {
+  --ink: #1a1a1a;
+  --paper: #ffffff;
+  --rule: #cccccc;
+  --rule-soft: #e6e4dd;
+  --muted: #5c5c5c;
+  --green: #08612d;
+  --font-serif: "Source Serif 4", "Source Serif Pro", Georgia, "Cambria", serif;
+  --font-mono: "JetBrains Mono", "SF Mono", Consolas, monospace;
+}
+
+/* ──────────── @page ──────────── */
+
+@page {
+  size: A4;
+  margin: 24mm 22mm 26mm 22mm;
+  @top-left {
+    content: string(running-chapter);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    padding-top: 8mm;
+  }
+  @top-right {
+    content: string(running-section);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+    color: var(--muted);
+    padding-top: 8mm;
+  }
+  @bottom-center {
+    content: counter(page);
+    font-family: var(--font-mono);
+    font-size: 9pt;
+    color: var(--muted);
+    padding-bottom: 8mm;
+  }
+}
+
+@page :first {
+  margin: 0;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: none; }
+}
+
+@page cover-page {
+  margin: 0;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: none; }
+}
+
+@page colophon-page {
+  margin: 30mm 22mm 26mm 22mm;
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: counter(page, lower-roman); font-family: var(--font-mono); font-size: 9pt; color: var(--muted); padding-bottom: 8mm; }
+}
+
+@page toc-page {
+  margin: 24mm 22mm 26mm 22mm;
+  @top-left { content: "INHALTSÜBERSICHT"; font-family: var(--font-mono); font-size: 8pt; text-transform: uppercase; letter-spacing: 0.06em; color: var(--green); padding-top: 8mm; }
+  @top-right { content: none; }
+  @bottom-center { content: counter(page, lower-roman); font-family: var(--font-mono); font-size: 9pt; color: var(--muted); padding-bottom: 8mm; }
+}
+
+@page chapter-opening {
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+
+@page end-page {
+  @top-left { content: none; }
+  @top-right { content: none; }
+}
+
+/* Footnotes laid out at page bottom */
+@page {
+  @footnote {
+    border-top: 0.25pt solid var(--rule);
+    padding-top: 4mm;
+    margin-top: 6mm;
+  }
+}
+
+/* ──────────── Base ──────────── */
+
+html, body { background: var(--paper); color: var(--ink); margin: 0; padding: 0; }
+body {
+  font-family: var(--font-serif);
+  font-size: 10.5pt;
+  line-height: 1.5;
+  font-feature-settings: "kern", "liga", "onum";
+  font-optical-sizing: auto;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  hanging-punctuation: first allow-end last;
+  text-align: justify;
+  text-justify: inter-character;
+}
+
+a { color: var(--ink); text-decoration: none; }
+em { font-style: italic; }
+strong { font-weight: 600; }
+
+/* ──────────── Cover page ──────────── */
+
+.cover {
+  page: cover-page;
+  page-break-after: always;
+  width: 210mm;
+  height: 297mm;
+  background: var(--green);
+  color: var(--paper);
+  position: relative;
+  margin: 0;
+  padding: 0;
+  display: block;
+}
+.cover-block {
+  background: var(--paper);
+  color: var(--ink);
+  width: 156mm;
+  margin: 44mm 0 0 18mm;
+  padding: 22mm 22mm 28mm 22mm;
+  box-sizing: border-box;
+}
+.cover .kicker {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+  margin: 0 0 14mm 0;
+}
+.cover-title {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  font-size: 30pt;
+  line-height: 1.05;
+  letter-spacing: -0.014em;
+  color: var(--green);
+  margin: 0 0 8mm 0;
+  text-align: left;
+  text-transform: uppercase;
+  hyphens: none;
+  word-spacing: -0.04em;
+}
+.cover-sub {
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--ink);
+  margin: 0 0 26mm 0;
+  text-align: left;
+  line-height: 1.3;
+}
+.cover-authors {
+  font-family: var(--font-serif);
+  font-size: 13pt;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin: 0;
+  text-align: left;
+}
+
+/* ──────────── Colophon ──────────── */
+
+.colophon-page {
+  page: colophon-page;
+  page-break-before: always;
+  page-break-after: always;
+  text-align: left;
+  font-size: 10pt;
+  line-height: 1.55;
+}
+.colophon-page .kicker {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  margin: 0 0 10mm 0;
+}
+.colophon-page p { margin: 0 0 4mm 0; max-width: 36em; }
+.colophon-page a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--green); text-underline-offset: 1.5pt; }
+.version-line {
+  font-style: italic;
+  margin-top: 14mm !important;
+  color: var(--muted);
+}
+.colophon-rule {
+  width: 30mm;
+  height: 0.5pt;
+  background: var(--green);
+  margin: 16mm 0 10mm 0;
+}
+.cite-as {
+  font-size: 9.5pt;
+  color: var(--ink);
+}
+.cite-as strong { font-weight: 600; color: var(--green); }
+.license-line, .repo-line {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--muted);
+  margin-top: 12mm !important;
+}
+.license-line { margin-top: 24mm !important; }
+.repo-line { margin-top: 4mm !important; }
+
+/* ──────────── Table of contents ──────────── */
+
+.toc-page {
+  page: toc-page;
+  page-break-before: always;
+  page-break-after: always;
+}
+.toc-title {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 28pt;
+  letter-spacing: -0.012em;
+  margin: 0 0 16mm 0;
+  color: var(--ink);
+  text-align: left;
+}
+.toc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.toc-chapter {
+  margin-bottom: 8mm;
+  break-inside: avoid;
+}
+.toc-link {
+  display: flex;
+  align-items: baseline;
+  font-family: var(--font-serif);
+  font-size: 12pt;
+  line-height: 1.3;
+  color: var(--ink);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 1mm;
+}
+.toc-link-sub {
+  font-size: 10.5pt;
+  font-weight: 400;
+  color: var(--ink);
+  padding-left: 8mm;
+  margin-bottom: 0.5mm;
+}
+.toc-num {
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  color: var(--green);
+  font-weight: 500;
+  min-width: 12mm;
+  flex-shrink: 0;
+}
+.toc-num-sub {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--green);
+  min-width: 8mm;
+  flex-shrink: 0;
+}
+.toc-text { flex: 0 0 auto; }
+.toc-leader {
+  flex: 1 1 auto;
+  border-bottom: 0.4pt dotted var(--rule);
+  margin: 0 4pt;
+  align-self: flex-end;
+  height: 1pt;
+  min-width: 8mm;
+}
+.toc-link::after {
+  content: target-counter(attr(href), page);
+  font-family: var(--font-mono);
+  font-size: 10pt;
+  color: var(--ink);
+  font-weight: 500;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+.toc-link-sub::after {
+  font-size: 9pt;
+  color: var(--muted);
+  font-weight: 400;
+}
+.toc-sections {
+  list-style: none;
+  padding: 2mm 0 0 0;
+  margin: 0;
+}
+.toc-section { margin: 0; padding: 0; }
+
+/* ──────────── Chapter opening ──────────── */
+
+.chapter {
+  page-break-before: always;
+}
+.chapter-opening {
+  page: chapter-opening;
+  margin-bottom: 14mm;
+  padding-bottom: 6mm;
+  border-bottom: 0.5pt solid var(--green);
+}
+.chapter-roman {
+  font-family: var(--font-mono);
+  font-size: 11pt;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--green);
+  margin: 0 0 4mm 0;
+  font-weight: 500;
+}
+.chapter-title-print {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 28pt;
+  line-height: 1.1;
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  margin: 0;
+  text-align: left;
+  string-set: running-chapter content(text);
+}
+
+/* ──────────── Body prose ──────────── */
+
+.chapter-body { text-align: justify; }
+.chapter-body p {
+  margin: 0 0 3mm 0;
+  text-indent: 0;
+  orphans: 2;
+  widows: 2;
+}
+.chapter-body p + p { text-indent: 4mm; }
+.chapter-body p:first-of-type { text-indent: 0; }
+.chapter-body em { font-style: italic; }
+.chapter-body strong { font-weight: 600; }
+
+.chapter-body h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 14pt;
+  line-height: 1.25;
+  letter-spacing: -0.005em;
+  margin: 12mm 0 4mm 0;
+  page-break-after: avoid;
+  break-after: avoid;
+  string-set: running-section content(text);
+}
+.chapter-body h3 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 12pt;
+  line-height: 1.3;
+  margin: 8mm 0 3mm 0;
+  page-break-after: avoid;
+}
+.chapter-body h4 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-style: italic;
+  font-size: 11pt;
+  margin: 6mm 0 2mm 0;
+}
+
+.chapter-body h2 .section-num,
+.chapter-body h3 .section-num {
+  font-family: var(--font-mono);
+  font-size: 9.5pt;
+  color: var(--green);
+  margin-right: 3mm;
+  font-weight: 500;
+  vertical-align: 1pt;
+  letter-spacing: 0.02em;
+}
+
+.chapter-body ul, .chapter-body ol {
+  font-family: var(--font-serif);
+  margin: 0 0 4mm 0;
+  padding-left: 6mm;
+}
+.chapter-body li {
+  margin: 0 0 1.5mm 0;
+  line-height: 1.5;
+}
+
+.chapter-body blockquote {
+  border-left: 1pt solid var(--green);
+  padding: 0 0 0 4mm;
+  margin: 4mm 0 4mm 4mm;
+  font-style: italic;
+  color: var(--ink);
+}
+
+/* Tables — quiet rules, mono headers, fully bound to page width */
+.chapter-body table {
+  width: 100%;
+  max-width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+  margin: 4mm 0;
+  font-size: 9.5pt;
+  page-break-inside: avoid;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+.chapter-body th {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--green);
+  text-align: left;
+  padding: 2mm 3mm;
+  border-bottom: 0.5pt solid var(--ink);
+  vertical-align: bottom;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+}
+.chapter-body td {
+  padding: 2mm 3mm;
+  border-bottom: 0.25pt solid var(--rule-soft);
+  vertical-align: top;
+  line-height: 1.4;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  hyphens: auto;
+}
+/* Multi-column tables: first column narrower for short labels */
+.chapter-body table tbody tr td:first-child {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--green);
+  width: 28%;
+  white-space: normal;
+  word-break: keep-all;
+}
+/* Single-column tables (e.g. "Prompts zur Inspiration") render as a quiet list */
+.chapter-body table.single-col {
+  border: 0.4pt solid var(--rule);
+  margin: 5mm 0;
+}
+.chapter-body table.single-col th {
+  font-family: var(--font-mono);
+  font-size: 8pt;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--green);
+  border-bottom: 0.4pt solid var(--rule);
+  background: #f5f3ec;
+  padding: 2mm 4mm;
+}
+.chapter-body table.single-col tbody tr td:first-child,
+.chapter-body table.single-col tbody td {
+  width: auto;
+  font-family: var(--font-serif);
+  color: var(--ink);
+  font-size: 10pt;
+  font-style: italic;
+  padding: 2mm 4mm;
+  border-bottom: 0.25pt solid var(--rule-soft);
+}
+.chapter-body table.single-col tbody tr:last-child td { border-bottom: none; }
+.chapter-body td p {
+  margin: 0 0 1mm 0;
+  text-indent: 0;
+}
+
+/* Inline code and codeblocks */
+.chapter-body code {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--ink);
+  padding: 0 2pt;
+  background: #f3f1ea;
+}
+.chapter-body pre {
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  line-height: 1.4;
+  background: var(--ink);
+  color: var(--paper);
+  padding: 4mm 5mm;
+  border-radius: 1mm;
+  page-break-inside: avoid;
+  margin: 4mm 0;
+}
+.chapter-body pre code { background: none; color: inherit; }
+
+/* External-link arrows on web — strip in print */
+.chapter-body a.xref::after { content: ""; }
+.chapter-body a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--green);
+  text-underline-offset: 1.5pt;
+  text-decoration-thickness: 0.4pt;
+}
+
+/* Glossary terms — keep dotted underline but no card */
+.chapter-body .glossary {
+  border-bottom: 0.5pt dotted var(--green);
+  background: none;
+}
+
+/* ──────────── Footnotes ──────────── */
+
+.fn {
+  float: footnote;
+  font-family: var(--font-mono);
+  font-size: 8.5pt;
+  line-height: 1.4;
+  text-align: left;
+  text-indent: 0;
+  hyphens: none;
+}
+.fn-content { display: inline; }
+.fn-content em { font-style: italic; }
+.fn-content a {
+  text-decoration: underline;
+  text-decoration-color: var(--green);
+  word-break: break-all;
+}
+
+::footnote-call {
+  content: counter(footnote);
+  font-family: var(--font-mono);
+  font-size: 6.5pt;
+  vertical-align: super;
+  color: var(--green);
+  font-weight: 500;
+}
+::footnote-marker {
+  content: "[" counter(footnote) "]\2002";
+  color: var(--green);
+  font-weight: 500;
+}
+@page { counter-reset: footnote; }
+
+/* Drop the chapter-end footnote section if anything slipped through */
+.chapter-body section.footnotes { display: none; }
+
+/* ──────────── End page ──────────── */
+
+.end-page {
+  page: end-page;
+  page-break-before: always;
+  text-align: center;
+  margin-top: 80mm;
+}
+.end-mark {
+  font-family: var(--font-serif);
+  font-size: 14pt;
+  color: var(--green);
+  letter-spacing: 0.5em;
+  margin-bottom: 12mm;
+}
+.end-line {
+  font-family: var(--font-serif);
+  font-size: 11pt;
+  margin: 0 0 2mm 0;
+  color: var(--ink);
+  text-align: center;
+}
+.end-line.muted {
+  font-family: var(--font-mono);
+  font-size: 9pt;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>{{ site.title }} — {{ site.subtitle }}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+
+{# ─────────── Cover page ─────────── #}
+<section class="cover">
+  <div class="cover-block">
+    <p class="kicker">SUCHEN — LESEN — ANALYSIEREN</p>
+    <h1 class="cover-title">Erlasse und Gerichtsentscheide</h1>
+    <p class="cover-sub">Juristisches Handwerk mit und ohne KI</p>
+    <p class="cover-authors">
+      {% for a in site.authors %}{{ a.name | upper }}{% if not loop.last %} &nbsp;|&nbsp; {% endif %}{% endfor %}
+    </p>
+  </div>
+</section>
+
+{# ─────────── Colophon (impressum) ─────────── #}
+<section class="colophon-page">
+  <p class="kicker">Anmerkung</p>
+  <p>Anmerkungen nehmen die Autoren dankend entgegen unter
+    {% for a in site.authors %}<a href="mailto:{{ a.email }}">{{ a.email }}</a>{% if not loop.last %} oder {% endif %}{% endfor %}.</p>
+
+  <p class="version-line">Version vom {{ site.version }}.</p>
+
+  <div class="colophon-rule"></div>
+
+  <p class="cite-as"><strong>Zitiervorschlag:</strong><br>
+    {% for a in site.authors %}{{ a.name }}{% if not loop.last %}; {% endif %}{% endfor %},
+    <em>{{ site.title }}: {{ site.subtitle }}</em>,
+    {{ site.version }},
+    {{ site.base_url }}{{ site.base_path }}.
+  </p>
+
+  <p class="license-line">Inhalt: <a href="{{ site.license.content_url }}">CC BY 4.0</a> &nbsp;·&nbsp; Code: <a href="{{ site.license.code_url }}">MIT</a></p>
+
+  <p class="repo-line"><a href="{{ site.repository.url }}">{{ site.repository.url }}</a></p>
+</section>
+
+{# ─────────── Table of contents ─────────── #}
+<section class="toc-page">
+  <h1 class="toc-title">Inhaltsübersicht</h1>
+  <ol class="toc-list">
+    {% for ch in chapters %}
+    <li class="toc-chapter">
+      <a href="#chapter-{{ ch.slug }}" class="toc-link">
+        <span class="toc-num">{{ ch.chapter }}.</span>
+        <span class="toc-text">{{ ch.title }}</span>
+        <span class="toc-leader"></span>
+      </a>
+      {% if ch.headings|length > 0 %}
+      <ol class="toc-sections">
+        {% for h in ch.headings if h.level == 2 %}
+        <li class="toc-section">
+          <a href="#{{ h.slug }}" class="toc-link toc-link-sub">
+            <span class="toc-num-sub">{{ loop.index }}.</span>
+            <span class="toc-text">{{ h.text }}</span>
+            <span class="toc-leader"></span>
+          </a>
+        </li>
+        {% endfor %}
+      </ol>
+      {% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+</section>
+
+{# ─────────── Chapters ─────────── #}
+{% for ch in chapters %}
+<section class="chapter" id="chapter-{{ ch.slug }}">
+  <header class="chapter-opening">
+    <p class="chapter-roman">{{ ch.chapter }}.</p>
+    <h1 class="chapter-title-print">{{ ch.title }}</h1>
+  </header>
+  <div class="chapter-body prose">
+    {{ ch.html | safe }}
+  </div>
+</section>
+{% endfor %}
+
+{# ─────────── End matter ─────────── #}
+<section class="end-page">
+  <div class="end-mark">* &nbsp; * &nbsp; *</div>
+  <p class="end-line">{{ site.title }} — {{ site.subtitle }}</p>
+  <p class="end-line muted">
+    Von {% for a in site.authors %}{{ a.name }}{% if not loop.last %} und {% endif %}{% endfor %},
+    {{ site.authors[0].affiliation }}.
+  </p>
+  <p class="end-line muted">{{ site.version }}.</p>
+  <p class="end-line muted">{{ site.base_url }}{{ site.base_path }}</p>
+</section>
+
+</body>
+</html>
