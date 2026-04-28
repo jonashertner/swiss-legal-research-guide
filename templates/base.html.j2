@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}{{ site.title }}{% endblock %}</title>
+<meta name="description" content="{% block description %}{{ site.description }}{% endblock %}">
+<meta name="author" content="Kaspar Ehrenzeller, Daniel Brugger">
+
+<link rel="canonical" href="{% block canonical %}{{ site.base_url }}{{ site.base_path }}{% endblock %}">
+
+<meta property="og:title" content="{% block og_title %}{{ site.title }}{% endblock %}">
+<meta property="og:description" content="{% block og_description %}{{ site.description }}{% endblock %}">
+<meta property="og:type" content="article">
+<meta property="og:locale" content="de_CH">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="alternate" type="text/markdown" href="{% block md_alt %}{% endblock %}">
+<link rel="alternate" type="text/plain" href="{{ site.base_path }}llms.txt" title="LLM-readable index">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400;1,8..60,500&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="{{ site.base_path }}assets/main.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2308612d'/%3E%3Ctext x='16' y='22' font-family='Georgia,serif' font-size='20' fill='%23fafaf7' text-anchor='middle' font-weight='600'%3E§%3C/text%3E%3C/svg%3E">
+</head>
+<body{% block body_attrs %}{% endblock %}>
+
+{% include "partials/masthead.html.j2" %}
+
+<main{% block main_attrs %}{% endblock %}>
+{% block main %}{% endblock %}
+</main>
+
+{% include "partials/footer.html.j2" %}
+
+<script src="{{ site.base_path }}assets/site.js" defer></script>
+</body>
+</html>

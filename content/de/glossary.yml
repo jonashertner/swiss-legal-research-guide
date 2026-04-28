@@ -1,0 +1,186 @@
+# Glossary of Swiss legal terms-of-art used in this guide.
+# Each entry is keyed by short form. The build resolves [[short]] in
+# Markdown to a hover-card containing definition + authoritative-source link.
+# Keys are case-sensitive but the build also indexes their UPPER form.
+
+BGE:
+  full: "Bundesgerichtsentscheid (amtlich publiziert)"
+  definition: "Amtlich publizierter Leitentscheid des Bundesgerichts. Format: «BGE 139 I 16, E. 4.3.1, S. 26»."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2006/218/de"
+  source_label: "Art. 58 BGerR"
+
+BGer:
+  full: "Bundesgerichtsurteil (nicht amtlich publiziert)"
+  definition: "Urteil des Bundesgerichts, das nicht in der amtlichen Sammlung erscheint. Format: «Urteil 2C_166/2009 vom 30. November 2009»."
+  source_url: "https://www.bger.ch/"
+  source_label: "bger.ch"
+
+AS:
+  full: "Amtliche Sammlung des Bundesrechts"
+  definition: "Chronologische Sammlung der neuen oder geänderten Erlasse des Bundes."
+  source_url: "https://www.fedlex.admin.ch/de/cc"
+  source_label: "Fedlex"
+
+SR:
+  full: "Systematische Sammlung des Bundesrechts"
+  definition: "Nach Sachgebieten geordnete Sammlung des geltenden Bundesrechts."
+  source_url: "https://www.fedlex.admin.ch/de/cc"
+  source_label: "Fedlex"
+
+BV:
+  full: "Bundesverfassung der Schweizerischen Eidgenossenschaft"
+  definition: "Verfassung des Bundes vom 18. April 1999."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/1999/404/de"
+  source_label: "SR 101"
+
+BGÖ:
+  full: "Bundesgesetz über das Öffentlichkeitsprinzip der Verwaltung"
+  definition: "Öffentlichkeitsgesetz vom 17. Dezember 2004."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2006/355/de"
+  source_label: "SR 152.3"
+
+ZGB:
+  full: "Schweizerisches Zivilgesetzbuch"
+  definition: "Zivilgesetzbuch vom 10. Dezember 1907."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/24/233_245_233/de"
+  source_label: "SR 210"
+
+OR:
+  full: "Obligationenrecht"
+  definition: "Bundesgesetz betreffend die Ergänzung des Schweizerischen Zivilgesetzbuches (Fünfter Teil: Obligationenrecht) vom 30. März 1911."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/27/317_321_377/de"
+  source_label: "SR 220"
+
+ZPO:
+  full: "Schweizerische Zivilprozessordnung"
+  definition: "Zivilprozessordnung vom 19. Dezember 2008."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2010/262/de"
+  source_label: "SR 272"
+
+StPO:
+  full: "Schweizerische Strafprozessordnung"
+  definition: "Strafprozessordnung vom 5. Oktober 2007."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2010/267/de"
+  source_label: "SR 312.0"
+
+StGB:
+  full: "Schweizerisches Strafgesetzbuch"
+  definition: "Strafgesetzbuch vom 21. Dezember 1937."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/54/757_781_799/de"
+  source_label: "SR 311.0"
+
+VwVG:
+  full: "Bundesgesetz über das Verwaltungsverfahren"
+  definition: "Verwaltungsverfahrensgesetz vom 20. Dezember 1968."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/1969/737_757_755/de"
+  source_label: "SR 172.021"
+
+BGG:
+  full: "Bundesgesetz über das Bundesgericht"
+  definition: "Bundesgerichtsgesetz vom 17. Juni 2005."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2006/218/de"
+  source_label: "SR 173.110"
+
+BGerR:
+  full: "Reglement für das Bundesgericht"
+  definition: "Reglement für das Schweizerische Bundesgericht vom 20. November 2006."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2006/772/de"
+  source_label: "SR 173.110.131"
+
+VGG:
+  full: "Bundesgesetz über das Bundesverwaltungsgericht"
+  definition: "Verwaltungsgerichtsgesetz vom 17. Juni 2005."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2006/219/de"
+  source_label: "SR 173.32"
+
+PublG:
+  full: "Publikationsgesetz"
+  definition: "Bundesgesetz vom 18. Juni 2004 über die Sammlungen des Bundesrechts und das Bundesblatt."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2004/746/de"
+  source_label: "SR 170.512"
+
+RPG:
+  full: "Raumplanungsgesetz"
+  definition: "Bundesgesetz über die Raumplanung vom 22. Juni 1979."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/1979/1573_1573_1573/de"
+  source_label: "SR 700"
+
+TSchG:
+  full: "Tierschutzgesetz"
+  definition: "Bundesgesetz über den Tierschutz vom 16. Dezember 2005."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2008/414/de"
+  source_label: "SR 455"
+
+TSchV:
+  full: "Tierschutzverordnung"
+  definition: "Verordnung über den Tierschutz vom 23. April 2008."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2008/416/de"
+  source_label: "SR 455.1"
+
+Erlass:
+  full: "Erlass"
+  definition: "Mehrheit generell-abstrakter Rechtsnormen des geschriebenen Rechts, von einem Gemeinwesen verabschiedet, in Kraft gesetzt und publiziert. Existiert in den Formen Verfassung, Gesetz und Verordnung."
+
+Verfügung:
+  full: "Verfügung"
+  definition: "Individuell-konkreter Hoheitsakt einer Verwaltungsbehörde im Einzelfall. Anders als der Erlass regelt sie nicht generell-abstrakt."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/1969/737_757_755/de"
+  source_label: "Art. 5 VwVG"
+
+Erwägung:
+  full: "Erwägung (E.)"
+  definition: "Nummerierter Abschnitt der Urteilsbegründung. In Aktenzeichen abgekürzt mit «E.» (z. B. E. 4.3)."
+
+Regeste:
+  full: "Regeste"
+  definition: "Vom entscheidenden Abteilungspräsidium formulierte Leitsätze, die in BGE den Erwägungen vorangestellt werden. In allen drei Amtssprachen abgefasst. Hat selbst keine juristisch-normative Bedeutung."
+
+Sachverhalt:
+  full: "Sachverhalt"
+  definition: "Zusammenfassung des konkreten Falles mitsamt Prozessgeschichte, Akteure und Anträgen — der tatsächliche Hintergrund des juristischen Streits."
+
+Dispositiv:
+  full: "Dispositiv (Urteilsformel)"
+  definition: "Hoheitliche Festlegung des Resultats — Nichteintreten, Gutheissung oder Abweisung, Kostenverlegung, Anordnungen. Daran knüpft die Rechtskraftwirkung des Urteils."
+
+Rubrum:
+  full: "Rubrum (Urteilskopf)"
+  definition: "Aktenzeichen, Vorinstanz, Verfahrensbeteiligte, Vertretung, Streitgegenstand sowie Grösse und Zusammensetzung des Spruchkörpers."
+
+Leitentscheid:
+  full: "Leitentscheid (BGE)"
+  definition: "Entscheid des Bundesgerichts von grundsätzlicher Bedeutung. Wird in Fünferbesetzung gefällt und in der amtlichen Sammlung publiziert."
+  source_url: "https://www.fedlex.admin.ch/eli/cc/2006/218/de"
+  source_label: "Art. 20 / 58 BGG"
+
+Devolutiveffekt:
+  full: "Devolutiveffekt"
+  definition: "Mit der Anrufung der Rechtsmittelinstanz geht die Sache auf diese über; die Vorinstanzverfügung wird durch den Beschwerdeentscheid ersetzt."
+
+Subsumtion:
+  full: "Subsumtion"
+  definition: "Anwendung der ausgelegten Rechtsnorm auf den konkreten Sachverhalt — der dritte Schritt der juristischen Argumentation nach Norminterpretation und Sachverhaltsfeststellung."
+
+Polizeiliche Generalklausel:
+  full: "Polizeiliche Generalklausel"
+  definition: "Verfassungsrechtliche Grundlage (Art. 36 Abs. 1 BV) für Eingriffe der Polizei, wenn ohne fehlende gesetzliche Grundlage öffentliche Ordnung oder fundamentale Rechtsgüter gegen schwere und zeitlich unmittelbar drohende Gefahren zu schützen sind."
+
+MCP:
+  full: "Model Context Protocol"
+  definition: "Offenes Protokoll, das KI-Anwendungen wie Claude den Anschluss an externe Datenquellen und Tools erlaubt — z. B. an die juristische Datenbank OpenCaseLaw."
+  source_url: "https://modelcontextprotocol.io/"
+  source_label: "modelcontextprotocol.io"
+
+Halluzination:
+  full: "Halluzination (KI)"
+  definition: "Vom Sprachmodell überzeugend formulierte, aber inhaltlich falsche oder erfundene Aussage — etwa nicht existierende Urteile, falsche Quellen oder erfundene Erlasse. Quellverifikation bleibt deshalb Pflicht."
+
+Verification-Value Paradox:
+  full: "Verification-Value Paradox"
+  definition: "Von Joshua Yuvaraj geprägte Formel: Net Value = Efficiency Gain − Verification Cost. Effizienzgewinne durch KI werden regelmässig durch den Kontrollaufwand relativiert oder kannibalisiert."
+  source_url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5621550"
+  source_label: "SSRN 5621550"
+
+Connector:
+  full: "Connector (Claude)"
+  definition: "In Claude integrierter MCP-Client, der einen externen MCP-Server (z. B. mcp.opencaselaw.ch) als Datenquelle in Konversationen verfügbar macht."

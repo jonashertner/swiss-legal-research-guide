@@ -1,0 +1,49 @@
+{% extends "base.html.j2" %}
+
+{% block title %}{{ frontmatter.title }} — {{ site.title }}{% endblock %}
+{% block description %}{{ frontmatter.short_title }} — {{ site.title }}, {{ site.subtitle }}{% endblock %}
+{% block canonical %}{{ site.base_url }}{{ site.base_path }}de/{{ chapter_slug }}/{% endblock %}
+{% block og_title %}{{ frontmatter.chapter }}. {{ frontmatter.title }} — {{ site.title }}{% endblock %}
+{% block md_alt %}{{ site.base_path }}de/{{ chapter_slug }}/index.md{% endblock %}
+
+{% block body_attrs %} class="chapter-page"{% endblock %}
+{% block main_attrs %} class="reading"{% endblock %}
+
+{% block main %}
+<aside class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">{{ frontmatter.chapter }}. {{ frontmatter.short_title }}</div>
+  <ul>
+  {% for h in headings %}
+    {% if h.level == 2 %}
+    <li><a href="#{{ h.slug }}" data-spy="{{ h.slug }}">{{ h.text }}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+    {% for c in nav_chapters %}
+      {% if c.slug != chapter_slug %}
+      <li><a href="{{ c.url }}">{{ c.chapter }}. {{ c.short_title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <div class="chapter-eyebrow">// {{ frontmatter.chapter }}. {{ (frontmatter.short_title or frontmatter.title) | upper }}</div>
+  <h1 class="chapter-title">{{ frontmatter.title }}</h1>
+
+  {{ body_html | safe }}
+
+  <nav class="chapter-foot" aria-label="Kapitelnavigation">
+    {% if prev_chapter %}
+      <a class="prev" href="{{ prev_chapter.url }}">← {{ prev_chapter.chapter }}. {{ prev_chapter.short_title }}</a>
+    {% else %}<span></span>{% endif %}
+    {% if edit_url %}<a class="edit" href="{{ edit_url }}" rel="noopener">Edit on GitHub ↗</a>{% endif %}
+    {% if next_chapter %}
+      <a class="next" href="{{ next_chapter.url }}">{{ next_chapter.chapter }}. {{ next_chapter.short_title }} <span class="next-arrow">→</span></a>
+    {% else %}<span></span>{% endif %}
+  </nav>
+</article>
+{% endblock %}

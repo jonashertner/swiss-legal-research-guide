@@ -1,0 +1,54 @@
+name: PR preview build
+
+on:
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ".[dev]"
+
+      - name: Run tests
+        run: pytest -q
+
+      - name: Build site (PR check)
+        run: python build.py
+
+      - name: Smoke checks
+        run: |
+          test -f dist/index.html
+          test -f dist/de/index.html
+          test -f dist/de/erlasse/index.html
+          test -f dist/de/gerichtsentscheide/index.html
+          test -f dist/de/ki-konzepte/index.html
+          test -f dist/de/opencaselaw-connector/index.html
+          test -f dist/llms.txt
+          test -f dist/llms-full.txt
+          test -f dist/sitemap.xml
+          test -f dist/robots.txt
+          test -s dist/llms.txt
+          test -s dist/llms-full.txt
+
+      - name: Upload preview artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-preview
+          path: dist/
+          retention-days: 14

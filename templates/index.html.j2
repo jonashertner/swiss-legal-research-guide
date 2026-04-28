@@ -1,0 +1,54 @@
+{% extends "base.html.j2" %}
+
+{% block title %}{{ site.title }} — {{ site.subtitle }}{% endblock %}
+{% block description %}{{ site.description }}{% endblock %}
+{% block canonical %}{{ site.base_url }}{{ site.base_path }}de/{% endblock %}
+{% block og_title %}{{ site.title }} — {{ site.subtitle }}{% endblock %}
+{% block md_alt %}{{ site.base_path }}de/index.md{% endblock %}
+
+{% block body_attrs %} class="index-page"{% endblock %}
+{% block main_attrs %} class="reading"{% endblock %}
+
+{% block main %}
+<aside class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">{{ frontmatter.chapter }}. {{ frontmatter.short_title }}</div>
+  <ul>
+  {% for h in headings %}
+    {% if h.level == 2 %}
+    <li><a href="#{{ h.slug }}" data-spy="{{ h.slug }}">{{ h.text }}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+    {% for c in nav_chapters %}
+      {% if c.slug != chapter_slug %}
+      <li><a href="{{ c.url }}">{{ c.chapter }}. {{ c.short_title }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <header class="frontispiece">
+    <div class="rule-accent"></div>
+    <p class="kicker">SUCHEN — LESEN — ANALYSIEREN</p>
+    <h1 class="display-title">{{ site.title }}<br><span class="display-sub">{{ site.subtitle }}</span></h1>
+    <p class="byline">
+      {% for a in site.authors %}<span class="author">{{ a.name }}</span>{% if not loop.last %} · {% endif %}{% endfor %}
+    </p>
+    <p class="version">{{ site.version }}</p>
+  </header>
+
+  {{ body_html | safe }}
+
+  <nav class="chapter-foot" aria-label="Kapitelnavigation">
+    <span></span>
+    {% if edit_url %}<a class="edit" href="{{ edit_url }}" rel="noopener">Edit on GitHub ↗</a>{% endif %}
+    {% if next_chapter %}
+      <a class="next" href="{{ next_chapter.url }}">{{ next_chapter.chapter }}. {{ next_chapter.short_title }} <span class="next-arrow">→</span></a>
+    {% else %}<span></span>{% endif %}
+  </nav>
+</article>
+{% endblock %}

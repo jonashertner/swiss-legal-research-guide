@@ -1,0 +1,31 @@
+site:
+  title: "Suchen — Lesen — Analysieren"
+  subtitle: "Erlasse und Gerichtsentscheide. Juristisches Handwerk mit und ohne KI."
+  description: "Praxisnahe Anleitung zum Suchen, Lesen und Analysieren von Erlassen und Gerichtsentscheiden mit und ohne Künstliche Intelligenz. Von Kaspar Ehrenzeller und Daniel Brugger (HSG)."
+  base_url: "https://jonashertner.github.io"
+  base_path: "/swiss-legal-research-guide/"
+  default_locale: "de"
+  locales: ["de"]
+  reserved_locales: ["fr", "it"]
+
+version: "April 2026"
+last_updated: "2026-04-28"
+
+authors:
+  - name: "Kaspar Ehrenzeller"
+    email: "kaspar.ehrenzeller@unisg.ch"
+    affiliation: "Universität St. Gallen (HSG)"
+  - name: "Daniel Brugger"
+    email: "daniel.brugger@unisg.ch"
+    affiliation: "Universität St. Gallen (HSG)"
+
+repository:
+  url: "https://github.com/jonashertner/swiss-legal-research-guide"
+  edit_branch: "main"
+  edit_path: "content"
+
+license:
+  content: "CC-BY-4.0"
+  content_url: "https://creativecommons.org/licenses/by/4.0/"
+  code: "MIT"
+  code_url: "https://opensource.org/license/mit"

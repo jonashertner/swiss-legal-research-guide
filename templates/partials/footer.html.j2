@@ -1,0 +1,39 @@
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-grid">
+    <div class="colophon">
+      <h4>Suchen — Lesen — Analysieren</h4>
+      <p>
+        <strong>Erlasse und Gerichtsentscheide.</strong>
+        Juristisches Handwerk mit und ohne KI.
+      </p>
+      <p>
+        Von
+        {% for a in site.authors %}<a href="mailto:{{ a.email }}">{{ a.name }}</a>{% if not loop.last %}{% if loop.index == loop.length - 1 %} und {% else %}, {% endif %}{% endif %}{% endfor %},
+        {{ site.authors[0].affiliation }}.
+      </p>
+      <p class="muted">Version {{ site.version }}.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Lesen</h4>
+      <a href="{{ site.base_path }}assets/pdf/leitfaden.pdf">PDF (Druckfassung)</a>
+      <a href="{{ site.base_path }}llms-full.txt">Vollständige Version (Markdown)</a>
+      {% if site.repository.url %}<a href="{{ site.repository.url }}/commits/{{ site.repository.edit_branch }}" rel="noopener">Versionshistorie</a>{% endif %}
+    </div>
+    <div class="footer-col ai-col">
+      <h4>For AI / Agents</h4>
+      <a href="{{ site.base_path }}llms.txt"><code>/llms.txt</code></a>
+      <a href="{{ site.base_path }}llms-full.txt"><code>/llms-full.txt</code></a>
+      <a href="{{ site.base_path }}sitemap.xml"><code>/sitemap.xml</code></a>
+      <a href="{{ site.base_path }}for-ai/">.md mirror per section</a>
+    </div>
+    <div class="footer-col">
+      <h4>Quelle</h4>
+      {% if site.repository.url %}
+      <a href="{{ site.repository.url }}" rel="noopener">GitHub repository</a>
+      <a href="{{ site.repository.url }}/issues" rel="noopener">Issues / feedback</a>
+      {% endif %}
+      <a href="https://creativecommons.org/licenses/by/4.0/" rel="noopener license">Inhalt: CC BY 4.0</a>
+      <a href="https://opensource.org/license/mit" rel="noopener license">Code: MIT</a>
+    </div>
+  </div>
+</footer>

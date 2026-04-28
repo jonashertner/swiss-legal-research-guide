@@ -1,0 +1,43 @@
+{% extends "base.html.j2" %}
+
+{% block title %}For AI / agents — {{ site.title }}{% endblock %}
+{% block description %}LLM-readable endpoints and conventions for the Swiss legal research guide.{% endblock %}
+{% block canonical %}{{ site.base_url }}{{ site.base_path }}for-ai/{% endblock %}
+{% block og_title %}For AI / agents — {{ site.title }}{% endblock %}
+{% block md_alt %}{{ site.base_path }}llms.txt{% endblock %}
+
+{% block body_attrs %} class="for-ai-page"{% endblock %}
+{% block main_attrs %} class="reading"{% endblock %}
+
+{% block main %}
+<aside class="toc" aria-label="Inhaltsübersicht">
+  <div class="toc-label">For AI / Agents</div>
+  <ul>
+  {% for h in headings %}
+    {% if h.level == 2 %}
+    <li><a href="#{{ h.slug }}">{{ h.text }}</a></li>
+    {% endif %}
+  {% endfor %}
+  </ul>
+  <div class="toc-divider"></div>
+  <div class="toc-label muted">Dokument</div>
+  <ul>
+    {% for c in nav_chapters %}
+      <li><a href="{{ c.url }}">{{ c.chapter }}. {{ c.short_title }}</a></li>
+    {% endfor %}
+  </ul>
+</aside>
+
+<article class="reading-col prose">
+  <div class="chapter-eyebrow">// FOR AI / AGENTS</div>
+  <h1 class="chapter-title">{{ frontmatter.title }}</h1>
+
+  {{ body_html | safe }}
+
+  <nav class="chapter-foot" aria-label="Navigation">
+    <a class="prev" href="{{ site.base_path }}de/">← Zurück zum Leitfaden</a>
+    {% if edit_url %}<a class="edit" href="{{ edit_url }}" rel="noopener">Edit on GitHub ↗</a>{% endif %}
+    <span></span>
+  </nav>
+</article>
+{% endblock %}

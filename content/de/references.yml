@@ -1,0 +1,18 @@
+# Cross-reference URL templates.
+# Used by {{kind:value}} inline syntax in chapter Markdown.
+# The build replaces {value} (verbatim) and {value_encoded} (URL-encoded).
+
+# Federal acts via Fedlex (use SR number, e.g. {{erlass:SR 173.110}})
+erlass: "https://www.fedlex.admin.ch/eli/cc/{value_encoded}/de"
+
+# OpenCaseLaw decision lookup (use Aktenzeichen, e.g. {{bge:2C_166/2009}})
+bge: "https://opencaselaw.ch/decisions/{value_encoded}"
+
+# OpenCaseLaw BGE band (e.g. {{bge_band:139 I 16}})
+bge_band: "https://opencaselaw.ch/bge/{value_encoded}"
+
+# LexFind generic search
+lexfind: "https://www.lexfind.ch/search?query={value_encoded}"
+
+# Generic external URL passthrough (use full URL, e.g. {{url:https://example.ch}})
+url: "{value}"
